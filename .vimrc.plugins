@@ -1,0 +1,102 @@
+" for Plugin settings
+
+" for Wombat
+if isdirectory($HOME . '/.vim/bundle/Wombat')
+    colorscheme wombat
+endif
+
+" for NERDTree
+if isdirectory($HOME . '/.vim/bundle/The-NERD-tree')
+    " autocmd VimEnter * NERDTree
+    autocmd VimEnter * wincmd p
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+    nmap <silent> <F7> :NERDTreeToggle<CR>
+endif
+
+" for NERD Commenter
+if isdirectory($HOME . '/.vim/bundle/The-NERD-Commenter')
+    " コメントの間にスペースを空ける
+    let NERDSpaceDelims = 1
+    " 未対応ファイルタイプのエラーメッセージを表示しない
+    let NERDShutUp=1
+endif
+
+" for taglist
+if isdirectory($HOME . '/.vim/bundle/taglist.vim')
+    " let Tlist_Ctags_Cmd = "/path/to/ctags"
+    let Tlist_Show_One_File = 1
+    let Tlist_Exit_OnlyWindow = 1
+    let Tlist_Use_Right_Window = 1
+    nmap <silent> <F9> :TlistToggle<CR>
+endif
+
+" for srcexpl.vim
+if isdirectory($HOME . '/.vim/bundle/SrcExpl')
+    let g:SrcExpl_refreshTime = 1
+    let g:SrcExpl_WinHeight = 8
+    let g:SrcExpl_pluginList = [
+            \ "__Tag_List__",
+            \ "_NERD_tree_",
+            \ "Source_Explorer"
+        \ ]
+    nmap <F8> :SrcExplToggle<CR>
+    let g:SrcExpl_gobackKey = "<SPACE>"
+    let g:SrcExpl_isUpdateTags = 0
+    " let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
+    let g:SrcExpl_updateTagsKey = "<F12>"
+endif
+
+" for neocomplcache
+if isdirectory($HOME . '/.vim/bundle/neocomplcache')
+    let g:acp_enableAtStartup = 0
+    let g:neocomplcache_enable_at_startup = 1
+    let g:neocomplcache_enable_smart_case = 1
+    let g:neocomplcache_enable_camel_case_completion = 0
+    let g:neocomplcache_enable_underbar_completion = 1
+    let g:neocomplcache_min_syntax_length = 3
+    let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+    if !exists('g:neocomplcache_keyword_patterns')
+      let g:neocomplcache_keyword_patterns = {}
+    endif
+    let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+    imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+    smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+    " TAB completion.
+    inoremap <expr><TAB>   pumvisible() ? "\<C-n>" : "\<TAB>"
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+    function! s:my_crinsert()
+      return pumvisible() ? neocomplcache#close_popup() : "\<Cr>"
+    endfunction
+    inoremap <silent> <CR> <C-R>=<SID>my_crinsert()<CR>
+    inoremap <expr><C-g>     neocomplcache#undo_completion()
+    inoremap <expr><C-l>     neocomplcache#complete_common_string() 
+    inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+    inoremap <expr><C-y>  neocomplcache#close_popup()
+    inoremap <expr><C-e>  neocomplcache#cancel_popup()
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    if !exists('g:neocomplcache_omni_patterns')
+      let g:neocomplcache_omni_patterns = {}
+    endif
+    let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+    let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+    let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+    let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+endif
+
+" for unite.vim
+if isdirectory($HOME . '/.vim/bundle/unite.vim')
+    " ウィンドウサイズ
+    let g:unite_winheight = 10
+    nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+    nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+    nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+    nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+    nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
+    nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+endif
