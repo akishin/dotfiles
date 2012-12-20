@@ -53,6 +53,7 @@ filetype indent on
 endif
 
 " 保存時に行末の空白を除去する
+" これやっちゃうと Markdown で改行がなくなっちゃう
 "autocmd BufWritePre * :%s/\s\+$//ge
 
 " <C-Space>でomni補完
