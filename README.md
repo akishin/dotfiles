@@ -11,9 +11,9 @@ $home 直下に clone して dotfiles/setup.sh を実行する。
 
 参考：
 
-yuroyoro/dotfiles · GitHub
+yuroyoro/dotfiles · GitHub  
 https://github.com/yuroyoro/dotfiles
 
-dotfilesをgithubで管理し始めた - すぎゃーんメモ
+dotfilesをgithubで管理し始めた - すぎゃーんメモ  
 http://d.hatena.ne.jp/sugyan/20100602/1275414838
 

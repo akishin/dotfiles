@@ -53,7 +53,7 @@ filetype indent on
 endif
 
 " 保存時に行末の空白を除去する
-autocmd BufWritePre * :%s/\s\+$//ge
+"autocmd BufWritePre * :%s/\s\+$//ge
 
 " <C-Space>でomni補完
 imap <C-Space> <C-x><C-o>
