@@ -1,7 +1,23 @@
 [user]
 	name  = akishin
 	email = akishin999@gmail.com
-
+[color]
+    ui = true
+[core]
+    excludesfile = ~/.gitignore
+    editor = vim
+    pager  = less -r
+[merge]
+    tool = vimdiff
+    ff   = false
+[push]
+    # default の push 先は現在の branch のみ
+    default = tracking
+[pull]
+    # pull --rebase
+    rebase = true
+[branch]
+    autosetuprebase = always
 [tig "bind"]
     generic = g move-first-line
     generic = G move-last-line
