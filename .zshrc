@@ -41,7 +41,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # local settings
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-# for Git status
+# for VCS status
 # http://mollifier.hatenablog.com/entry/20100906/p1
 autoload -Uz add-zsh-hook
 autoload -Uz colors
@@ -93,11 +93,15 @@ sudo() {
   esac
 }
 
-# tmux & tmuxinator
+# tmuxinator
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+
+# tmux( or tmuxinator)
 if [ -z $TMUX ]; then
   if $(tmux has-session); then
     tmux attach
   else
+    # tmux
     mux devel
   fi
 fi
