@@ -4,6 +4,9 @@ set lines=60
 " 横幅
 set columns=160
 
+" font は Ricty Diminished
+set guifont=Ricty\ Diminished\ 10
+
 " クリップボード共有
 set clipboard=unnamed
 

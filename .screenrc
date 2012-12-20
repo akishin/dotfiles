@@ -1,0 +1,26 @@
+# スタートアップ画面を表示しない
+startup_message off
+# ヒストリーバッファのサイズを指定する
+defscrollback 10000
+# ハング時に自動でデタッチする
+autodetach on
+# 実行中のコマンド名を表示する。.bashrc に「PS1='\033k\033\\[\u@\h \W]\$ '」を追加すること
+shelltitle "$ |bash"
+# Visual Bell 無効
+vbell off
+# Window のデフォルトの文字コード
+defutf8 on
+defkanji utf-8
+encoding utf-8 utf-8
+defencoding utf-8
+# ログファイル
+logfile "$HOME/.screen/screen-%Y%m%d-%n.log"
+log on
+deflog on
+# ステータスラインに何を表示するか
+#hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+#hardstatus alwayslastline "%{= wk} %-w%{=bu dr}%n %t%{-}%+w %= %{=b wb}%y/%m/%d %{=b wb}%c"
+#hardstatus alwayslastline '%m/%d %02c:%s %{= .g}%H%{-} %L=%-w%45L>%{=u g.}%n %t%{-}%+w %-17<%=%{= .y}(%l)'
+hardstatus alwayslastline "%{= gk}[%m/%d %02c:%s] %{gW} %-w%{= wk}%n %t%{-}%+w %=%{gk}$USER@$HOSTNAME[$LANG] (%l) "
+caption always '%?%F%{= gW}%:%{= Kk}%?%2n%f%07=%t%='
+

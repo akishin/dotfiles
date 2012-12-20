@@ -1,11 +1,11 @@
 " for vundle
-if filereadable(expand("~/.vimrc.vundle"))
-  source ~/.vimrc.vundle
+if filereadable(expand("~/dotfiles/.vimrc.vundle"))
+  source ~/dotfiles/.vimrc.vundle
 endif
 
 " for neobundle
-if filereadable(expand("~/.vimrc.neobundle"))
-  source ~/.vimrc.neobundle
+if filereadable(expand("~/dotfiles/.vimrc.neobundle"))
+  source ~/dotfiles/.vimrc.neobundle
 endif
 
 set number
@@ -92,4 +92,5 @@ augroup END
 highlight CursorLine term=reverse cterm=reverse ctermbg=black ctermfg=242
 
 " for Plugin settings
-source ~/.vimrc.plugins
+source ~/dotfiles/.vimrc.plugins
+

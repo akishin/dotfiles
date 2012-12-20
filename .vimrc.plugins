@@ -69,7 +69,7 @@ if isdirectory($HOME . '/.vim/bundle/neocomplcache')
     endfunction
     inoremap <silent> <CR> <C-R>=<SID>my_crinsert()<CR>
     inoremap <expr><C-g>     neocomplcache#undo_completion()
-    inoremap <expr><C-l>     neocomplcache#complete_common_string() 
+    inoremap <expr><C-l>     neocomplcache#complete_common_string()
     inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
     inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
     inoremap <expr><C-y>  neocomplcache#close_popup()
@@ -99,4 +99,5 @@ if isdirectory($HOME . '/.vim/bundle/unite.vim')
     nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
     nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
     nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+    nnoremap <silent> ,ufr :<C-u>Unite buffer file_rec<CR>
 endif
