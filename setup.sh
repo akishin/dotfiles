@@ -9,7 +9,7 @@ do
     fi
 done
 
-# $B%m!<%+%kMQ(B .zshrc $B$N6u%U%!%$%k:n@.$7$H$/(B
+# ローカル用 .zshrc の空ファイル作成しとく
 if [ ! -e $HOME/.zshrc.local ] ; then
     touch $HOME/.zshrc.local
 fi
