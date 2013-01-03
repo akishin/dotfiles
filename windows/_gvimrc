@@ -1,0 +1,30 @@
+" 縦幅
+set lines=70
+
+" 横幅
+set columns=200
+
+" フォントサイズ
+set guifont=MS_Gothic:h10:cSHIFTJIS
+
+" 画面を黒地に白にする
+colorscheme evening
+
+" クリップボード共有
+set clipboard=unnamed
+
+" ツールバーを削除
+set guioptions-=T
+
+" gvim は UTF-8
+set encoding=utf8
+
+" 無名レジスタに入るデータを、*レジスタにも入れる
+set clipboard+=unnamed
+
+" for NERDTree
+if isdirectory($HOME . '/vimfiles/bundle/The-NERD-tree')
+    autocmd VimEnter * NERDTree
+    autocmd VimEnter * wincmd p
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+endif

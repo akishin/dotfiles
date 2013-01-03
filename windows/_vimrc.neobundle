@@ -1,0 +1,42 @@
+" neobundle required.
+set nocompatible
+filetype off
+
+call neobundle#rc(expand("$HOME/vimfiles/bundle"))
+
+NeoBundle 'Shougo/vimproc'
+
+NeoBundle 'Wombat'
+NeoBundle 'pyte'
+"NeoBundle 'rails.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'unite.vim'
+NeoBundle 'neocomplcache'
+NeoBundle 'surround.vim'
+NeoBundle 'The-NERD-tree'
+NeoBundle 'The-NERD-Commenter'
+NeoBundle 'taglist.vim'
+NeoBundle 'matchit.zip'
+NeoBundle 'quickrun.vim'
+NeoBundle 'vim-scripts/SrcExpl'
+NeoBundle 'sudo.vim'
+NeoBundle 'endwise.vim'
+NeoBundle 'Align'
+NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'fugitive.vim'
+NeoBundle 'git://github.com/vim-ruby/vim-ruby.git'
+NeoBundle 'git://github.com/derekwyatt/vim-scala.git'
+NeoBundle 'git://github.com/wlangstroth/vim-haskell.git'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'rhysd/vim-textobj-ruby'
+
+filetype plugin indent on
+
+" Installation check.
+" if neobundle#exists_not_installed_bundles()
+"   echomsg 'Not installed bundles : ' .
+"         \ string(neobundle#get_not_installed_bundle_names())
+"   echomsg 'Please execute ":NeoBundleInstall" command.'
+"   "finish
+" endif
