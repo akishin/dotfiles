@@ -83,6 +83,9 @@ endif
 " Escの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
+" 矩形選択で行末を超えてブロックを選択できるようにする
+set virtualedit+=block
+
 " カレントウィンドウのみ現在行ハイライト
 set cursorline
 augroup cch

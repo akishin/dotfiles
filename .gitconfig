@@ -5,7 +5,7 @@
     ui = true
 [core]
     excludesfile = ~/.gitignore
-    editor = vim -c "set fenc=utf-8"
+    editor = vim -c \"set fenc=utf8\"
     pager  = less -r
 [merge]
     tool = vimdiff
