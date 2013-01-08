@@ -97,6 +97,27 @@ augroup END
 :hi CursorLine gui=underline
 highlight CursorLine term=reverse cterm=reverse ctermbg=black ctermfg=242
 
+" 不可視文字表示
+set list
+" 不可視文字の表示形式
+" set listchars=tab:>.,trail:_,extends:>,precedes:<,eol:↲
+set listchars=tab:>.,trail:_,extends:>,precedes:<
+" 印字不可能文字を16進数で表示
+set display=uhex
+
+" 開いたファイルのディレクトリに自動で移動
+" set autochdir
+
+" CTRL-hjkl でウインドウ移動
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+" 前のバッファ
+noremap <C-Tab> :bp<CR>
+" 次のバッファ
+noremap <C-S-Tab> :bn<CR>
+
 " for Plugin settings
 source ~/dotfiles/.vimrc.plugins
 

@@ -13,67 +13,70 @@ set showmatch
 set showcmd
 set hlsearch
 set laststatus=2
-" set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+" set statusline=%<%fÂ¥ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set hid
 "set term=builtin_linux
 "set ttytype=builtin_linux
 syntax on
 
-" “ú–{Œê©“®”»•Ê
+" æ—¥æœ¬èªè‡ªå‹•åˆ¤åˆ¥
 set fileencoding=cp932
 set encoding=cp932
 set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
 
 set ffs=unix,dos,mac
 
-" ƒoƒbƒNƒAƒbƒvƒfƒBƒŒƒNƒgƒŠ‚ğ•ÏX
+" ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å¤‰æ›´
 set backupdir=$HOME/tmp
 "set nobackup
-" ƒXƒƒbƒvƒtƒ@ƒCƒ‹ƒfƒBƒŒƒNƒgƒŠ‚ğ•ÏX
+" ã‚¹ãƒ¯ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å¤‰æ›´
 set directory=$HOME/tmp
 
-" grep ƒRƒ}ƒ“ƒh‚ÉƒIƒvƒVƒ‡ƒ“‚ğw’è
-set grepprg=grep\ -nH
-" grep Œã‚É©“®‚Å Quickfix ƒEƒBƒ“ƒhƒE‚ğŠJ‚­
+" grep ã‚³ãƒãƒ³ãƒ‰ã«ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’æŒ‡å®š
+set grepprg=grepÂ¥ -nH
+" grep å¾Œã«è‡ªå‹•ã§ Quickfix ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’é–‹ã
 au QuickfixCmdPost make,grep,grepadd,vimgrep copen
 
 if has("autocmd")
-" ƒtƒ@ƒCƒ‹ƒ^ƒCƒv‚ÌŒŸõ‚ğ—LŒø‚É‚·‚é
+" ãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒ—ã®æ¤œç´¢ã‚’æœ‰åŠ¹ã«ã™ã‚‹
 filetype plugin on
-" ‚»‚Ìƒtƒ@ƒCƒ‹ƒ^ƒCƒv‚É‚ ‚í‚¹‚½ƒCƒ“ƒfƒ“ƒg‚ğ—˜—p‚·‚é
+" ãã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒ—ã«ã‚ã‚ã›ãŸã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’åˆ©ç”¨ã™ã‚‹
 filetype indent on
 endif
 
-" •Û‘¶‚És––‚Ì‹ó”’‚ğœ‹‚·‚é
-" ‚±‚ê‚â‚Á‚¿‚á‚¤‚Æ Markdown ‚Å‰üs‚ª‚È‚­‚È‚Á‚¿‚á‚¤
-"autocmd BufWritePre * :%s/\s\+$//ge
+" ä¿å­˜æ™‚ã«è¡Œæœ«ã®ç©ºç™½ã‚’é™¤å»ã™ã‚‹
+" ã“ã‚Œã‚„ã£ã¡ã‚ƒã†ã¨ Markdown ã§æ”¹è¡ŒãŒãªããªã£ã¡ã‚ƒã†
+"autocmd BufWritePre * :%s/Â¥sÂ¥+$//ge
 
-" <C-Space>‚Åomni•âŠ®
+" <C-Space>ã§omniè£œå®Œ
 imap <C-Space> <C-x><C-o>
 
-" Ruby‚ÌƒIƒ€ƒj•âŠ®‚ğİ’è(ft-ruby-omni)
+" Rubyã®ã‚ªãƒ ãƒ‹è£œå®Œã‚’è¨­å®š(ft-ruby-omni)
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 
-" ƒ^ƒOƒtƒ@ƒCƒ‹‚Ìw’è
+" ã‚¿ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã®æŒ‡å®š
 " set tags=$HOME/tags/ruby/ruby.tags,$HOME/tags/ruby/gems.tags
-" <C-]>‚Åƒ^ƒOƒWƒƒƒ“ƒv‚Éƒ^ƒO‚ª•¡”‚ ‚Á‚½‚çƒŠƒXƒg•\¦
+" <C-]>ã§ã‚¿ã‚°ã‚¸ãƒ£ãƒ³ãƒ—æ™‚ã«ã‚¿ã‚°ãŒè¤‡æ•°ã‚ã£ãŸã‚‰ãƒªã‚¹ãƒˆè¡¨ç¤º
 nnoremap <C-]> g<C-]>zz
 
-" “ú–{Œê“ü—ÍON‚ÌƒJ[ƒ\ƒ‹‚ÌF‚ğİ’è
+" æ—¥æœ¬èªå…¥åŠ›ONæ™‚ã®ã‚«ãƒ¼ã‚½ãƒ«ã®è‰²ã‚’è¨­å®š
 if has('multi_byte_ime') || has('xim')
   highlight CursorIM guibg=LightCyan guifg=NONE
 endif
 
-" ‘SŠpƒXƒy[ƒX‚Ì•\¦
+" å…¨è§’ã‚¹ãƒšãƒ¼ã‚¹ã®è¡¨ç¤º
 " highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 " match ZenkakuSpace / /
 
-" Esc‚Ì2‰ñ‰Ÿ‚µ‚ÅƒnƒCƒ‰ƒCƒgÁ‹
+" Escã®2å›æŠ¼ã—ã§ãƒã‚¤ãƒ©ã‚¤ãƒˆæ¶ˆå»
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
-" ƒJƒŒƒ“ƒgƒEƒBƒ“ƒhƒE‚Ì‚İŒ»İsƒnƒCƒ‰ƒCƒg
+" çŸ©å½¢é¸æŠã§è¡Œæœ«ã‚’è¶…ãˆã¦ãƒ–ãƒ­ãƒƒã‚¯ã‚’é¸æŠã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
+set virtualedit+=block
+
+" ã‚«ãƒ¬ãƒ³ãƒˆã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã¿ç¾åœ¨è¡Œãƒã‚¤ãƒ©ã‚¤ãƒˆ
 set cursorline
 augroup cch
   autocmd! cch
@@ -83,6 +86,27 @@ augroup END
 :hi clear CursorLine
 :hi CursorLine gui=underline
 highlight CursorLine term=reverse cterm=reverse ctermbg=black ctermfg=242
+
+" ä¸å¯è¦–æ–‡å­—è¡¨ç¤º
+set list
+" ä¸å¯è¦–æ–‡å­—ã®è¡¨ç¤ºå½¢å¼
+" set listchars=tab:>.,trail:_,extends:>,precedes:<,eol:â†²
+set listchars=tab:>.,trail:_,extends:>,precedes:<
+" å°å­—ä¸å¯èƒ½æ–‡å­—ã‚’16é€²æ•°ã§è¡¨ç¤º
+set display=uhex
+
+" é–‹ã„ãŸãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«è‡ªå‹•ã§ç§»å‹•
+" set autochdir
+
+" CTRL-hjkl ã§ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ç§»å‹•
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+" å‰ã®ãƒãƒƒãƒ•ã‚¡
+noremap <C-Tab> :bp<CR>
+" æ¬¡ã®ãƒãƒƒãƒ•ã‚¡
+noremap <C-S-Tab> :bn<CR>
 
 " for neobundle
 source $HOME/_vimrc.neobundle
