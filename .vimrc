@@ -71,6 +71,9 @@ let g:rubycomplete_rails = 1
 " <C-]>でタグジャンプ時にタグが複数あったらリスト表示
 nnoremap <C-]> g<C-]>zz
 
+" 改行時に自動でコメント行が継続されないようにする
+autocmd FileType * setlocal formatoptions-=ro
+
 " 日本語入力ON時のカーソルの色を設定
 if has('multi_byte_ime') || has('xim')
   highlight CursorIM guibg=LightCyan guifg=NONE
