@@ -33,7 +33,7 @@ set backupdir=$HOME/tmp
 set directory=$HOME/tmp
 
 " grep コマンドにオプションを指定
-set grepprg=grep¥ -nH
+set grepprg=grep
 " grep 後に自動で Quickfix ウィンドウを開く
 au QuickfixCmdPost make,grep,grepadd,vimgrep copen
 
@@ -90,7 +90,7 @@ highlight CursorLine term=reverse cterm=reverse ctermbg=black ctermfg=242
 " 不可視文字表示
 set list
 " 不可視文字の表示形式
-" set listchars=tab:>.,trail:_,extends:>,precedes:<,eol:↲
+" set listchars=tab:>.,trail:_,extends:>,precedes:<,eol:$
 set listchars=tab:>.,trail:_,extends:>,precedes:<
 " 印字不可能文字を16進数で表示
 set display=uhex
