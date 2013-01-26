@@ -18,6 +18,9 @@ set guioptions-=T
 
 " gvim は UTF-8
 set encoding=utf8
+source $VIMRUNTIME/delmenu.vim
+set langmenu=ja_jp.utf-8
+source $VIMRUNTIME/menu.vim
 
 " 無名レジスタに入るデータを、*レジスタにも入れる
 set clipboard+=unnamed
