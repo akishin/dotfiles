@@ -122,3 +122,12 @@ if isdirectory($HOME . '/.vim/bundle/unite.vim')
     nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
     nnoremap <silent> ,ufr :<C-u>Unite buffer file_rec<CR>
 endif
+
+" for vim-indent-guides
+if isdirectory($HOME . '/.vim/bundle/vim-indent-guides')
+    let g:indent_guides_enable_on_vim_startup=1
+    let g:indent_guides_start_level = 1
+    let g:indent_guides_guide_size = 1
+    hi IndentGuidesOdd  ctermbg=green
+    hi IndentGuidesEven ctermbg=black
+endif
