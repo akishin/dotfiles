@@ -41,6 +41,9 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # local settings
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
+# for bundler (bundle open)
+export BUNDLER_EDITOR='/usr/bin/vim -g'
+
 # for VCS status
 # http://mollifier.hatenablog.com/entry/20100906/p1
 autoload -Uz add-zsh-hook
