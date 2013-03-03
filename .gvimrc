@@ -23,3 +23,9 @@ set clipboard+=unnamed
 autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" MacVim の場合 .vimrc で指定しても上書きされるのでここで再度指定
+" for Wombat
+if isdirectory($HOME . '/.vim/bundle/Wombat')
+    colorscheme wombat
+endif
