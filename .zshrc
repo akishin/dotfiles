@@ -17,6 +17,9 @@ HISTFILE=~/.zsh_history
 autoload -Uz compinit
 compinit
 
+# local settings
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
@@ -37,9 +40,6 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # alias settings
 [ -f ~/dotfiles/.zshrc.alias ] && source ~/dotfiles/.zshrc.alias
-
-# local settings
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # for bundler (bundle open)
 export BUNDLER_EDITOR='/usr/bin/vim -g'
