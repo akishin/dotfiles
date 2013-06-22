@@ -121,6 +121,11 @@ noremap <C-Tab> :bp<CR>
 " 次のバッファ
 noremap <C-S-Tab> :bn<CR>
 
+inoremap ＊ *
+inoremap ＝ =
+inoremap （ (
+inoremap ） )
+autocmd InsertCharPre <buffer> if v:char == '　' | let v:char = " " | endif 
+
 " for Plugin settings
 source ~/dotfiles/.vimrc.plugins
-
