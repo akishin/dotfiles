@@ -114,3 +114,11 @@ source $HOME/_vimrc.neobundle
 " for Plugin settings
 source $HOME/_vimrc.plugins
 
+inoremap ＊ *
+inoremap ＝ =
+inoremap （ (
+inoremap ） )
+inoremap ： :
+inoremap ； ;
+autocmd InsertCharPre <buffer> if v:char == '　' | let v:char = " " | endif
+
