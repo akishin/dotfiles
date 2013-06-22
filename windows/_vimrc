@@ -17,6 +17,7 @@ set laststatus=2
 set hid
 "set term=builtin_linux
 "set ttytype=builtin_linux
+set formatoptions=q
 syntax on
 
 " 日本語自動判別
