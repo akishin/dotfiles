@@ -31,3 +31,6 @@ if isdirectory($HOME . '/vimfiles/bundle/The-NERD-tree')
     autocmd VimEnter * wincmd p
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 endif
+
+" for singleton.vim
+call singleton#enable()

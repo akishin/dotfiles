@@ -30,6 +30,7 @@ NeoBundle 'git://github.com/derekwyatt/vim-scala.git'
 NeoBundle 'git://github.com/wlangstroth/vim-haskell.git'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'rhysd/vim-textobj-ruby'
+NeoBundle 'thinca/vim-singleton'
 
 filetype plugin indent on
 
