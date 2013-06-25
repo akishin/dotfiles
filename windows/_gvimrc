@@ -36,5 +36,5 @@ set clipboard+=unnamed
 call singleton#enable()
 
 " Ctrl-C, Ctrl-V Copy and Paste
-source $VIMRUNTIME/mswin.vim
+"source $VIMRUNTIME/mswin.vim
 
