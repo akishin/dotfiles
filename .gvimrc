@@ -4,8 +4,8 @@ set lines=60
 " 横幅
 set columns=160
 
-" font は Ricty Diminished
-set guifont=Ricty\ Diminished\ 10
+" font は Ricty
+set guifont=Ricty\ 10
 
 " クリップボード共有
 set clipboard=unnamed
@@ -20,9 +20,11 @@ set encoding=utf8
 set clipboard+=unnamed
 
 " for NERDTree
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+if isdirectory($HOME . '/.vim/bundle/The-NERD-tree')
+    autocmd VimEnter * NERDTree
+    autocmd VimEnter * wincmd p
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+endif
 
 " MacVim の場合 .vimrc で指定しても上書きされるのでここで再度指定
 " for Wombat

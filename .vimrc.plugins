@@ -133,3 +133,15 @@ if isdirectory($HOME . '/.vim/bundle/vim-indent-guides')
     hi IndentGuidesOdd  ctermbg=green
     hi IndentGuidesEven ctermbg=black
 endif
+
+" for lightline.vim
+if isdirectory($HOME . '/.vim/bundle/lightline.vim')
+    let g:lightline = {
+          \ 'colorscheme': 'wombat',
+          \ 'component': {
+          \   'readonly': '%{&readonly?"x":""}',
+          \ },
+          \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+          \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
+          \ }
+endif

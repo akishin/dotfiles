@@ -1,3 +1,6 @@
+scriptencoding utf-8
+set encoding=utf-8
+
 " for vundle
 if filereadable(expand("~/dotfiles/.vimrc.vundle"))
   source ~/dotfiles/.vimrc.vundle
@@ -31,16 +34,17 @@ set ttytype=builtin_linux
 syntax on
 
 " 日本語自動判別
-set encoding=utf-8
 set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
 
 set ffs=unix,dos,mac
 
-" バックアップディレクトリを変更
-set backupdir=$HOME/tmp
-"set nobackup
-" スワップファイルディレクトリを変更
-set directory=$HOME/tmp
+if isdirectory($HOME . '/tmp')
+    " バックアップディレクトリを変更
+    set backupdir=$HOME/tmp
+    "set nobackup
+    " スワップファイルディレクトリを変更
+    set directory=$HOME/tmp
+endif
 
 " grep コマンドにオプションを指定
 set grepprg=grep\ -nH
@@ -121,6 +125,7 @@ noremap <C-Tab> :bp<CR>
 " 次のバッファ
 noremap <C-S-Tab> :bn<CR>
 
+" あまり使わない全角記号を半角記号に変換
 inoremap ＊ *
 inoremap ＝ =
 inoremap （ (
