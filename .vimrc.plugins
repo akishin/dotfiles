@@ -143,5 +143,16 @@ if isdirectory($HOME . '/.vim/bundle/lightline.vim')
           \ },
           \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
           \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
-          \ }
+        \ }
 endif
+
+" for vim-quickrun
+if isdirectory($HOME . '/.vim/bundle/vim-quickrun')
+    let g:quickrun_config = {
+    \   'markdown': {
+    \     'type': 'markdown/gfm',
+    \     'outputter': 'browser'
+    \   }
+    \ }
+endif
+
