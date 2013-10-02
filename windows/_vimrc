@@ -7,7 +7,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set noerrorbells
-" set mouse=a
+set mouse=a
 set showmode
 set showmatch
 set showcmd
@@ -123,5 +123,3 @@ inoremap （ (
 inoremap ） )
 inoremap ： :
 inoremap ； ;
-autocmd InsertCharPre <buffer> if v:char == '　' | let v:char = " " | endif
-
