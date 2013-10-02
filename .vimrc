@@ -28,6 +28,7 @@ set hid
 set fileencoding=utf8
 set term=builtin_linux
 set ttytype=builtin_linux
+set backspace=indent,eol,start
 syntax on
 
 scriptencoding utf-8
