@@ -42,12 +42,14 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'skammer/vim-css-color'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mattn/zencoding-vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'superbrothers/vim-quickrun-markdown-gfm'
 NeoBundle 'mrtazz/simplenote.vim'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/excitetranslate-vim'
 
 filetype plugin indent on
 
