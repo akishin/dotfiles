@@ -167,3 +167,9 @@ if isdirectory($HOME . '/.vim/bundle/vim-quickrun')
     \ }
 endif
 
+" for simplenote.vim
+if isdirectory($HOME . '/.vim/bundle/simplenote.vim')
+    if filereadable(expand("~/.simplenoterc"))
+      source ~/.simplenoterc
+    endif
+endif

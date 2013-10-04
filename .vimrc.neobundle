@@ -47,6 +47,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'superbrothers/vim-quickrun-markdown-gfm'
+NeoBundle 'mrtazz/simplenote.vim'
 
 filetype plugin indent on
 
