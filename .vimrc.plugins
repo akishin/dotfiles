@@ -173,3 +173,69 @@ if isdirectory($HOME . '/.vim/bundle/simplenote.vim')
       source ~/.simplenoterc
     endif
 endif
+
+" for vim-ref
+if isdirectory($HOME . '/.vim/bundle/vim-ref')
+    " FileType が text なら K で webdict を使う
+    autocmd FileType text call ref#register_detection('_', 'webdict') 
+
+    " 辞書定義
+    let g:ref_source_webdict_sites = {
+    \   'je': {
+    \     'url': 'http://dictionary.infoseek.ne.jp/jeword/%s',
+    \   },
+    \   'ej': {
+    \     'url': 'http://dictionary.infoseek.ne.jp/ejword/%s',
+    \   },
+    \   'yahoo_dict': {
+    \     'url': 'http://dic.search.yahoo.co.jp/search?p=%s',
+    \     'line': '57'
+    \   },
+    \   'wiktionary': {
+    \     'url': 'http://ja.wiktionary.org/wiki/%s',
+    \   },
+    \   'wikipedia': {
+    \     'url': 'http://ja.wikipedia.org/wiki/%s',
+    \   },
+    \ }
+
+    " デフォルトサイト
+    let g:ref_source_webdict_sites.default = 'ej'
+
+    " 出力に対するフィルタ
+    " 最初の数行を削除
+    function! g:ref_source_webdict_sites.je.filter(output)
+      return join(split(a:output, "\n")[15 :], "\n")
+    endfunction
+
+    function! g:ref_source_webdict_sites.ej.filter(output)
+      return join(split(a:output, "\n")[15 :], "\n")
+    endfunction
+
+    function! g:ref_source_webdict_sites.wiktionary.filter(output)
+      return join(split(a:output, "\n")[18 :], "\n")
+    endfunction
+
+    function! g:ref_source_webdict_sites.wikipedia.filter(output)
+      return join(split(a:output, "\n")[17 :], "\n")
+    endfunction
+
+endif
+
+" for vim-altercmd
+if isdirectory($HOME . '/.vim/bundle/vim-ref')
+    call altercmd#load()
+
+    " for vim-ref
+    CAlterCommand rfc          Ref rfc
+    CAlterCommand man          Ref man
+    CAlterCommand refe         Ref refe
+    CAlterCommand ri           Ref ri
+    CAlterCommand ej           Ref webdict ej
+    CAlterCommand je           Ref webdict je
+    CAlterCommand yd[ict]      Ref webdict yahoo_dict
+    CAlterCommand wik[tionary] Ref webdict wiktionary
+    CAlterCommand wiki[pedia]  Ref webdict wikipedia
+
+endif
+

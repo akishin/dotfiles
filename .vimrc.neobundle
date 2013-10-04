@@ -50,6 +50,9 @@ NeoBundle 'mrtazz/simplenote.vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/excitetranslate-vim'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'yuku-t/vim-ref-ri'
+NeoBundle 'tyru/vim-altercmd'
 
 filetype plugin indent on
 
