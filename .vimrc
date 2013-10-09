@@ -134,4 +134,11 @@ inoremap ） )
 autocmd InsertCharPre <buffer> if v:char == '　' | let v:char = " " | endif 
 
 " for Plugin settings
-source ~/dotfiles/.vimrc.plugins
+if filereadable(expand("~/dotfiles/.vimrc.plugins"))
+    source ~/dotfiles/.vimrc.plugins
+endif
+
+" for Local settings
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
