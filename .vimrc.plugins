@@ -196,6 +196,7 @@ if isdirectory($HOME . '/.vim/bundle/vim-ref')
     \   },
     \   'wikipedia': {
     \     'url': 'http://ja.wikipedia.org/wiki/%s',
+    \     'line': '3'
     \   },
     \ }
 
@@ -214,10 +215,6 @@ if isdirectory($HOME . '/.vim/bundle/vim-ref')
 
     function! g:ref_source_webdict_sites.wiktionary.filter(output)
       return join(split(a:output, "\n")[18 :], "\n")
-    endfunction
-
-    function! g:ref_source_webdict_sites.wikipedia.filter(output)
-      return join(split(a:output, "\n")[17 :], "\n")
     endfunction
 
 endif
