@@ -31,14 +31,6 @@ set ttytype=builtin_linux
 set backspace=indent,eol,start
 syntax on
 
-scriptencoding utf-8
-set encoding=utf-8
-
-" 日本語自動判別
-set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
-
-set ffs=unix,dos,mac
-
 if isdirectory($HOME . '/tmp')
     " バックアップディレクトリを変更
     set backupdir=$HOME/tmp
@@ -47,37 +39,47 @@ if isdirectory($HOME . '/tmp')
     set directory=$HOME/tmp
 endif
 
+" デフォルト UTF-8
+scriptencoding utf-8
+set encoding=utf-8
+
+set ffs=unix,dos,mac
+
+" 日本語自動判別
+set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
+
+" 文字コードを変えて開き直す
+command! Utf8 e ++enc=utf-8
+command! Euc  e ++enc=euc-jp
+command! Sjis e ++enc=cp932
+command! Jis  e ++enc=iso-2022-jp
+
+" 以下のファイルは UTF-8
+autocmd FileType ruby      :set fileencoding=utf-8
+autocmd FileType gitcommit :set fileencoding=utf-8
+
 " grep コマンドにオプションを指定
 set grepprg=grep\ -nH
 " grep 後に自動で Quickfix ウィンドウを開く
 au QuickfixCmdPost make,grep,grepadd,vimgrep copen
 
-if has("autocmd")
 " ファイルタイプの検索を有効にする
 filetype plugin on
+
 " そのファイルタイプにあわせたインデントを利用する
 filetype indent on
-endif
+
+" 改行時に自動でコメント行が継続されないようにする
+autocmd FileType * setlocal formatoptions-=ro
 
 " 保存時に行末の空白を除去する
 " これやっちゃうと Markdown で改行がなくなっちゃう
 "autocmd BufWritePre * :%s/\s\+$//ge
 
-" <C-Space>でomni補完
-imap <C-Space> <C-x><C-o>
-
-" Rubyのオムニ補完を設定(ft-ruby-omni)
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
-
 " タグファイルの指定
 " set tags=$HOME/tags/ruby/ruby.tags,$HOME/tags/ruby/gems.tags
 " <C-]>でタグジャンプ時にタグが複数あったらリスト表示
 nnoremap <C-]> g<C-]>zz
-
-" 改行時に自動でコメント行が継続されないようにする
-autocmd FileType * setlocal formatoptions-=ro
 
 " 日本語入力ON時のカーソルの色を設定
 if has('multi_byte_ime') || has('xim')
@@ -131,7 +133,21 @@ inoremap ＊ *
 inoremap ＝ =
 inoremap （ (
 inoremap ） )
-autocmd InsertCharPre <buffer> if v:char == '　' | let v:char = " " | endif 
+autocmd InsertCharPre <buffer> if v:char == '　' | let v:char = " " | endif
+
+" <C-Space>でomni補完
+imap <C-Space> <C-x><C-o>
+
+" Rubyのオムニ補完を設定(ft-ruby-omni)
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1
+
+" git のコミットログ編集時はバックアップを作らない
+autocmd FileType gitcommit setlocal nobackup noundofile noswapfile
+
+" help のバッファを q で終了できるように
+autocmd FileType help nnoremap <buffer> <silent> q :<C-u>close<CR>
 
 " for Plugin settings
 if filereadable(expand("~/dotfiles/.vimrc.plugins"))

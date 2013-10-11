@@ -178,6 +178,8 @@ endif
 if isdirectory($HOME . '/.vim/bundle/vim-ref')
     " FileType が text なら K で webdict を使う
     autocmd FileType text call ref#register_detection('_', 'webdict') 
+    " vim-ref のバッファを q で閉じられるようにする
+    autocmd FileType ref-* nnoremap <buffer> <silent> q :<C-u>close<CR>
 
     " 辞書定義
     let g:ref_source_webdict_sites = {
@@ -219,20 +221,29 @@ if isdirectory($HOME . '/.vim/bundle/vim-ref')
 
 endif
 
+" for excitetranslate-vim
+if isdirectory($HOME . '/.vim/bundle/excitetranslate-vim')
+
+    " 開いたバッファを q で閉じれるようにする
+    autocmd BufEnter ==Translate==\ Excite nnoremap <buffer> <silent> q :<C-u>close<CR>
+
+endif
+
 " for vim-altercmd
-if isdirectory($HOME . '/.vim/bundle/vim-ref')
+if isdirectory($HOME . '/.vim/bundle/vim-altercmd')
     call altercmd#load()
 
     " for vim-ref
-    CAlterCommand rfc          Ref rfc
-    CAlterCommand man          Ref man
-    CAlterCommand refe         Ref refe
-    CAlterCommand ri           Ref ri
-    CAlterCommand ej           Ref webdict ej
-    CAlterCommand je           Ref webdict je
-    CAlterCommand yd[ict]      Ref webdict yahoo_dict
-    CAlterCommand wik[tionary] Ref webdict wiktionary
-    CAlterCommand wiki[pedia]  Ref webdict wikipedia
+    CAlterCommand rfc               Ref rfc
+    CAlterCommand man               Ref man
+    CAlterCommand refe              Ref refe
+    CAlterCommand ri                Ref ri
+    CAlterCommand ej                Ref webdict ej
+    CAlterCommand je                Ref webdict je
+    CAlterCommand yd[ict]           Ref webdict yahoo_dict
+    CAlterCommand wik[tionary]      Ref webdict wiktionary
+    CAlterCommand wiki[pedia]       Ref webdict wikipedia
+    CAlterCommand ex[citetranslate] ExciteTranslate
 
 endif
 
