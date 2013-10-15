@@ -58,6 +58,12 @@ command! Jis  e ++enc=iso-2022-jp
 autocmd FileType ruby      :set fileencoding=utf-8
 autocmd FileType gitcommit :set fileencoding=utf-8
 
+" RSpec のファイルタイプを設定
+augroup RSpec
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
+augroup END
+
 " grep コマンドにオプションを指定
 set grepprg=grep\ -nH
 " grep 後に自動で Quickfix ウィンドウを開く

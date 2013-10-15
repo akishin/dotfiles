@@ -8,16 +8,16 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
-NeoBundle 'Shougo/vimproc'
-
 NeoBundle 'Wombat'
 NeoBundle 'pyte'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-rails'
-NeoBundle 'unite.vim'
+NeoBundle 'Shougo/unite.vim.git'
+NeoBundle 'Shougo/vimproc.git'
+NeoBundle 'Shougo/vimshell.git'
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neosnippet.git'
-NeoBundle 'honza/snipmate-snippets.git'
+NeoBundle 'honza/vim-snippets.git'
 NeoBundle 'surround.vim'
 NeoBundle 'The-NERD-tree'
 NeoBundle 'The-NERD-Commenter'

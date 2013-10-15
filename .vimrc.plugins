@@ -159,12 +159,20 @@ endif
 
 " for vim-quickrun
 if isdirectory($HOME . '/.vim/bundle/vim-quickrun')
-    let g:quickrun_config = {
-    \   'markdown': {
-    \     'type': 'markdown/gfm',
-    \     'outputter': 'browser'
-    \   }
-    \ }
+    let g:quickrun_config = {}
+    let g:quickrun_config._ = {
+        \ 'outputter/buffer/split': ':botright',
+        \ 'runner': 'vimproc'
+        \ }
+    let g:quickrun_config['markdown'] = {
+        \ 'type': 'markdown/gfm',
+        \ 'outputter': 'browser'
+        \ }
+    let g:quickrun_config['ruby.rspec'] = {
+        \ 'command': 'rspec',
+        \ 'cmdopt': 'bundle exec',
+        \ 'exec': '%o %c %s',
+        \ }
 endif
 
 " for simplenote.vim
