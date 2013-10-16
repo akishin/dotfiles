@@ -152,7 +152,9 @@ inoremap ＊ *
 inoremap ＝ =
 inoremap （ (
 inoremap ） )
-autocmd InsertCharPre <buffer> if v:char == '　' | let v:char = " " | endif
+if exists('##InsertCharPre')
+    autocmd InsertCharPre <buffer> if v:char == '　' | let v:char = " " | endif
+endif
 
 " <C-Space>でomni補完
 imap <C-Space> <C-x><C-o>
