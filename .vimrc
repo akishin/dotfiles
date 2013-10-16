@@ -17,7 +17,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set noerrorbells
-" set mouse=a
 set showmode
 set showmatch
 set showcmd
@@ -25,10 +24,15 @@ set hlsearch
 set laststatus=2
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set hid
-set fileencoding=utf8
 set term=builtin_linux
 set ttytype=builtin_linux
 set backspace=indent,eol,start
+set formatoptions=lmoq
+set vb t_vb=
+" set mouse=a
+" set guioptions+=a
+" set ttymouse=xterm2
+
 syntax on
 
 if isdirectory($HOME . '/tmp')
@@ -42,6 +46,7 @@ endif
 " デフォルト UTF-8
 scriptencoding utf-8
 set encoding=utf-8
+set fileencoding=utf8
 
 set ffs=unix,dos,mac
 
@@ -63,6 +68,14 @@ augroup RSpec
   autocmd!
   autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
 augroup END
+
+" vimrc を編集反映
+command! Ev edit $MYVIMRC
+" vimrc を再読込み
+command! Rv source $MYVIMRC
+
+" 前回終了したカーソル行に移動
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
 " grep コマンドにオプションを指定
 set grepprg=grep\ -nH
