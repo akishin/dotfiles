@@ -176,6 +176,11 @@ autocmd FileType gitcommit setlocal nobackup noundofile noswapfile
 " help のバッファを q で終了できるように
 autocmd FileType help nnoremap <buffer> <silent> q :<C-u>close<CR>
 
+" Space-s,s で英語のスペルチェック切換え
+nnoremap [Show] <Nop>
+nmap <Space>s [Show]
+nnoremap [Show]s  :<C-u>setl spell!<CR>
+
 " for Plugin settings
 if filereadable(expand("~/dotfiles/.vimrc.plugins"))
     source ~/dotfiles/.vimrc.plugins
