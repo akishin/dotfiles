@@ -1,28 +1,30 @@
-" c•
+" ç¸¦å¹…
 set lines=70
 
-" ‰¡•
+" æ¨ªå¹…
 set columns=200
 
-" ƒtƒHƒ“ƒgƒTƒCƒY
+" ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚º
 set guifont=MS_Gothic:h10:cSHIFTJIS
 
-" ‰æ–Ê‚ğ•’n‚É”’‚É‚·‚é
+" ç”»é¢ã‚’é»’åœ°ã«ç™½ã«ã™ã‚‹
 colorscheme evening
 
-" ƒNƒŠƒbƒvƒ{[ƒh‹¤—L
+" ã‚¯ãƒªãƒƒãƒ—ãƒœãƒ¼ãƒ‰å…±æœ‰
 set clipboard=unnamed
 
-" ƒc[ƒ‹ƒo[‚ğíœ
+" ãƒ„ãƒ¼ãƒ«ãƒãƒ¼ã‚’å‰Šé™¤
 set guioptions-=T
 
-" gvim ‚Í UTF-8
+" gvim ã¯ UTF-8
 set encoding=utf8
+
+" ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®æ–‡å­—åŒ–ã‘å›é¿
 source $VIMRUNTIME/delmenu.vim
 set langmenu=ja_jp.utf-8
 source $VIMRUNTIME/menu.vim
 
-" –³–¼ƒŒƒWƒXƒ^‚É“ü‚éƒf[ƒ^‚ğA*ƒŒƒWƒXƒ^‚É‚à“ü‚ê‚é
+" ç„¡åãƒ¬ã‚¸ã‚¹ã‚¿ã«å…¥ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚’ã€*ãƒ¬ã‚¸ã‚¹ã‚¿ã«ã‚‚å…¥ã‚Œã‚‹
 set clipboard+=unnamed
 
 " for NERDTree

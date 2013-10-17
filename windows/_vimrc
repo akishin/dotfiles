@@ -7,7 +7,6 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set noerrorbells
-set mouse=a
 set showmode
 set showmatch
 set showcmd
@@ -15,23 +14,60 @@ set hlsearch
 set laststatus=2
 " set statusline=%<%f¥ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set hid
-"set term=builtin_linux
-"set ttytype=builtin_linux
-set formatoptions=q
+set backspace=indent,eol,start
+set formatoptions=lmoq
+set vb t_vb=
+set mouse=a
+
 syntax on
 
-" 日本語自動判別
-set fileencoding=cp932
+if isdirectory($HOME . '/tmp')
+    " バックアップディレクトリを変更
+    set backupdir=$HOME/tmp
+    "set nobackup
+    " スワップファイルディレクトリを変更
+    set directory=$HOME/tmp
+endif
+
+" デフォルト SJIS
+scriptencoding cp932
 set encoding=cp932
-set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
+set fileencoding=cp932
 
 set ffs=unix,dos,mac
 
-" バックアップディレクトリを変更
-set backupdir=$HOME/tmp
-"set nobackup
-" スワップファイルディレクトリを変更
-set directory=$HOME/tmp
+" 日本語自動判別
+set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
+
+" 文字コードを変えて開き直す
+command! Utf8 e ++enc=utf-8
+command! Euc  e ++enc=euc-jp
+command! Sjis e ++enc=cp932
+command! Jis  e ++enc=iso-2022-jp
+
+" 以下のファイルは UTF-8
+autocmd FileType ruby      :set fileencoding=utf-8
+autocmd FileType gitcommit :set fileencoding=utf-8
+
+" RSpec のファイルタイプを設定
+augroup RSpec
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
+augroup END
+
+" markdown のファイルタイプを設定
+augroup markdown
+  autocmd!
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+augroup END
+
+" vimrc を編集反映
+command! Ev edit $MYVIMRC
+" vimrc を再読込み
+command! Rv source $MYVIMRC
+
+" 前回終了したカーソル行に移動
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
 " grep コマンドにオプションを指定
 set grepprg=grep
@@ -39,23 +75,15 @@ set grepprg=grep
 au QuickfixCmdPost make,grep,grepadd,vimgrep copen
 
 if has("autocmd")
-" ファイルタイプの検索を有効にする
-filetype plugin on
-" そのファイルタイプにあわせたインデントを利用する
-filetype indent on
+    " ファイルタイプの検索を有効にする
+    filetype plugin on
+    " そのファイルタイプにあわせたインデントを利用する
+    filetype indent on
 endif
 
 " 保存時に行末の空白を除去する
 " これやっちゃうと Markdown で改行がなくなっちゃう
 "autocmd BufWritePre * :%s/¥s¥+$//ge
-
-" <C-Space>でomni補完
-imap <C-Space> <C-x><C-o>
-
-" Rubyのオムニ補完を設定(ft-ruby-omni)
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
 
 " タグファイルの指定
 " set tags=$HOME/tags/ruby/ruby.tags,$HOME/tags/ruby/gems.tags
@@ -109,17 +137,42 @@ noremap <C-Tab> :bp<CR>
 " 次のバッファ
 noremap <C-S-Tab> :bn<CR>
 
-inoremap <C-Space> <C-^>
-
-" for neobundle
-source $HOME/_vimrc.neobundle
-
-" for Plugin settings
-source $HOME/_vimrc.plugins
-
+" あまり使わない全角記号を半角記号に変換
 inoremap ＊ *
 inoremap ＝ =
 inoremap （ (
 inoremap ） )
 inoremap ： :
 inoremap ； ;
+if exists('##InsertCharPre')
+    autocmd InsertCharPre <buffer> if v:char == '　' | let v:char = " " | endif
+endif
+
+" <C-Space>でomni補完
+imap <C-Space> <C-x><C-o>
+
+" Rubyのオムニ補完を設定(ft-ruby-omni)
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1
+
+" git のコミットログ編集時はバックアップを作らない
+autocmd FileType gitcommit setlocal nobackup noundofile noswapfile
+
+" help のバッファを q で終了できるように
+autocmd FileType help nnoremap <buffer> <silent> q :<C-u>close<CR>
+
+" Space-s,s で英語のスペルチェック切換え
+nnoremap [Show] <Nop>
+nmap <Space>s [Show]
+nnoremap [Show]s  :<C-u>setl spell!<CR>
+
+" for neobundle
+if filereadable(expand("$HOME/_vimrc.neobundle"))
+    source $HOME/_vimrc.neobundle
+endif
+
+" for Plugin settings
+if filereadable(expand("$HOME/_vimrc.plugins"))
+    source $HOME/_vimrc.plugins
+endif
