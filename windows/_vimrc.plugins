@@ -9,7 +9,7 @@ endif
 if isdirectory($HOME . '/vimfiles/bundle/The-NERD-tree')
     " autocmd VimEnter * NERDTree
     " 隠しファイルを表示
-    let NERDTreeShowHidden = 1
+    "let NERDTreeShowHidden = 1
     autocmd VimEnter * wincmd p
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
     nmap <silent> <F7> :NERDTreeToggle<CR>
