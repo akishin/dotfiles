@@ -48,6 +48,7 @@ NeoBundle 'skammer/vim-css-color'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'hallison/vim-markdown'
 NeoBundle 'superbrothers/vim-quickrun-markdown-gfm'
 NeoBundle 'mrtazz/simplenote.vim'
 NeoBundle 'mattn/emmet-vim'
@@ -58,6 +59,7 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'yuku-t/vim-ref-ri'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'tyru/vim-altercmd'
+NeoBundle 'ujihisa/neco-look'
 
 filetype plugin indent on
 

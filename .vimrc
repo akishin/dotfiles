@@ -69,6 +69,12 @@ augroup RSpec
   autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
 augroup END
 
+" markdown のファイルタイプを設定
+augroup markdown
+  autocmd!
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+augroup END
+
 " vimrc を編集反映
 command! Ev edit $MYVIMRC
 " vimrc を再読込み
