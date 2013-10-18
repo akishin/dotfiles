@@ -48,6 +48,22 @@ if isdirectory($HOME . '/.vim/bundle/SrcExpl')
     let g:SrcExpl_updateTagsKey = "<F12>"
 endif
 
+" for syntastic
+if isdirectory($HOME . '/.vim/bundle/syntastic')
+    " Ctrl-e で Location List の表示・非表示を切換え
+    " see also :
+    "   http://stackoverflow.com/questions/17512794/toggle-error-location-panel-in-syntastic
+    function! ToggleErrors()
+        if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
+             " No location/quickfix list shown, open syntastic error location panel
+             Errors
+        else
+            lclose
+        endif
+    endfunction
+    nnoremap <silent> <C-e> :<C-u>call ToggleErrors()<CR>
+endif
+
 " for neocomplcache
 if isdirectory($HOME . '/.vim/bundle/neocomplcache')
     " Disable AutoComplPop.
@@ -165,7 +181,7 @@ endif
 if isdirectory($HOME . '/.vim/bundle/vim-quickrun')
     let g:quickrun_config = {}
     let g:quickrun_config._ = {
-        \ 'outputter/buffer/split': ':botright',
+        \ 'outputter/buffer/split': ':botright 8sp',
         \ 'runner': 'vimproc'
         \ }
     let g:quickrun_config['markdown'] = {

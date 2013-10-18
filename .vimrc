@@ -1,13 +1,3 @@
-" for vundle
-if filereadable(expand("~/dotfiles/.vimrc.vundle"))
-  source ~/dotfiles/.vimrc.vundle
-endif
-
-" for neobundle
-if filereadable(expand("~/dotfiles/.vimrc.neobundle"))
-  source ~/dotfiles/.vimrc.neobundle
-endif
-
 set number
 set nowrap
 set autoindent
@@ -180,6 +170,16 @@ autocmd FileType help nnoremap <buffer> <silent> q :<C-u>close<CR>
 nnoremap [Show] <Nop>
 nmap <Space>s [Show]
 nnoremap [Show]s  :<C-u>setl spell!<CR>
+
+" for vundle
+if filereadable(expand("~/dotfiles/.vimrc.vundle"))
+  source ~/dotfiles/.vimrc.vundle
+endif
+
+" for neobundle
+if filereadable(expand("~/dotfiles/.vimrc.neobundle"))
+  source ~/dotfiles/.vimrc.neobundle
+endif
 
 " for Plugin settings
 if filereadable(expand("~/dotfiles/.vimrc.plugins"))
