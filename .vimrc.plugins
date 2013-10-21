@@ -286,3 +286,13 @@ if isdirectory($HOME . '/.vim/bundle/vim-submode')
     call submode#map('winsize', 'n', '', '+', '<C-w>-')
     call submode#map('winsize', 'n', '', '-', '<C-w>+')
 endif
+
+" for open-browser.vim
+if isdirectory($HOME . '/.vim/bundle/open-browser.vim')
+    let g:netrw_nogx = 1 " disable netrw's gx mapping.
+    " URL 文字列上で gx でブラウザで開く
+    nmap gx <Plug>(openbrowser-smart-search)
+    " URL 文字列をビジュアル選択した上で gx でブラウザで開く
+    vmap gx <Plug>(openbrowser-smart-search)
+endif
+
