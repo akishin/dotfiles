@@ -266,12 +266,19 @@ if isdirectory($HOME . '/.vim/bundle/vim-altercmd')
     CAlterCommand man               Ref man
     CAlterCommand refe              Ref refe
     CAlterCommand ri                Ref ri
+    CAlterCommand ans[wers]         Ref answers
+    CAlterCommand cobuild           Ref cobuild
+    CAlterCommand hyper[dict]       Ref hyperdict
+    CAlterCommand longman           Ref longman
+    CAlterCommand oxford            Ref oxford
+    CAlterCommand synonym           Ref synonym
     CAlterCommand ej                Ref webdict ej
     CAlterCommand je                Ref webdict je
     CAlterCommand yd[ict]           Ref webdict yahoo_dict
     CAlterCommand wik[tionary]      Ref webdict wiktionary
     CAlterCommand wiki[pedia]       Ref webdict wikipedia
     CAlterCommand ex[citetranslate] ExciteTranslate
+    CAlterCommand http[status]      HttpStatus
 
 endif
 
