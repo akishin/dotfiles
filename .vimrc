@@ -65,6 +65,14 @@ augroup markdown
   autocmd BufRead,BufNewFile *.md set filetype=markdown
 augroup END
 
+" nginx.conf のファイルタイプを設定
+augroup nginx
+  autocmd!
+  autocmd BufRead,BufNewFile /etc/nginx/nginx.conf        set filetype=nginx
+  autocmd BufRead,BufNewFile /etc/nginx/conf.d/*          set filetype=nginx
+  autocmd BufRead,BufNewFile /etc/nginx/sites-available/* set filetype=nginx
+augroup END
+
 " vimrc を編集反映
 command! Ev edit $MYVIMRC
 " vimrc を再読込み
