@@ -254,6 +254,7 @@ if isdirectory($HOME . '/.vim/bundle/excitetranslate-vim')
 
     " 開いたバッファを q で閉じれるようにする
     autocmd BufEnter ==Translate==\ Excite nnoremap <buffer> <silent> q :<C-u>close<CR>
+    xnoremap E :ExciteTranslate<CR>
 
 endif
 
@@ -277,7 +278,6 @@ if isdirectory($HOME . '/.vim/bundle/vim-altercmd')
     CAlterCommand yd[ict]           Ref webdict yahoo_dict
     CAlterCommand wik[tionary]      Ref webdict wiktionary
     CAlterCommand wiki[pedia]       Ref webdict wikipedia
-    CAlterCommand ex[citetranslate] ExciteTranslate
     CAlterCommand http[status]      HttpStatus
 
 endif
