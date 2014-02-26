@@ -167,6 +167,14 @@ nnoremap [Show] <Nop>
 nmap <Space>s [Show]
 nnoremap [Show]s  :<C-u>setl spell!<CR>
 
+" for golang
+if $GOROOT != ''
+  set rtp+=$GOROOT/misc/vim
+endif
+if $GOPATH != ''
+  set rtp+=$GOPATH/src/github.com/nsf/gocode/vim
+endif
+
 " for neobundle
 if filereadable(expand("$HOME/_vimrc.neobundle"))
     source $HOME/_vimrc.neobundle
