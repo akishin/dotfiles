@@ -19,6 +19,7 @@ set ttytype=builtin_linux
 set backspace=indent,eol,start
 set formatoptions=lmoq
 set vb t_vb=
+set colorcolumn=80
 " set mouse=a
 " set guioptions+=a
 " set ttymouse=xterm2
