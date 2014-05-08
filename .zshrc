@@ -103,8 +103,11 @@ sudo() {
 if [ -z $TMUX ]; then
   if $(tmux has-session); then
     tmux attach
-  else
-    # tmux
+  elif [ -x "`which mux 2>/dev/null`" ]; then
+    # tmuxinator
     mux devel
+  else
+    # new tmux session
+    tmux
   fi
 fi
