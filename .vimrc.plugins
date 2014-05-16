@@ -330,6 +330,9 @@ if isdirectory($HOME . '/.vim/bundle/vim-altercmd')
     CAlterCommand wiki[pedia]       Ref webdict wikipedia
     CAlterCommand http[status]      HttpStatus
 
+    " for gtags.vim
+    CAlterCommand gt                Gtags
+    CAlterCommand gtc               GtagsCursor
 endif
 
 " for vim-submode
