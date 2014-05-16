@@ -74,6 +74,7 @@ NeoBundle 'mfumi/ref-dicts-en'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'tyru/vim-altercmd'
 NeoBundle 'ujihisa/neco-look'
+NeoBundle 'dgryski/vim-godef'
 
 filetype plugin indent on
 
