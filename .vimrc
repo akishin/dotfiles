@@ -14,8 +14,10 @@ set hlsearch
 set laststatus=2
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set hid
-set term=builtin_linux
-set ttytype=builtin_linux
+if !has("gui_running")
+    set term=builtin_linux
+    set ttytype=builtin_linux
+endif
 set backspace=indent,eol,start
 set formatoptions=lmoq
 set vb t_vb=
