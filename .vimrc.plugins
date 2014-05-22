@@ -372,3 +372,12 @@ if isdirectory($HOME . '/.vim/bundle/vim-godef')
     let g:godef_same_file_in_same_window=1
 endif
 
+" for rabbit-ui.vim
+if isdirectory($HOME . '/.vim/bundle/rabbit-ui.vim')
+    function! s:edit_csv(path)
+      call writefile(map(rabbit_ui#gridview(map(readfile(a:path),'split(v:val,",",1)')), "join(v:val, ',')"), a:path)
+    endfunction
+    " :EditCSV で csv ファイルを編集
+    command! -nargs=1 EditCSV  :call <sid>edit_csv(<q-args>)
+endif
+
