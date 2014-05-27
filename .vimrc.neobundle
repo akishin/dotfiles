@@ -19,6 +19,7 @@ NeoBundle 'tpope/vim-rake'
 NeoBundle 'tpope/vim-bundler'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',

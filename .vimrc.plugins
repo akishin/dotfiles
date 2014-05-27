@@ -165,6 +165,12 @@ if isdirectory($HOME . '/.vim/bundle/unite.vim')
     nnoremap <silent> ,ufr :<C-u>Unite buffer file_rec<CR>
 endif
 
+" for unite-outline
+if isdirectory($HOME . '/.vim/bundle/unite-outline')
+    "nnoremap <silent> ,uo :<C-u>Unite -vertical -no-quit outline<CR>
+    nnoremap <silent> ,uo :<C-u>Unite -no-quit outline<CR>
+endif
+
 " for vim-indent-guides
 if isdirectory($HOME . '/.vim/bundle/vim-indent-guides')
     let g:indent_guides_enable_on_vim_startup=1
@@ -370,6 +376,12 @@ if isdirectory($HOME . '/.vim/bundle/vim-godef')
     " gd を押した時のウインドウの動作
     let g:godef_split=0
     let g:godef_same_file_in_same_window=1
+endif
+
+" for simplenote.vim
+if isdirectory($HOME . '/.vim/bundle/simplenote.vim')
+    let g:SimplenoteListHeight=20
+    let g:SimplenoteVertical=1
 endif
 
 " for rabbit-ui.vim
