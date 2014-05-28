@@ -76,6 +76,17 @@ augroup nginx
   autocmd BufRead,BufNewFile /etc/nginx/sites-available/* set filetype=nginx
 augroup END
 
+" NeoBundleLazy するために以下も明示的に設定しておく
+augroup less
+  autocmd BufNewFile,BufRead *.less setf less
+augroup END
+augroup coffee
+  autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+augroup END
+augroup slim
+  autocmd BufNewFile,BufRead *.slim set filetype=slim
+augroup END
+
 " vimrc を編集反映
 command! Ev edit $MYVIMRC
 " vimrc を再読込み
