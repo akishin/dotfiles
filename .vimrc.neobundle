@@ -8,6 +8,11 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
+" Vim が neocomplete 対応環境かどうかを返す
+function! s:meet_neocomplete_requirements()
+    return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
+endfunction
+
 NeoBundle 'Wombat'
 NeoBundleLazy 'pyte'
 NeoBundle 'vim-scripts/gtags.vim'
@@ -47,9 +52,14 @@ NeoBundleLazy 'Shougo/vimshell.git', {
     \   'mappings' : ['<Plug>(vimshell_']
     \   }
     \ }
-NeoBundle 'Shougo/neocomplcache.git'
-NeoBundle 'Shougo/neosnippet.git'
-NeoBundle 'honza/vim-snippets.git'
+" Vim が neocomplete に対応しているかどうかでプラグインを切換える
+if s:meet_neocomplete_requirements()
+    NeoBundle 'Shougo/neocomplete'
+else
+    NeoBundle 'Shougo/neocomplcache'
+endif
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'surround.vim'
 NeoBundle 'The-NERD-tree'
 NeoBundle 'The-NERD-Commenter'
@@ -72,6 +82,7 @@ NeoBundleLazy 'derekwyatt/vim-scala.git',    { 'autoload' : { 'filetypes' :[ "sc
 NeoBundleLazy 'wlangstroth/vim-haskell.git', { 'autoload' : { 'filetypes' :[ "haskell"], }, }
 NeoBundleLazy 'slim-template/vim-slim',      { 'autoload' : { 'filename_patterns' :[ "\.slim$"], }, }
 NeoBundleLazy 'othree/html5.vim',            { 'autoload' : { 'filetypes' :[ "html"], }, }
+NeoBundleLazy 'mattn/emmet-vim',             { 'autoload' : { 'filetypes' :[ "html"], }, }
 NeoBundleLazy 'hail2u/vim-css3-syntax',      { 'autoload' : { 'filetypes' :[ "css", "less" ], }, }
 NeoBundleLazy 'groenewege/vim-less',         { 'autoload' : { 'filename_patterns' :[ "\.less$" ], }, }
 NeoBundleLazy 'skammer/vim-css-color',       { 'autoload' : { 'filetypes' :[ "css", "less" ], }, }
@@ -81,7 +92,6 @@ NeoBundleLazy 'hallison/vim-markdown',       { 'autoload' : { 'filetypes' :[ "ma
 NeoBundleLazy 'superbrothers/vim-quickrun-markdown-gfm', { 'autoload' : { 'filetypes' :[ "markdown"], }, }
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'mrtazz/simplenote.vim'
-NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'mattn/httpstatus-vim'

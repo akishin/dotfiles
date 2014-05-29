@@ -6,6 +6,7 @@ set cindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set autoread
 set noerrorbells
 set showmode
 set showmatch
@@ -13,44 +14,57 @@ set showcmd
 set hlsearch
 set laststatus=2
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
-set hid
-if !has("gui_running")
-    set term=builtin_linux
-    set ttytype=builtin_linux
-endif
+set hidden
 set backspace=indent,eol,start
 set formatoptions=lmoq
 set vb t_vb=
 set colorcolumn=80
-" set mouse=a
-" set guioptions+=a
-" set ttymouse=xterm2
+set mouse=a
+set guioptions+=a
+set ttymouse=xterm2
+set clipboard+=unnamed
 
-syntax on
+if !has("gui_running")
+    set term=builtin_linux
+    set ttytype=builtin_linux
+endif
 
 if isdirectory($HOME . '/tmp')
+    "set nobackup
     " バックアップディレクトリを変更
     set backupdir=$HOME/tmp
-    "set nobackup
+    "set noswapfile
     " スワップファイルディレクトリを変更
     set directory=$HOME/tmp
 endif
+
+" 矩形選択で行末を超えてブロックを選択できるようにする
+set virtualedit+=block
+
+" 不可視文字表示
+set list
+" 不可視文字の表示形式
+" set listchars=tab:>.,trail:_,extends:>,precedes:<,eol:↲
+set listchars=tab:>.,trail:_,extends:>,precedes:<
+" 印字不可能文字を16進数で表示
+set display=uhex
+
+" 開いたファイルのディレクトリに自動で移動
+" set autochdir
+
+syntax on
+" ファイルタイプの検索を有効にする
+filetype plugin on
+" そのファイルタイプにあわせたインデントを利用する
+filetype indent on
 
 " デフォルト UTF-8
 scriptencoding utf-8
 set encoding=utf-8
 set fileencoding=utf8
-
 set ffs=unix,dos,mac
-
 " 日本語自動判別
 set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
-
-" 文字コードを変えて開き直す
-command! Utf8 e ++enc=utf-8
-command! Euc  e ++enc=euc-jp
-command! Sjis e ++enc=cp932
-command! Jis  e ++enc=iso-2022-jp
 
 " 以下のファイルは UTF-8
 autocmd FileType ruby      :set fileencoding=utf-8
@@ -87,36 +101,37 @@ augroup slim
   autocmd BufNewFile,BufRead *.slim set filetype=slim
 augroup END
 
-" vimrc を編集反映
-command! Ev edit $MYVIMRC
-" vimrc を再読込み
-command! Rv source $MYVIMRC
-
 " 前回終了したカーソル行に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+
+" 改行時に自動でコメント行が継続されないようにする
+autocmd FileType * setlocal formatoptions-=ro
+
+" git のコミットログ編集時はバックアップを作らない
+autocmd FileType gitcommit setlocal nobackup noundofile noswapfile
+
+" help のバッファを q で終了できるように
+autocmd FileType help nnoremap <buffer> <silent> q :<C-u>close<CR>
+
+" 保存時に行末の空白を除去する
+" これやっちゃうと Markdown で改行がなくなっちゃう
+"autocmd BufWritePre * :%s/\s\+$//ge
 
 " grep コマンドにオプションを指定
 set grepprg=grep\ -nH
 " grep 後に自動で Quickfix ウィンドウを開く
 au QuickfixCmdPost make,grep,grepadd,vimgrep copen
 
-" ファイルタイプの検索を有効にする
-filetype plugin on
+" 文字コードを変えて開き直す
+command! Utf8 e ++enc=utf-8
+command! Euc  e ++enc=euc-jp
+command! Sjis e ++enc=cp932
+command! Jis  e ++enc=iso-2022-jp
 
-" そのファイルタイプにあわせたインデントを利用する
-filetype indent on
-
-" 改行時に自動でコメント行が継続されないようにする
-autocmd FileType * setlocal formatoptions-=ro
-
-" 保存時に行末の空白を除去する
-" これやっちゃうと Markdown で改行がなくなっちゃう
-"autocmd BufWritePre * :%s/\s\+$//ge
-
-" タグファイルの指定
-" set tags=$HOME/tags/ruby/ruby.tags,$HOME/tags/ruby/gems.tags
-" <C-]>でタグジャンプ時にタグが複数あったらリスト表示
-nnoremap <C-]> g<C-]>zz
+" vimrc を編集反映
+command! Ev edit $MYVIMRC
+" vimrc を再読込み
+command! Rv source $MYVIMRC
 
 " 日本語入力ON時のカーソルの色を設定
 if has('multi_byte_ime') || has('xim')
@@ -126,12 +141,6 @@ endif
 " 全角スペースの表示
 " highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 " match ZenkakuSpace / /
-
-" Escの2回押しでハイライト消去
-nmap <ESC><ESC> :nohlsearch<CR><ESC>
-
-" 矩形選択で行末を超えてブロックを選択できるようにする
-set virtualedit+=block
 
 " カレントウィンドウのみ現在行ハイライト
 set cursorline
@@ -144,16 +153,17 @@ augroup END
 :hi CursorLine gui=underline
 highlight CursorLine term=reverse cterm=reverse ctermbg=black ctermfg=242
 
-" 不可視文字表示
-set list
-" 不可視文字の表示形式
-" set listchars=tab:>.,trail:_,extends:>,precedes:<,eol:↲
-set listchars=tab:>.,trail:_,extends:>,precedes:<
-" 印字不可能文字を16進数で表示
-set display=uhex
+" タグファイルの指定
+" set tags=$HOME/tags/ruby/ruby.tags,$HOME/tags/ruby/gems.tags
 
-" 開いたファイルのディレクトリに自動で移動
-" set autochdir
+" <C-]>でタグジャンプ時にタグが複数あったらリスト表示
+nnoremap <C-]> g<C-]>zz
+
+" Escの2回押しでハイライト消去
+nmap <ESC><ESC> :nohlsearch<CR><ESC>
+
+" 挿入モードで Ctrl-p でクリップボード内容を貼り付け
+imap <C-p> <ESC>"*pa
 
 " CTRL-hjkl でウインドウ移動
 nnoremap <C-j> <C-w>j
@@ -181,12 +191,6 @@ imap <C-Space> <C-x><C-o>
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
-
-" git のコミットログ編集時はバックアップを作らない
-autocmd FileType gitcommit setlocal nobackup noundofile noswapfile
-
-" help のバッファを q で終了できるように
-autocmd FileType help nnoremap <buffer> <silent> q :<C-u>close<CR>
 
 " Space-s,s で英語のスペルチェック切換え
 nnoremap [Show] <Nop>
