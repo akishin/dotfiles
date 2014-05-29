@@ -1,8 +1,41 @@
 " for Plugin settings
 
+" for golang
+if $GOROOT != ''
+  " :Import, :Fmt, :Godoc などが使用可能になる
+  set rtp+=$GOROOT/misc/vim
+
+  if $GOPATH != ''
+    " gocode
+    if isdirectory($GOPATH . "/src/github.com/nsf/gocode/vim")
+      set rtp+=$GOPATH/src/github.com/nsf/gocode/vim
+    endif
+    " golint
+    if isdirectory($GOPATH . "/src/github.com/golang/lint/misc/vim")
+      set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+    endif
+  endif
+
+  augroup golang
+    " *.go ファイル保存時に自動フォーマットを行う
+    auto BufWritePre *.go Fmt
+  augroup END
+endif
+
+" for rsense
+if $RSENSE_HOME != ''
+    let g:rsenseHome = $RSENSE_HOME
+    let g:rsenseUseOmniFunc = 1
+endif
+
 " for Wombat
 if isdirectory($HOME . '/.vim/bundle/Wombat')
     colorscheme wombat
+endif
+
+" for endwise
+if isdirectory($HOME . '/.vim/bundle/endwise.vim')
+    let g:endwise_no_mappings=1
 endif
 
 " for NERDTree

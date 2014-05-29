@@ -65,6 +65,10 @@ if has('python')
         \   }
         \ }
 endif
+if $RSENSE_HOME != ''
+    NeoBundleLazy 'm2ym/rsense',          { 'autoload' : { 'filetypes' :[ "ruby"], }, }
+    NeoBundleLazy 'alpaca-tc/vim-rsense', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
+endif
 NeoBundle     'Shougo/neosnippet'
 NeoBundle     'Shougo/neosnippet-snippets'
 NeoBundle     'surround.vim'

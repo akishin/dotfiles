@@ -197,28 +197,6 @@ nnoremap [Show] <Nop>
 nmap <Space>s [Show]
 nnoremap [Show]s  :<C-u>setl spell!<CR>
 
-" for golang
-if $GOROOT != ''
-  " :Import, :Fmt, :Godoc などが使用可能になる
-  set rtp+=$GOROOT/misc/vim
-
-  if $GOPATH != ''
-    " gocode
-    if isdirectory($GOPATH . "/src/github.com/nsf/gocode/vim")
-      set rtp+=$GOPATH/src/github.com/nsf/gocode/vim
-    endif
-    " golint
-    if isdirectory($GOPATH . "/src/github.com/golang/lint/misc/vim")
-      set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-    endif
-  endif
-
-  augroup golang
-    " *.go ファイル保存時に自動フォーマットを行う
-    auto BufWritePre *.go Fmt
-  augroup END
-endif
-
 " for vundle
 if filereadable(expand("~/dotfiles/.vimrc.vundle"))
   source ~/dotfiles/.vimrc.vundle
