@@ -13,16 +13,16 @@ function! s:meet_neocomplete_requirements()
     return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 endfunction
 
-NeoBundle 'Wombat'
+NeoBundle     'Wombat'
 NeoBundleLazy 'pyte'
-NeoBundle 'vim-scripts/gtags.vim'
-NeoBundle 'vim-scripts/SrcExpl'
+NeoBundle     'vim-scripts/gtags.vim'
+NeoBundle     'vim-scripts/SrcExpl'
 NeoBundleLazy 'vim-scripts/nginx.vim', { 'autoload' : { 'filetypes' :[ "nginx"], }, }
-NeoBundle 'scrooloose/syntastic'
+NeoBundle     'scrooloose/syntastic'
 NeoBundleLazy 'tpope/vim-rails',   { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundleLazy 'tpope/vim-rake',    { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundleLazy 'tpope/vim-bundler', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
-NeoBundle 'tpope/vim-fugitive'
+NeoBundle     'tpope/vim-fugitive'
 NeoBundleLazy 'Shougo/unite.vim', {
     \   'autoload' : {
     \       'commands' : [ "Unite", "UniteWithBufferDir", "UniteWithCurrentDir" ]
@@ -34,7 +34,7 @@ NeoBundleLazy 'Shougo/unite-outline', {
     \       'unite_sources' : 'outline'
     \   }
     \ }
-NeoBundle 'Shougo/vimproc', {
+NeoBundle     'Shougo/vimproc', {
     \ 'build' : {
     \     'windows' : 'make -f make_mingw32.mak',
     \     'cygwin' : 'make -f make_cygwin.mak',
@@ -58,24 +58,31 @@ if s:meet_neocomplete_requirements()
 else
     NeoBundle 'Shougo/neocomplcache'
 endif
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'surround.vim'
-NeoBundle 'The-NERD-tree'
-NeoBundle 'The-NERD-Commenter'
-NeoBundle 'taglist.vim'
-NeoBundle 'matchit.zip'
-NeoBundle 'sudo.vim'
-NeoBundle 'endwise.vim'
-NeoBundle 'Align'
-NeoBundle 'YankRing.vim'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'kana/vim-submode'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-syntax'
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'kana/vim-textobj-function'
-NeoBundle 'h1mesuke/textobj-wiw'
+if has('python')
+    NeoBundleLazy 'Shougo/vinarise', {
+        \   'autoload' : {
+        \       'commands' : [ "Vinarise" ]
+        \   }
+        \ }
+endif
+NeoBundle     'Shougo/neosnippet'
+NeoBundle     'Shougo/neosnippet-snippets'
+NeoBundle     'surround.vim'
+NeoBundle     'The-NERD-tree'
+NeoBundle     'The-NERD-Commenter'
+NeoBundle     'taglist.vim'
+NeoBundle     'matchit.zip'
+NeoBundle     'sudo.vim'
+NeoBundle     'endwise.vim'
+NeoBundle     'Align'
+NeoBundle     'YankRing.vim'
+NeoBundle     'itchyny/lightline.vim'
+NeoBundle     'kana/vim-submode'
+NeoBundle     'kana/vim-textobj-user'
+NeoBundle     'kana/vim-textobj-syntax'
+NeoBundle     'kana/vim-textobj-indent'
+NeoBundle     'kana/vim-textobj-function'
+NeoBundle     'h1mesuke/textobj-wiw'
 NeoBundleLazy 'rhysd/vim-textobj-ruby',      { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundleLazy 'vim-ruby/vim-ruby.git',       { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundleLazy 'derekwyatt/vim-scala.git',    { 'autoload' : { 'filetypes' :[ "scala"], }, }
@@ -90,21 +97,21 @@ NeoBundleLazy 'kchmck/vim-coffee-script',    { 'autoload' : { 'filename_patterns
 NeoBundleLazy 'pangloss/vim-javascript',     { 'autoload' : { 'filetypes' :[ "javascript" ], }, }
 NeoBundleLazy 'hallison/vim-markdown',       { 'autoload' : { 'filetypes' :[ "markdown"], }, }
 NeoBundleLazy 'superbrothers/vim-quickrun-markdown-gfm', { 'autoload' : { 'filetypes' :[ "markdown"], }, }
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'mrtazz/simplenote.vim'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/excitetranslate-vim'
-NeoBundle 'mattn/httpstatus-vim'
-NeoBundle 'mattn/sonictemplate-vim'
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'thinca/vim-ref'
+NeoBundle     'nathanaelkane/vim-indent-guides'
+NeoBundle     'mrtazz/simplenote.vim'
+NeoBundle     'mattn/webapi-vim'
+NeoBundle     'mattn/excitetranslate-vim'
+NeoBundle     'mattn/httpstatus-vim'
+NeoBundle     'mattn/sonictemplate-vim'
+NeoBundle     'thinca/vim-quickrun'
+NeoBundle     'thinca/vim-ref'
 NeoBundleLazy 'yuku-t/vim-ref-ri', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
-NeoBundle 'mfumi/ref-dicts-en'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'tyru/vim-altercmd'
-NeoBundle 'ujihisa/neco-look'
-NeoBundle 'dgryski/vim-godef'
-NeoBundle 'rbtnn/rabbit-ui.vim'
+NeoBundle     'mfumi/ref-dicts-en'
+NeoBundle     'tyru/open-browser.vim'
+NeoBundle     'tyru/vim-altercmd'
+NeoBundle     'ujihisa/neco-look'
+NeoBundle     'dgryski/vim-godef'
+NeoBundle     'rbtnn/rabbit-ui.vim'
 
 filetype plugin indent on
 
