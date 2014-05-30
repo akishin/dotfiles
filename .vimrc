@@ -100,6 +100,9 @@ augroup END
 augroup slim
   autocmd BufNewFile,BufRead *.slim set filetype=slim
 augroup END
+augroup golang
+  autocmd BufNewFile,BufRead *.go set filetype=go
+augroup END
 
 " 前回終了したカーソル行に移動
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
