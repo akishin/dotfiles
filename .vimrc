@@ -67,6 +67,7 @@ set ffs=unix,dos,mac
 set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
 
 " 以下のファイルは UTF-8
+autocmd FileType go        :set fileencoding=utf-8
 autocmd FileType ruby      :set fileencoding=utf-8
 autocmd FileType gitcommit :set fileencoding=utf-8
 
