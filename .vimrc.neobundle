@@ -116,6 +116,7 @@ NeoBundle     'tyru/vim-altercmd'
 NeoBundle     'ujihisa/neco-look'
 NeoBundle     'dgryski/vim-godef'
 NeoBundle     'rbtnn/rabbit-ui.vim'
+NeoBundleLazy 'syngan/vim-pukiwiki', { 'autoload' : { 'commands' : 'PukiWiki' }, }
 
 filetype plugin indent on
 

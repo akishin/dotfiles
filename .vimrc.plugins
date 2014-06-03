@@ -358,6 +358,15 @@ if isdirectory($HOME . '/.vim/bundle/simplenote.vim')
     endif
 endif
 
+" for vim-pukiwiki
+if isdirectory($HOME . '/.vim/bundle/vim-pukiwiki')
+    " タイムスタンプは毎回更新する
+    let g:pukiwiki_timestamp_update = 1
+    if filereadable(expand("~/.pukiwikirc"))
+      source ~/.pukiwikirc
+    endif
+endif
+
 " for vim-ref
 if isdirectory($HOME . '/.vim/bundle/vim-ref')
     " FileType が text なら K で webdict を使う
