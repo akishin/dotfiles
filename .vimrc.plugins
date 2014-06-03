@@ -365,6 +365,7 @@ if isdirectory($HOME . '/.vim/bundle/vim-pukiwiki')
     if filereadable(expand("~/.pukiwikirc"))
       source ~/.pukiwikirc
     endif
+    nnoremap <silent> ,upm :<C-u>Unite pukiwiki/menu<CR>
 endif
 
 " for vim-ref
