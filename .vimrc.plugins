@@ -449,6 +449,10 @@ if isdirectory($HOME . '/.vim/bundle/vim-altercmd')
     " for gtags.vim
     CAlterCommand gt                Gtags
     CAlterCommand gtc               GtagsCursor
+
+    " for vim-pukiwiki
+    CAlterCommand puki[wiki]        PukiWiki
+    CAlterCommand hitori[wiki]      PukiWiki hwiki
 endif
 
 " for vim-submode

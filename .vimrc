@@ -36,6 +36,9 @@ if isdirectory($HOME . '/tmp')
     "set noswapfile
     " スワップファイルディレクトリを変更
     set directory=$HOME/tmp
+    "set noundofile
+    " Undo ファイルディレクトリを変更
+    set undodir=$HOME/tmp
 endif
 
 " 矩形選択で行末を超えてブロックを選択できるようにする

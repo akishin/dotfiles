@@ -17,6 +17,21 @@ HISTFILE=~/.zsh_history
 autoload -Uz compinit
 compinit
 
+# alias settings
+[ -f ~/dotfiles/.zshrc.alias ] && source ~/dotfiles/.zshrc.alias
+
+# OS specific settings
+case ${OSTYPE} in
+    # Mac OS
+    darwin*)
+        [ -f ~/dotfiles/.zshrc.osx ] && source ~/dotfiles/.zshrc.osx
+        ;;
+    # Linux
+    linux*)
+        [ -f ~/dotfiles/.zshrc.linux ] && source ~/dotfiles/.zshrc.linux
+        ;;
+esac
+
 # local settings
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
@@ -37,9 +52,6 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
-
-# alias settings
-[ -f ~/dotfiles/.zshrc.alias ] && source ~/dotfiles/.zshrc.alias
 
 # for bundler (bundle open)
 export BUNDLER_EDITOR='/usr/bin/vim -g'
