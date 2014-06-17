@@ -1,17 +1,16 @@
-" neobundle required.
-set nocompatible
-filetype off
-
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-call neobundle#rc(expand('~/.vim/bundle/'))
-
 " Vim が neocomplete 対応環境かどうかを返す
 function! s:meet_neocomplete_requirements()
     return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 endfunction
+
+if has('vim_starting')
+    set nocompatible
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle     'Wombat'
 NeoBundleLazy 'pyte'
@@ -24,34 +23,34 @@ NeoBundleLazy 'tpope/vim-rake',    { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundleLazy 'tpope/vim-bundler', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundle     'tpope/vim-fugitive'
 NeoBundleLazy 'Shougo/unite.vim', {
-    \   'autoload' : {
-    \       'commands' : [ "Unite", "UniteWithBufferDir", "UniteWithCurrentDir" ]
-    \   }
-    \ }
+            \   'autoload' : {
+            \       'commands' : [ "Unite", "UniteWithBufferDir", "UniteWithCurrentDir" ]
+            \   }
+            \ }
 NeoBundleLazy 'Shougo/unite-outline', { 
-    \   'depends' : 'Shougo/unite.vim',
-    \   'autoload' : {
-    \       'unite_sources' : 'outline'
-    \   }
-    \ }
+            \   'depends' : 'Shougo/unite.vim',
+            \   'autoload' : {
+            \       'unite_sources' : 'outline'
+            \   }
+            \ }
 NeoBundle     'Shougo/vimproc', {
-    \ 'build' : {
-    \     'windows' : 'make -f make_mingw32.mak',
-    \     'cygwin' : 'make -f make_cygwin.mak',
-    \     'mac' : 'make -f make_mac.mak',
-    \     'unix' : 'make -f make_unix.mak',
-    \    },
-    \ }
+            \ 'build' : {
+            \     'windows' : 'make -f make_mingw32.mak',
+            \     'cygwin' : 'make -f make_cygwin.mak',
+            \     'mac' : 'make -f make_mac.mak',
+            \     'unix' : 'make -f make_unix.mak',
+            \    },
+            \ }
 NeoBundleLazy 'Shougo/vimshell.git', {
-    \ 'depends' : 'Shougo/vimproc',
-    \ 'autoload' : {
-    \   'commands' : [{ 'name' : 'VimShell',
-    \                   'complete' : 'customlist,vimshell#complete'},
-    \                 'VimShellExecute', 'VimShellInteractive',
-    \                 'VimShellTerminal', 'VimShellPop'],
-    \   'mappings' : ['<Plug>(vimshell_']
-    \   }
-    \ }
+            \ 'depends' : 'Shougo/vimproc',
+            \ 'autoload' : {
+            \   'commands' : [{ 'name' : 'VimShell',
+            \                   'complete' : 'customlist,vimshell#complete'},
+            \                 'VimShellExecute', 'VimShellInteractive',
+            \                 'VimShellTerminal', 'VimShellPop'],
+            \   'mappings' : ['<Plug>(vimshell_']
+            \   }
+            \ }
 " Vim が neocomplete に対応しているかどうかでプラグインを切換える
 if s:meet_neocomplete_requirements()
     NeoBundle 'Shougo/neocomplete'
@@ -60,10 +59,10 @@ else
 endif
 if has('python')
     NeoBundleLazy 'Shougo/vinarise', {
-        \   'autoload' : {
-        \       'commands' : [ "Vinarise" ]
-        \   }
-        \ }
+                \   'autoload' : {
+                \       'commands' : [ "Vinarise" ]
+                \   }
+                \ }
 endif
 if $RSENSE_HOME != ''
     NeoBundleLazy 'm2ym/rsense',          { 'autoload' : { 'filetypes' :[ "ruby"], }, }
@@ -118,6 +117,7 @@ NeoBundle     'dgryski/vim-godef'
 NeoBundle     'rbtnn/rabbit-ui.vim'
 NeoBundleLazy 'syngan/vim-pukiwiki', { 'autoload' : { 'commands' : 'PukiWiki' }, }
 
+call neobundle#end()
 filetype plugin indent on
 
 NeoBundleCheck

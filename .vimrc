@@ -16,6 +16,8 @@ set laststatus=2
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set hidden
 set backspace=indent,eol,start
+set notitle
+set textwidth=0
 set formatoptions=lmoq
 set vb t_vb=
 set colorcolumn=80
@@ -68,66 +70,48 @@ set fileencoding=utf8
 set ffs=unix,dos,mac
 " 日本語自動判別
 set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
-
-" 以下のファイルは UTF-8
-autocmd FileType go        :set fileencoding=utf-8
-autocmd FileType ruby      :set fileencoding=utf-8
-autocmd FileType gitcommit :set fileencoding=utf-8
-
-" RSpec のファイルタイプを設定
-augroup RSpec
-  autocmd!
-  autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
-augroup END
-
-" markdown のファイルタイプを設定
-augroup markdown
-  autocmd!
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
-augroup END
-
-" nginx.conf のファイルタイプを設定
-augroup nginx
-  autocmd!
-  autocmd BufRead,BufNewFile /etc/nginx/nginx.conf        set filetype=nginx
-  autocmd BufRead,BufNewFile /etc/nginx/conf.d/*          set filetype=nginx
-  autocmd BufRead,BufNewFile /etc/nginx/sites-available/* set filetype=nginx
-augroup END
-
-" NeoBundleLazy するために以下も明示的に設定しておく
-augroup less
-  autocmd BufNewFile,BufRead *.less setf less
-augroup END
-augroup coffee
-  autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-augroup END
-augroup slim
-  autocmd BufNewFile,BufRead *.slim set filetype=slim
-augroup END
-augroup golang
-  autocmd BufNewFile,BufRead *.go set filetype=go
-augroup END
-
-" 前回終了したカーソル行に移動
-autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
-
-" 改行時に自動でコメント行が継続されないようにする
-autocmd FileType * setlocal formatoptions-=ro
-
-" git のコミットログ編集時はバックアップを作らない
-autocmd FileType gitcommit setlocal nobackup noundofile noswapfile
-
-" help のバッファを q で終了できるように
-autocmd FileType help nnoremap <buffer> <silent> q :<C-u>close<CR>
-
-" 保存時に行末の空白を除去する
-" これやっちゃうと Markdown で改行がなくなっちゃう
-"autocmd BufWritePre * :%s/\s\+$//ge
-
 " grep コマンドにオプションを指定
 set grepprg=grep\ -nH
-" grep 後に自動で Quickfix ウィンドウを開く
-au QuickfixCmdPost make,grep,grepadd,vimgrep copen
+
+augroup MyVimrc
+    autocmd!
+    " 以下のファイルは UTF-8
+    autocmd FileType go        setlocal fileencoding=utf-8
+    autocmd FileType ruby      setlocal fileencoding=utf-8
+    autocmd FileType gitcommit setlocal fileencoding=utf-8
+
+    " ファイルタイプ設定
+    autocmd BufNewFile,BufRead *_spec.rb set filetype=ruby.rspec
+    autocmd BufNewFile,BufRead *.md      set filetype=markdown
+    autocmd BufNewFile,BufRead /etc/nginx/nginx.conf        set filetype=nginx
+    autocmd BufNewFile,BufRead /etc/nginx/conf.d/*          set filetype=nginx
+    autocmd BufNewFile,BufRead /etc/nginx/sites-available/* set filetype=nginx
+    autocmd BufNewFile,BufRead *.less   set filetype=less
+    autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+    autocmd BufNewFile,BufRead *.slim   set filetype=slim
+    autocmd BufNewFile,BufRead *.go     set filetype=go
+
+    " テキストの自動改行を OFF
+    autocmd FileType text setlocal textwidth=0
+    " 改行時に自動でコメント行が継続されないようにする
+    autocmd FileType * setlocal formatoptions-=ro
+
+    " 前回終了したカーソル行に移動
+    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+
+    " git のコミットログ編集時はバックアップを作らない
+    autocmd FileType gitcommit setlocal nobackup noundofile noswapfile
+
+    " help のバッファを q で終了できるように
+    autocmd FileType help nnoremap <buffer> <silent> q :<C-u>close<CR>
+
+    " 保存時に行末の空白を除去する
+    " これやっちゃうと Markdown で改行がなくなっちゃう
+    "autocmd BufWritePre * :%s/\s\+$//ge
+
+    " grep 後に自動で Quickfix ウィンドウを開く
+    autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
+augroup END
 
 " 文字コードを変えて開き直す
 command! Utf8 e ++enc=utf-8
@@ -142,7 +126,7 @@ command! Rv source $MYVIMRC
 
 " 日本語入力ON時のカーソルの色を設定
 if has('multi_byte_ime') || has('xim')
-  highlight CursorIM guibg=LightCyan guifg=NONE
+    highlight CursorIM guibg=LightCyan guifg=NONE
 endif
 
 " 全角スペースの表示
@@ -152,9 +136,9 @@ endif
 " カレントウィンドウのみ現在行ハイライト
 set cursorline
 augroup cch
-  autocmd! cch
-  autocmd WinLeave * set nocursorline
-  autocmd WinEnter,BufRead * set cursorline
+    autocmd! cch
+    autocmd WinLeave * set nocursorline
+    autocmd WinEnter,BufRead * set cursorline
 augroup END
 :hi clear CursorLine
 :hi CursorLine gui=underline
@@ -206,12 +190,12 @@ nnoremap [Show]s  :<C-u>setl spell!<CR>
 
 " for vundle
 if filereadable(expand("~/dotfiles/.vimrc.vundle"))
-  source ~/dotfiles/.vimrc.vundle
+    source ~/dotfiles/.vimrc.vundle
 endif
 
 " for neobundle
 if filereadable(expand("~/dotfiles/.vimrc.neobundle"))
-  source ~/dotfiles/.vimrc.neobundle
+    source ~/dotfiles/.vimrc.neobundle
 endif
 
 " for Plugin settings
