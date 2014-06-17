@@ -1,8 +1,11 @@
-" neobundle required.
-set nocompatible
-filetype off
+if has('vim_starting')
+  set nocompatible
+  set runtimepath+=$HOME/vimfiles/bundle/neobundle.vim/
+endif
 
-call neobundle#rc(expand("$HOME/vimfiles/bundle"))
+call neobundle#begin(expand("$HOME/vimfiles/bundle"))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Wombat'
 NeoBundle 'pyte'
@@ -54,12 +57,8 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'tyru/vim-altercmd'
 NeoBundle 'thinca/vim-singleton'
 
+call neobundle#end()
+
 filetype plugin indent on
 
-" Installation check.
-" if neobundle#exists_not_installed_bundles()
-"   echomsg 'Not installed bundles : ' .
-"         \ string(neobundle#get_not_installed_bundle_names())
-"   echomsg 'Please execute ":NeoBundleInstall" command.'
-"   "finish
-" endif
+NeoBundleCheck
