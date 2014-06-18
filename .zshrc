@@ -1,3 +1,6 @@
+function load-if-exists() { test -e "$1" && source "$1" }
+function exists { which $1 &> /dev/null }
+
 # Set up the prompt
 autoload -Uz promptinit
 promptinit
@@ -5,8 +8,10 @@ prompt adam1
 
 setopt histignorealldups sharehistory
 
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
+# Use vim keybindings
+bindkey -v
+bindkey "^P" up-line-or-history
+bindkey "^N" down-line-or-history
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
@@ -18,22 +23,22 @@ autoload -Uz compinit
 compinit
 
 # alias settings
-[ -f ~/dotfiles/.zshrc.alias ] && source ~/dotfiles/.zshrc.alias
+load-if-exists ~/dotfiles/.zshrc.alias
 
 # OS specific settings
 case ${OSTYPE} in
     # Mac OS
     darwin*)
-        [ -f ~/dotfiles/.zshrc.osx ] && source ~/dotfiles/.zshrc.osx
+        load-if-exists ~/dotfiles/.zshrc.osx
         ;;
     # Linux
     linux*)
-        [ -f ~/dotfiles/.zshrc.linux ] && source ~/dotfiles/.zshrc.linux
+        load-if-exists ~/dotfiles/.zshrc.linux
         ;;
 esac
 
 # local settings
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+load-if-exists ~/.zshrc.local
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -83,7 +88,8 @@ function _update_vcs_info_msg() {
     LANG=en_US.UTF-8 vcs_info
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
-add-zsh-hook precmd _update_vcs_info_msg
+#add-zsh-hook precmd _update_vcs_info_msg
+precmd_functions+=(_update_vcs_info_msg)
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
 # sudo
@@ -109,7 +115,7 @@ sudo() {
 }
 
 # tmuxinator
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+load-if-exists $HOME/.tmuxinator/scripts/tmuxinator
 
 # tmux( or tmuxinator)
 if [ -z $TMUX ]; then
@@ -122,4 +128,56 @@ if [ -z $TMUX ]; then
     # new tmux session
     tmux
   fi
+fi
+
+# z.sh
+load-if-exists ~/z/z.sh
+
+# percol
+if exists percol; then
+    function ppgrep() {
+        if [[ $1 == "" ]]; then
+            PERCOL=percol
+        else
+            PERCOL="percol --query $1"
+        fi
+        ps aux | eval $PERCOL | awk '{ print $2 }'
+    }
+
+    function ppkill() {
+        if [[ $1 =~ "^-" ]]; then
+            QUERY=""            # options only
+        else
+            QUERY=$1            # with a query
+            [[ $# > 0 ]] && shift
+        fi
+        ppgrep $QUERY | xargs kill $*
+    }
+
+    function percol_select_history() {
+        local tac
+        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+        BUFFER=$(history -n 1 | eval $tac | percol --query "$LBUFFER")
+        CURSOR=$#BUFFER         # move cursor
+        zle -R -c               # refresh
+    }
+
+    zle -N percol_select_history
+    bindkey '^R' percol_select_history
+
+    function percol_select_directory() {
+        local tac
+        if which tac > /dev/null; then
+            tac="tac"
+        else
+            tac="tail -r"
+        fi
+        local dest=$(_z -r 2>&1 | eval $tac | percol --query "$LBUFFER" | awk '{ print $2 }')
+        if [ -n "${dest}" ]; then
+            cd ${dest}
+        fi
+        zle reset-prompt
+    }
+    zle -N percol_select_directory
+    bindkey '^J' percol_select_directory
 fi
