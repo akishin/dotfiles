@@ -19,6 +19,14 @@ set encoding=utf8
 " 無名レジスタに入るデータを、*レジスタにも入れる
 set clipboard+=unnamed
 
+" 半透明設定
+" MacVim のみ
+if has('gui_macvim')
+    autocmd GUIEnter    * set transparency=20
+    autocmd FocusGained * set transparency=20
+    autocmd FocusLost   * set transparency=40
+endif
+
 " for NERDTree
 if isdirectory($HOME . '/.vim/bundle/The-NERD-tree')
     autocmd VimEnter * NERDTree
