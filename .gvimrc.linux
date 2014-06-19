@@ -1,0 +1,10 @@
+" vim: set ff=unix fenc=utf8 ft=vim :
+" Linux のみ有効な設定を記述する為の .gvimrc 
+if has("gui_running")
+    " 縦幅
+    set lines=60
+    " 横幅
+    set columns=180
+    " font は Ricty
+    set guifont=Ricty\ 10
+endif

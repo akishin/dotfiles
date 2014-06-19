@@ -1,0 +1,12 @@
+" vim: set ff=unix fenc=utf8 ft=vim :
+" Linux のみ有効な設定を記述する為の .vimrc 
+
+if !has("gui_running")
+    set term=builtin_linux
+    set ttytype=builtin_linux
+endif
+
+" デフォルト UTF-8
+scriptencoding utf-8
+set encoding=utf-8
+set fileencoding=utf8

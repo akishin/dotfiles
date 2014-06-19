@@ -4,9 +4,6 @@ set lines=60
 " 横幅
 set columns=160
 
-" font は Ricty
-set guifont=Ricty\ 10
-
 " クリップボード共有
 set clipboard=unnamed
 
@@ -19,23 +16,28 @@ set encoding=utf8
 " 無名レジスタに入るデータを、*レジスタにも入れる
 set clipboard+=unnamed
 
-" 半透明設定
-" MacVim のみ
-if has('gui_macvim')
-    autocmd GUIEnter    * set transparency=20
-    autocmd FocusGained * set transparency=20
-    autocmd FocusLost   * set transparency=40
-endif
-
 " for NERDTree
+" GUI の時は初期状態でサイドバー表示
 if isdirectory($HOME . '/.vim/bundle/The-NERD-tree')
     autocmd VimEnter * NERDTree
     autocmd VimEnter * wincmd p
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 endif
 
-" MacVim の場合 .vimrc で指定しても上書きされるのでここで再度指定
 " for Wombat
 if isdirectory($HOME . '/.vim/bundle/Wombat')
     colorscheme wombat
 endif
+
+" OS 別 .gvimrc
+if has("unix")
+    " Linux
+    source ~/dotfiles/.gvimrc.linux
+elseif has('mac') || has('macunix')
+    " Mac
+    source ~/dotfiles/.gvimrc.mac
+elseif has("win32") || has("win64")
+    " Windows
+    source ~/dotfiles/.gvimrc.win
+endif
+

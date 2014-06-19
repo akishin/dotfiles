@@ -1,0 +1,7 @@
+" vim: set ff=unix fenc=utf8 ft=vim :
+" Windows のみ有効な設定を記述する為の .vimrc 
+
+" デフォルト SJIS にしないとコマンドプロンプトで文字化け
+scriptencoding cp932
+set encoding=cp932
+set fileencoding=cp932

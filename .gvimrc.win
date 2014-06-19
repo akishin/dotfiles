@@ -1,0 +1,25 @@
+" gvim 
+if has("gui_running")
+    
+    " 縦幅
+    set lines=70
+    
+    " 横幅
+    set columns=200
+
+    " フォントサイズ
+    set guifont=MS_Gothic:h10:cSHIFTJIS
+    
+    " メニューの文字化け回避
+    source $VIMRUNTIME/delmenu.vim
+    set langmenu=ja_jp.utf-8
+    source $VIMRUNTIME/menu.vim
+    
+    " for singleton.vim
+    if isdirectory($HOME . '/vimfiles/bundle/vim-singleton')
+        call singleton#enable()
+    endif
+    
+    " Ctrl-C, Ctrl-V Copy and Paste
+    " source $VIMRUNTIME/mswin.vim
+endif

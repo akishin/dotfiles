@@ -34,14 +34,15 @@ NeoBundleLazy 'Shougo/unite-outline', {
             \       'unite_sources' : 'outline'
             \   }
             \ }
-NeoBundle     'Shougo/vimproc', {
-            \ 'build' : {
-            \     'windows' : 'make -f make_mingw32.mak',
-            \     'cygwin' : 'make -f make_cygwin.mak',
-            \     'mac' : 'make -f make_mac.mak',
-            \     'unix' : 'make -f make_unix.mak',
-            \    },
-            \ }
+let vimproc_updcmd = has('win64') ? 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
+execute "NeoBundle 'Shougo/vimproc'," . string({
+      \ 'build' : {
+      \     'windows' : vimproc_updcmd,
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ })
 NeoBundleLazy 'Shougo/vimshell.git', {
             \ 'depends' : 'Shougo/vimproc',
             \ 'autoload' : {
@@ -52,23 +53,6 @@ NeoBundleLazy 'Shougo/vimshell.git', {
             \   'mappings' : ['<Plug>(vimshell_']
             \   }
             \ }
-" Vim が neocomplete に対応しているかどうかでプラグインを切換える
-if s:meet_neocomplete_requirements()
-    NeoBundle 'Shougo/neocomplete'
-else
-    NeoBundle 'Shougo/neocomplcache'
-endif
-if has('python')
-    NeoBundleLazy 'Shougo/vinarise', {
-                \   'autoload' : {
-                \       'commands' : [ "Vinarise" ]
-                \   }
-                \ }
-endif
-if $RSENSE_HOME != ''
-    NeoBundleLazy 'm2ym/rsense',          { 'autoload' : { 'filetypes' :[ "ruby"], }, }
-    NeoBundleLazy 'alpaca-tc/vim-rsense', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
-endif
 NeoBundle     'Shougo/neosnippet'
 NeoBundle     'Shougo/neosnippet-snippets'
 NeoBundle     'surround.vim'
@@ -76,7 +60,6 @@ NeoBundle     'The-NERD-tree'
 NeoBundle     'The-NERD-Commenter'
 NeoBundle     'taglist.vim'
 NeoBundle     'matchit.zip'
-NeoBundle     'sudo.vim'
 NeoBundle     'endwise.vim'
 NeoBundle     'Align'
 NeoBundle     'YankRing.vim'
@@ -100,7 +83,6 @@ NeoBundleLazy 'skammer/vim-css-color',       { 'autoload' : { 'filetypes' :[ "cs
 NeoBundleLazy 'kchmck/vim-coffee-script',    { 'autoload' : { 'filename_patterns' :[ "\.coffee$" ], }, }
 NeoBundleLazy 'pangloss/vim-javascript',     { 'autoload' : { 'filetypes' :[ "javascript" ], }, }
 NeoBundleLazy 'hallison/vim-markdown',       { 'autoload' : { 'filetypes' :[ "markdown"], }, }
-NeoBundleLazy 'superbrothers/vim-quickrun-markdown-gfm', { 'autoload' : { 'filetypes' :[ "markdown"], }, }
 NeoBundle     'nathanaelkane/vim-indent-guides'
 NeoBundle     'mrtazz/simplenote.vim'
 NeoBundle     'mattn/webapi-vim'
@@ -109,14 +91,50 @@ NeoBundle     'mattn/httpstatus-vim'
 NeoBundle     'mattn/sonictemplate-vim'
 NeoBundle     'thinca/vim-quickrun'
 NeoBundle     'thinca/vim-ref'
+NeoBundle     'thinca/vim-singleton'
 NeoBundleLazy 'yuku-t/vim-ref-ri', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundle     'mfumi/ref-dicts-en'
 NeoBundle     'tyru/open-browser.vim'
 NeoBundle     'tyru/vim-altercmd'
-NeoBundle     'ujihisa/neco-look'
-NeoBundle     'dgryski/vim-godef'
 NeoBundle     'rbtnn/rabbit-ui.vim'
-NeoBundleLazy 'syngan/vim-pukiwiki', { 'autoload' : { 'commands' : 'PukiWiki' }, }
+
+" Vim が neocomplete に対応しているかどうかでプラグインを切換える
+if s:meet_neocomplete_requirements()
+    NeoBundle 'Shougo/neocomplete'
+else
+    NeoBundle 'Shougo/neocomplcache'
+endif
+
+" 要 python インターフェイス
+if has('python')
+    NeoBundleLazy 'Shougo/vinarise', {
+                \   'autoload' : {
+                \       'commands' : [ "Vinarise" ]
+                \   }
+                \ }
+endif
+
+" Go 用
+if $GOPATH != ''
+    NeoBundle     'dgryski/vim-godef'
+endif
+
+" RSense 用
+if $RSENSE_HOME != ''
+    NeoBundleLazy 'm2ym/rsense',          { 'autoload' : { 'filetypes' :[ "ruby"], }, }
+    NeoBundleLazy 'alpaca-tc/vim-rsense', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
+endif
+
+" OS 別
+if has("win32") || has("win64")
+    " Windows
+elseif has("unix") || has('mac') || has('macunix')
+    " Linux or Mac
+    NeoBundle     'sudo.vim'
+    NeoBundle     'ujihisa/neco-look'
+    NeoBundleLazy 'superbrothers/vim-quickrun-markdown-gfm', { 'autoload' : { 'filetypes' :[ "markdown"], }, }
+    NeoBundleLazy 'syngan/vim-pukiwiki', { 'autoload' : { 'commands' : 'PukiWiki' }, }
+endif
 
 call neobundle#end()
 filetype plugin indent on
