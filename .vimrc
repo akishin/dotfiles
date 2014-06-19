@@ -9,6 +9,7 @@ set expandtab
 set autoread
 set noerrorbells
 set showmode
+set modeline
 set showmatch
 set showcmd
 set hlsearch
@@ -70,9 +71,12 @@ set fileencoding=utf8
 set ffs=unix,dos,mac
 " 日本語自動判別
 set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp,sjis,cp932,utf-8
+
 " grep コマンドにオプションを指定
 set grepprg=grep\ -nH
 
+" 取り敢えず自分用の augroup は一個にしてみた
+" 細かい粒度でグループ定義するのとどっちがいいのか？
 augroup MyVimrc
     autocmd!
     " 以下のファイルは UTF-8
@@ -111,6 +115,11 @@ augroup MyVimrc
 
     " grep 後に自動で Quickfix ウィンドウを開く
     autocmd QuickfixCmdPost make,grep,grepadd,vimgrep copen
+
+    " 全角空白を半角空白に変換
+    if exists('##InsertCharPre')
+        autocmd InsertCharPre <buffer> if v:char == '　' | let v:char = " " | endif
+    endif
 augroup END
 
 " 文字コードを変えて開き直す
@@ -140,8 +149,8 @@ augroup cch
     autocmd WinLeave * set nocursorline
     autocmd WinEnter,BufRead * set cursorline
 augroup END
-:hi clear CursorLine
-:hi CursorLine gui=underline
+hi clear CursorLine
+hi CursorLine gui=underline
 highlight CursorLine term=reverse cterm=reverse ctermbg=black ctermfg=242
 
 " タグファイルの指定
@@ -171,27 +180,19 @@ inoremap ＊ *
 inoremap ＝ =
 inoremap （ (
 inoremap ） )
-if exists('##InsertCharPre')
-    autocmd InsertCharPre <buffer> if v:char == '　' | let v:char = " " | endif
-endif
 
 " <C-Space>でomni補完
 imap <C-Space> <C-x><C-o>
-
-" Rubyのオムニ補完を設定(ft-ruby-omni)
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
 
 " Space-s,s で英語のスペルチェック切換え
 nnoremap [Show] <Nop>
 nmap <Space>s [Show]
 nnoremap [Show]s  :<C-u>setl spell!<CR>
 
-" for vundle
-if filereadable(expand("~/dotfiles/.vimrc.vundle"))
-    source ~/dotfiles/.vimrc.vundle
-endif
+" Rubyのオムニ補完を設定(ft-ruby-omni)
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1
 
 " for neobundle
 if filereadable(expand("~/dotfiles/.vimrc.neobundle"))
