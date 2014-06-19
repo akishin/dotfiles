@@ -1,6 +1,5 @@
 " gvim 
 if has("gui_running")
-    
     " 縦幅
     set lines=70
     
@@ -16,7 +15,7 @@ if has("gui_running")
     source $VIMRUNTIME/menu.vim
     
     " for singleton.vim
-    if isdirectory($HOME . '/vimfiles/bundle/vim-singleton')
+    if isdirectory($HOME . '/.vim/bundle/vim-singleton')
         call singleton#enable()
     endif
     
