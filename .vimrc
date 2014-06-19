@@ -202,12 +202,12 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 
 " OS 別 .vimrc
-if has("unix")
-    " Linux
-    source ~/dotfiles/.vimrc.linux
-elseif has('mac') || has('macunix')
+if has('mac') || has('macunix')
     " Mac
     source ~/dotfiles/.vimrc.mac
+elseif has("unix")
+    " Linux
+    source ~/dotfiles/.vimrc.linux
 elseif has("win32") || has("win64")
     " Windows
     source ~/dotfiles/.vimrc.win

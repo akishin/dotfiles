@@ -30,12 +30,12 @@ if isdirectory($HOME . '/.vim/bundle/Wombat')
 endif
 
 " OS 別 .gvimrc
-if has("unix")
-    " Linux
-    source ~/dotfiles/.gvimrc.linux
-elseif has('mac') || has('macunix')
+if has('mac') || has('macunix')
     " Mac
     source ~/dotfiles/.gvimrc.mac
+elseif has("unix")
+    " Linux
+    source ~/dotfiles/.gvimrc.linux
 elseif has("win32") || has("win64")
     " Windows
     source ~/dotfiles/.gvimrc.win
