@@ -14,6 +14,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle     'Wombat'
 NeoBundleLazy 'pyte'
+NeoBundle     'vim-jp/vimdoc-ja'
 NeoBundle     'vim-scripts/gtags.vim'
 NeoBundle     'vim-scripts/SrcExpl'
 NeoBundleLazy 'vim-scripts/nginx.vim', { 'autoload' : { 'filetypes' :[ "nginx"], }, }
