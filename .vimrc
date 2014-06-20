@@ -196,11 +196,6 @@ if filereadable(expand("~/dotfiles/.vimrc.plugins"))
     source ~/dotfiles/.vimrc.plugins
 endif
 
-" for Local settings
-if filereadable(expand("~/.vimrc.local"))
-    source ~/.vimrc.local
-endif
-
 " OS 別 .vimrc
 if has('mac') || has('macunix')
     " Mac
@@ -211,4 +206,9 @@ elseif has("unix")
 elseif has("win32") || has("win64")
     " Windows
     source ~/dotfiles/.vimrc.win
+endif
+
+" for Local settings
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
 endif
