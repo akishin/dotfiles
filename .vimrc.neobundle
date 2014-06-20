@@ -83,6 +83,7 @@ NeoBundleLazy 'skammer/vim-css-color',       { 'autoload' : { 'filetypes' :[ "cs
 NeoBundleLazy 'kchmck/vim-coffee-script',    { 'autoload' : { 'filename_patterns' :[ "\.coffee$" ], }, }
 NeoBundleLazy 'pangloss/vim-javascript',     { 'autoload' : { 'filetypes' :[ "javascript" ], }, }
 NeoBundleLazy 'hallison/vim-markdown',       { 'autoload' : { 'filetypes' :[ "markdown"], }, }
+NeoBundleLazy 'syngan/vim-pukiwiki',         { 'autoload' : { 'commands' : 'PukiWiki' }, }
 NeoBundle     'nathanaelkane/vim-indent-guides'
 NeoBundle     'mrtazz/simplenote.vim'
 NeoBundle     'mattn/webapi-vim'
@@ -133,7 +134,6 @@ elseif has("unix") || has('mac') || has('macunix')
     NeoBundle     'sudo.vim'
     NeoBundle     'ujihisa/neco-look'
     NeoBundleLazy 'superbrothers/vim-quickrun-markdown-gfm', { 'autoload' : { 'filetypes' :[ "markdown"], }, }
-    NeoBundleLazy 'syngan/vim-pukiwiki', { 'autoload' : { 'commands' : 'PukiWiki' }, }
 endif
 
 call neobundle#end()
