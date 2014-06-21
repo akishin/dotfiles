@@ -1,44 +1,39 @@
-set number
-set nowrap
-set autoindent
-set smartindent
-set cindent
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set autoread
-set noerrorbells
-set showmode
-set modeline
-set showmatch
-set showcmd
-set hlsearch
-set laststatus=2
+set number                     " 行番号表示
+set ruler                      " ルーラー表示
+set nowrap                     " 折り返さない
+set autoread                   " 変更された場合に自動再読み込み
+set autoindent                 " 自動で一つ前の行と同じインデント
+set smartindent                " 高度な自動インデント
+set cindent                    " より高度なC 言語スタイルのインデント
+set tabstop=4                  " tab 挿入時のインデント文字数
+set shiftwidth=4               " autoindent 時のインデント文字数
+set expandtab                  " ソフト tab(タブ文字の代わりに半角スペース)
+set autoread                   " 変更されたファイルを自動で再読み込み
+set modeline                   " モードライン有効
+set showmode                   " 現在のモードを表示
+set showmatch                  " 対応する括弧を表示
+set showcmd                    " 入力中のコマンドを右下に表示
+" set incsearch                " インクリメンタルサーチ
+set hlsearch                   " 検索結果のハイライト表示
+set laststatus=2               " 常にステータスラインを表示
+set hidden                     " 編集中でも他のファイルを開けるようにする
+set backspace=indent,eol,start " backspace キーの動作を指定
+set notitle                    " 端末のウインドウタイトルを変更しない
+set textwidth=0                " 行の自動折り返しをしない
+set formatoptions=lmoq         " テキスト整形オプション
+set vb t_vb=                   " ビープ音を鳴らさないようにする
+set noerrorbells               " エラー時のビープ音をオフ
+set colorcolumn=80             " 80文字目を色を変えて表示
+set history=256                " コマンドの履歴保持数
+set mouse=a                    " ターミナルでマウスを有効
+set guioptions+=a              " GUI 時にマウスでのビジュアル選択有効
+set ttymouse=xterm2            " ターミナルでのマウスの動作を指定
+set clipboard+=unnamed         " OS のクリップボードを使用
+" set autochdir                  " 開いたファイルのディレクトリに自動で移動
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
-set hidden
-set backspace=indent,eol,start
-set notitle
-set textwidth=0
-set formatoptions=lmoq
-set vb t_vb=
-set colorcolumn=80
-set mouse=a
-set guioptions+=a
-set ttymouse=xterm2
-set clipboard+=unnamed
 
-if isdirectory($HOME . '/tmp')
-    "set nobackup
-    " バックアップディレクトリを変更
-    set backupdir=$HOME/tmp
-    "set noswapfile
-    " スワップファイルディレクトリを変更
-    set directory=$HOME/tmp
-    "set noundofile
-    " Undo ファイルディレクトリを変更
-    set undodir=$HOME/tmp
-endif
-
+" KaoriYa 版 Vim(GVim,MacVim) でコマンドモードに戻る際に IME を OFF
+" set imdisable
 " 矩形選択で行末を超えてブロックを選択できるようにする
 set virtualedit+=block
 
@@ -50,15 +45,6 @@ set listchars=tab:>.,trail:_,extends:>,precedes:<
 " 印字不可能文字を16進数で表示
 set display=uhex
 
-" 開いたファイルのディレクトリに自動で移動
-" set autochdir
-
-syntax on
-" ファイルタイプの検索を有効にする
-filetype plugin on
-" そのファイルタイプにあわせたインデントを利用する
-filetype indent on
-
 " 改行
 set ffs=unix,dos,mac
 " 日本語自動判別
@@ -66,6 +52,25 @@ set fileencodings=ucs-bom,iso-2022-jp-3,iso-2022-jp,eucjp-ms,euc-jisx0213,euc-jp
 
 " grep コマンドにオプションを指定
 set grepprg=grep\ -nH
+
+if isdirectory($HOME . '/tmp')
+    "set nobackup " バックアップを取らない
+    " バックアップディレクトリを変更
+    set backupdir=$HOME/tmp
+    "set noswapfile " スワップファイルを作らない
+    " スワップファイルディレクトリを変更
+    set directory=$HOME/tmp
+    "set noundofile " Undo ファイルを作らない
+    " Undo ファイルディレクトリを変更
+    set undodir=$HOME/tmp
+endif
+
+" シンタックスハイライト有効
+syntax on
+" ファイルタイプ判定を有効
+filetype plugin on
+" ファイルタイプにあわせたインデントを利用する
+filetype indent on
 
 " 取り敢えず自分用の augroup は一個にしてみた
 " 細かい粒度でグループ定義するのとどっちがいいのか？
@@ -77,6 +82,7 @@ augroup MyVimrc
     autocmd FileType gitcommit setlocal fileencoding=utf-8
 
     " ファイルタイプ設定
+    " NeoBundleLazy してる場合に読込時にシンタックスハイライトが効かないので設定
     autocmd BufNewFile,BufRead *_spec.rb set filetype=ruby.rspec
     autocmd BufNewFile,BufRead *.md      set filetype=markdown
     autocmd BufNewFile,BufRead /etc/nginx/nginx.conf        set filetype=nginx
@@ -87,8 +93,8 @@ augroup MyVimrc
     autocmd BufNewFile,BufRead *.slim   set filetype=slim
     autocmd BufNewFile,BufRead *.go     set filetype=go
 
-    " テキストの自動改行を OFF
-    autocmd FileType text setlocal textwidth=0
+    " テキストの自動改行を OFF が上書きされないようにする
+    autocmd FileType * setlocal textwidth=0
     " 改行時に自動でコメント行が継続されないようにする
     autocmd FileType * setlocal formatoptions-=ro
 
