@@ -9,6 +9,12 @@ if isdirectory($HOME . '/.vim/bundle/vimproc')
     endif
 endif
 
+" for Vimfiler
+if isdirectory($HOME . '/.vim/bundle/vimfiler')
+    " Vimfiler をデフォルトのファイラーに設定
+    let g:vimfiler_as_default_explorer = 1
+endif
+
 " for golang
 if $GOROOT != ''
   " :Import, :Fmt, :Godoc などが使用可能になる

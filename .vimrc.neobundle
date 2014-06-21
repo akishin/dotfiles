@@ -53,6 +53,7 @@ NeoBundleLazy 'Shougo/vimshell.git', {
             \   'mappings' : ['<Plug>(vimshell_']
             \   }
             \ }
+NeoBundle     'Shougo/vimfiler'
 NeoBundle     'Shougo/neosnippet'
 NeoBundle     'Shougo/neosnippet-snippets'
 NeoBundle     'surround.vim'
