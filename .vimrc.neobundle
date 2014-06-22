@@ -87,6 +87,7 @@ NeoBundleLazy 'kchmck/vim-coffee-script',    { 'autoload' : { 'filename_patterns
 NeoBundleLazy 'pangloss/vim-javascript',     { 'autoload' : { 'filetypes' :[ "javascript" ], }, }
 NeoBundleLazy 'hallison/vim-markdown',       { 'autoload' : { 'filetypes' :[ "markdown"], }, }
 NeoBundleLazy 'syngan/vim-pukiwiki',         { 'autoload' : { 'commands' : 'PukiWiki' }, }
+NeoBundleLazy 'fuenor/qfixgrep',             { 'autoload' : { 'commands' : ['Grep', 'Egrep', 'RGrep', 'FGrep', 'RFGrep', 'BGrep'], }, }
 NeoBundle     'nathanaelkane/vim-indent-guides'
 NeoBundle     'mrtazz/simplenote.vim'
 NeoBundle     'mattn/webapi-vim'

@@ -379,23 +379,6 @@ if isdirectory($HOME . '/.vim/bundle/vim-quickrun')
     nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 endif
 
-" for simplenote.vim
-if isdirectory($HOME . '/.vim/bundle/simplenote.vim')
-    if filereadable(expand("~/.simplenoterc"))
-      source ~/.simplenoterc
-    endif
-endif
-
-" for vim-pukiwiki
-if isdirectory($HOME . '/.vim/bundle/vim-pukiwiki')
-    " タイムスタンプは毎回更新する
-    let g:pukiwiki_timestamp_update = 1
-    if filereadable(expand("~/.pukiwikirc"))
-      source ~/.pukiwikirc
-    endif
-    nnoremap <silent> ,upm :<C-u>Unite pukiwiki/menu<CR>
-endif
-
 " for vim-ref
 if isdirectory($HOME . '/.vim/bundle/vim-ref')
     " FileType が text なら K で webdict を使う
@@ -481,6 +464,10 @@ if isdirectory($HOME . '/.vim/bundle/vim-altercmd')
     " for vim-pukiwiki
     CAlterCommand puki[wiki]        PukiWiki
     CAlterCommand hitori[wiki]      PukiWiki hwiki
+
+    " for QFixGrep
+    CAlterCommand grep              Grep
+    CAlterCommand rgrep             RGrep
 endif
 
 " for vim-submode
@@ -515,7 +502,38 @@ endif
 
 " for simplenote.vim
 if isdirectory($HOME . '/.vim/bundle/simplenote.vim')
+    if filereadable(expand("~/.simplenoterc"))
+      source ~/.simplenoterc
+    endif
     let g:SimplenoteListHeight=20
     let g:SimplenoteVertical=1
+endif
+
+" for vim-pukiwiki
+if isdirectory($HOME . '/.vim/bundle/vim-pukiwiki')
+    " タイムスタンプは毎回更新する
+    let g:pukiwiki_timestamp_update = 1
+    if filereadable(expand("~/.pukiwikirc"))
+      source ~/.pukiwikirc
+    endif
+    nnoremap <silent> ,upm :<C-u>Unite pukiwiki/menu<CR>
+endif
+
+" for QFixGrep
+if isdirectory($HOME . '/.vim/bundle/qfixgrep')
+  " マルチエンコーディングgrepモード
+  "let g:MyGrep_MultiEncoding = 1
+
+  " マルチエンコーディングgrep エンコーディングリスト
+  "let g:MyGrep_MultiEncodingList = ['utf-8', 'cp932']
+
+  " QFixGrepの検索時にカーソル位置の単語を拾う/拾わない
+  "let MyGrep_DefaultSearchWord = 1
+
+  " プレビューや絞り込みをQuickFix/ロケーションリストの両方で有効化(デフォルト:2)
+  let QFixWin_EnableMode = 1
+
+  " QFixGrepでロケーションリストを使用する/しない
+  let MyGrep_UseLocationList = 0
 endif
 
