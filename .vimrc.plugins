@@ -37,6 +37,13 @@ if $GOROOT != ''
   augroup END
 endif
 
+" for vim-godef
+if isdirectory($HOME . '/.vim/bundle/vim-godef')
+    " gd を押した時のウインドウの動作
+    let g:godef_split=0
+    let g:godef_same_file_in_same_window=1
+endif
+
 " for rsense
 if $RSENSE_HOME != ''
     let g:rsenseHome = $RSENSE_HOME
@@ -504,13 +511,6 @@ if isdirectory($HOME . '/.vim/bundle/vimshell')
 
     " <Space>vs で VimShell 起動
     noremap <silent> <Space>vs :execute("VimShellPop -toggle ".expand("%:p:h"))<CR>
-endif
-
-" for vim-godef
-if isdirectory($HOME . '/.vim/bundle/vim-godef')
-    " gd を押した時のウインドウの動作
-    let g:godef_split=0
-    let g:godef_same_file_in_same_window=1
 endif
 
 " for simplenote.vim
