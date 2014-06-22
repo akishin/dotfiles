@@ -18,12 +18,17 @@ NeoBundle     'vim-jp/vimdoc-ja'
 NeoBundle     'vis'
 NeoBundle     'vim-scripts/gtags.vim'
 NeoBundle     'vim-scripts/SrcExpl'
+NeoBundle     'vim-scripts/matchit.zip'
+NeoBundle     'vim-scripts/Align'
+NeoBundle     'vim-scripts/YankRing.vim'
+NeoBundle     'vim-scripts/taglist.vim'
 NeoBundleLazy 'vim-scripts/nginx.vim', { 'autoload' : { 'filetypes' :[ "nginx"], }, }
-NeoBundle     'scrooloose/syntastic'
 NeoBundleLazy 'tpope/vim-rails',   { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundleLazy 'tpope/vim-rake',    { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundleLazy 'tpope/vim-bundler', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundle     'tpope/vim-fugitive'
+NeoBundle     'tpope/vim-surround'
+NeoBundle     'tpope/vim-endwise'
 NeoBundleLazy 'Shougo/unite.vim', {
             \   'autoload' : {
             \       'commands' : [ "Unite", "UniteWithBufferDir", "UniteWithCurrentDir" ]
@@ -57,14 +62,9 @@ NeoBundleLazy 'Shougo/vimshell.git', {
 NeoBundle     'Shougo/vimfiler'
 NeoBundle     'Shougo/neosnippet'
 NeoBundle     'Shougo/neosnippet-snippets'
-NeoBundle     'surround.vim'
 NeoBundle     'The-NERD-tree'
 NeoBundle     'The-NERD-Commenter'
-NeoBundle     'taglist.vim'
-NeoBundle     'matchit.zip'
-NeoBundle     'endwise.vim'
-NeoBundle     'Align'
-NeoBundle     'YankRing.vim'
+NeoBundle     'scrooloose/syntastic'
 NeoBundle     'itchyny/lightline.vim'
 NeoBundle     'kana/vim-submode'
 NeoBundle     'kana/vim-textobj-user'
