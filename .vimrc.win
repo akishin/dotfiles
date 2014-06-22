@@ -5,3 +5,9 @@
 scriptencoding cp932
 set encoding=cp932
 set fileencoding=cp932
+
+" for vim-ref
+if isdirectory($HOME . '/.vim/bundle/vim-ref')
+    " Windows では出力エンコーディングは Shift-JIS
+    let g:ref_source_webdict_encoding='sjis'
+endif
