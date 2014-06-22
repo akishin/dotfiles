@@ -182,7 +182,7 @@ if isdirectory($HOME . '/.vim/bundle/neocomplcache')
 endif
 
 " for neocomplete
-if isdirectory($HOME . '/.vim/bundle/neocomplete')
+if isdirectory($HOME . '/.vim/bundle/neocomplete') && g:Meet_neocomplete_requirements()
     " Disable AutoComplPop.
     let g:acp_enableAtStartup = 0
     " Use neocomplete.

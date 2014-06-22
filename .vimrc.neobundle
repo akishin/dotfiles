@@ -1,5 +1,5 @@
 " Vim が neocomplete 対応環境かどうかを返す
-function! s:meet_neocomplete_requirements()
+function! g:Meet_neocomplete_requirements()
     return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
 endfunction
 
@@ -101,7 +101,7 @@ NeoBundle     'tyru/vim-altercmd'
 NeoBundle     'rbtnn/rabbit-ui.vim'
 
 " Vim が neocomplete に対応しているかどうかでプラグインを切換える
-if s:meet_neocomplete_requirements()
+if g:Meet_neocomplete_requirements()
     NeoBundle 'Shougo/neocomplete'
 else
     NeoBundle 'Shougo/neocomplcache'
