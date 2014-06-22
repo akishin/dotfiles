@@ -519,9 +519,3 @@ if isdirectory($HOME . '/.vim/bundle/simplenote.vim')
     let g:SimplenoteVertical=1
 endif
 
-" for rabbit-ui.vim
-if isdirectory($HOME . '/.vim/bundle/rabbit-ui.vim')
-    " :EditCSV で csv ファイルを編集
-    command! -nargs=1 EditCSV RabbitUICollectionEditCSV <args>
-endif
-

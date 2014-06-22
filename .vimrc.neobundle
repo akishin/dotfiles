@@ -99,8 +99,6 @@ NeoBundleLazy 'yuku-t/vim-ref-ri', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundle     'mfumi/ref-dicts-en'
 NeoBundle     'tyru/open-browser.vim'
 NeoBundle     'tyru/vim-altercmd'
-NeoBundle     'rbtnn/rabbit-ui.vim'
-NeoBundle     'rbtnn/rabbit-ui-collection.vim'
 
 " Vim が neocomplete に対応しているかどうかでプラグインを切換える
 if g:Meet_neocomplete_requirements()
