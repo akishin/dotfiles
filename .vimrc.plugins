@@ -466,12 +466,17 @@ if isdirectory($HOME . '/.vim/bundle/vim-altercmd')
     CAlterCommand hitori[wiki]      PukiWiki hwiki
 
     " for QFixGrep
-    CAlterCommand grep              Grep
-    CAlterCommand rgrep             RGrep
+    CAlterCommand gr[ep]            Grep
+    CAlterCommand rg[rep]           RGrep
+
+    " for fugitive
+    CAlterCommand gst[atus]         Gstatus
+    CAlterCommand gco[mmit]         Gcommit
 endif
 
 " for vim-submode
 if isdirectory($HOME . '/.vim/bundle/vim-submode')
+    " Ctrl-w, > でウィンドウリサイズ用の submode に入る
     call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
     call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
     call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
