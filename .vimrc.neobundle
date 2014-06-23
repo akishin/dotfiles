@@ -26,7 +26,17 @@ NeoBundleLazy 'vim-scripts/nginx.vim', { 'autoload' : { 'filetypes' :[ "nginx"],
 NeoBundleLazy 'tpope/vim-rails',   { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundleLazy 'tpope/vim-rake',    { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundleLazy 'tpope/vim-bundler', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
-NeoBundle     'tpope/vim-fugitive'
+NeoBundleLazy 'tpope/vim-fugitive', {
+            \   'autoload': {
+            \       'commands': ['Gstatus', 'Gcommit', 'Gwrite', 'Git', 'Git!', 'Gcd', 'Glcd', 'Ggrep', 'Glog']
+            \    }
+            \ }
+if neobundle#tap('vim-fugitive')
+    function! neobundle#hooks.on_post_source(bundle)
+        call fugitive#detect(expand('#:p'))
+    endfunction
+    call neobundle#untap()
+endif
 NeoBundle     'tpope/vim-surround'
 NeoBundle     'tpope/vim-endwise'
 NeoBundleLazy 'Shougo/unite.vim', {
@@ -42,13 +52,13 @@ NeoBundleLazy 'Shougo/unite-outline', {
             \ }
 let vimproc_updcmd = has('win64') ? 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
 execute "NeoBundle 'Shougo/vimproc'," . string({
-      \ 'build' : {
-      \     'windows' : vimproc_updcmd,
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ })
+            \ 'build' : {
+            \     'windows' : vimproc_updcmd,
+            \     'cygwin' : 'make -f make_cygwin.mak',
+            \     'mac' : 'make -f make_mac.mak',
+            \     'unix' : 'make -f make_unix.mak',
+            \    },
+            \ })
 NeoBundleLazy 'Shougo/vimshell.git', {
             \ 'depends' : 'Shougo/vimproc',
             \ 'autoload' : {
@@ -99,7 +109,13 @@ NeoBundle     'thinca/vim-ref'
 NeoBundle     'thinca/vim-singleton'
 NeoBundleLazy 'yuku-t/vim-ref-ri', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundle     'mfumi/ref-dicts-en'
-NeoBundle     'tyru/open-browser.vim'
+NeoBundleLazy 'tyru/open-browser.vim', {
+            \    'autoload': {
+            \        'commands' : ['OpenBrowserSearch', 'OpenBrowser'],
+            \        'functions' : 'openbrowser#open',
+            \        'mappings': '<Plug>(openbrowser-'
+            \    }
+            \ }
 NeoBundle     'tyru/vim-altercmd'
 
 " Vim が neocomplete に対応しているかどうかでプラグインを切換える
