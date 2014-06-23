@@ -524,6 +524,16 @@ if isdirectory($HOME . '/.vim/bundle/vim-pukiwiki')
     nnoremap <silent> ,upm :<C-u>Unite pukiwiki/menu<CR>
 endif
 
+" for YankRing.vim
+if isdirectory($HOME . '/.vim/bundle/YankRing.vim')
+    " F11 で :YRShow を実行できるようにする
+    nnoremap <silent> <F11> :YRShow<CR>
+    let g:yankring_history_dir   = expand($HOME) . '/tmp'
+    let g:yankring_history_file  = '.yankring_history'
+    let g:yankring_max_history   = 20
+    let g:yankring_window_height = 15
+endif
+
 " for QFixGrep
 if isdirectory($HOME . '/.vim/bundle/qfixgrep')
   " マルチエンコーディングgrepモード
