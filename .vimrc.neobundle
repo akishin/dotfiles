@@ -108,6 +108,7 @@ NeoBundle     'thinca/vim-quickrun'
 NeoBundle     'thinca/vim-ref'
 NeoBundle     'thinca/vim-singleton'
 NeoBundleLazy 'thinca/vim-qfreplace',        { 'autoload' : { 'commands' : ['Qfreplace'], }, }
+NeoBundleLazy 'thinca/vim-fontzoom',         { 'autoload' : { 'commands' : ['Fontzoom'], }, }
 NeoBundleLazy 'yuku-t/vim-ref-ri', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundle     'mfumi/ref-dicts-en'
 NeoBundleLazy 'tyru/open-browser.vim', {

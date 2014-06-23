@@ -472,6 +472,9 @@ if isdirectory($HOME . '/.vim/bundle/vim-altercmd')
     " for fugitive
     CAlterCommand gst[atus]         Gstatus
     CAlterCommand gco[mmit]         Gcommit
+
+    " for vim-fontzoom
+    CAlterCommand font[zoom]        Fontzoom
 endif
 
 " for vim-submode
