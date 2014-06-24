@@ -58,6 +58,9 @@ endif
 " for endwise
 if isdirectory($HOME . '/.vim/bundle/endwise.vim')
     let g:endwise_no_mappings=1
+    " kana/vim-smartinput との競合防止設定
+    " http://cohama.hateblo.jp/entry/20121017/1350482411
+    autocmd CohamaAutoCmd FileType lua,ruby,sh,zsh,vb,vbnet,aspvbs,vim imap <buffer> <CR> <CR><Plug>DiscretionaryEnd
 endif
 
 " for NERDTree

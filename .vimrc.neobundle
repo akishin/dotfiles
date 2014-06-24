@@ -81,6 +81,7 @@ NeoBundle     'kana/vim-textobj-user'
 NeoBundle     'kana/vim-textobj-syntax'
 NeoBundle     'kana/vim-textobj-indent'
 NeoBundle     'kana/vim-textobj-function'
+NeoBundle     'kana/vim-smartinput'
 NeoBundle     'mattn/vim-textobj-url'
 NeoBundle     'h1mesuke/textobj-wiw'
 NeoBundleLazy 'rhysd/vim-textobj-ruby',      { 'autoload' : { 'filetypes' :[ "ruby"], }, }
