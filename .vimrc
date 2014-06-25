@@ -173,6 +173,10 @@ noremap <C-Tab> :bp<CR>
 " 次のバッファ
 noremap <C-S-Tab> :bn<CR>
 
+" ビジュアルモードでインデント変更後も選択を維持する
+vnoremap < <gv
+vnoremap > >gv
+
 " あまり使わない全角記号を半角記号に変換
 inoremap ＊ *
 inoremap ＝ =
