@@ -126,6 +126,12 @@ NeoBundleLazy 'tyru/open-browser.vim', {
             \    }
             \ }
 NeoBundle     'tyru/vim-altercmd'
+NeoBundleLazy 'tsukkee/unite-help', { 
+            \   'depends' : 'Shougo/unite.vim',
+            \   'autoload' : {
+            \       'unite_sources' : 'help'
+            \   }
+            \ }
 
 " Vim が neocomplete に対応しているかどうかでプラグインを切換える
 if g:Meet_neocomplete_requirements()
