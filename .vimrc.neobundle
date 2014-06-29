@@ -44,6 +44,12 @@ NeoBundleLazy 'Shougo/unite.vim', {
             \       'commands' : [ "Unite", "UniteWithBufferDir", "UniteWithCurrentDir" ]
             \   }
             \ }
+NeoBundleLazy 'Shougo/neomru.vim', { 
+            \   'depends' : 'Shougo/unite.vim',
+            \   'autoload' : {
+            \       'unite_sources' : 'file_mru'
+            \   }
+            \ }
 NeoBundleLazy 'Shougo/unite-outline', { 
             \   'depends' : 'Shougo/unite.vim',
             \   'autoload' : {
