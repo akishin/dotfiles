@@ -18,10 +18,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-# Use modern completion system
-autoload -Uz compinit
-compinit
-
 # alias settings
 load-if-exists ~/dotfiles/.zshrc.alias
 
@@ -39,6 +35,10 @@ esac
 
 # local settings
 load-if-exists ~/.zshrc.local
+
+# Use modern completion system
+autoload -Uz compinit
+compinit
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
