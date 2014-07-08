@@ -121,7 +121,7 @@ NeoBundle     'mfumi/ref-dicts-en'
 NeoBundleLazy 'tyru/open-browser.vim', {
             \    'autoload': {
             \        'commands' : ['OpenBrowserSearch', 'OpenBrowser'],
-            \        'functions' : 'openbrowser#open',
+            \        'functions' : ['openbrowser#open', 'openbrowser#load'],
             \        'mappings': '<Plug>(openbrowser-'
             \    }
             \ }
