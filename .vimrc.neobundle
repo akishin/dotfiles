@@ -79,7 +79,6 @@ NeoBundle     'kana/vim-textobj-indent'
 NeoBundle     'kana/vim-textobj-function'
 NeoBundle     'kana/vim-smartinput'
 NeoBundle     'mattn/vim-textobj-url'
-NeoBundle     'h1mesuke/textobj-wiw'
 NeoBundleLazy 'rhysd/vim-textobj-ruby',      { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundleLazy 'vim-ruby/vim-ruby.git',       { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 NeoBundleLazy 'derekwyatt/vim-scala.git',    { 'autoload' : { 'filetypes' :[ "scala"], }, }
