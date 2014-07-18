@@ -10,3 +10,7 @@ endif
 scriptencoding utf-8
 set encoding=utf-8
 set fileencoding=utf8
+
+" MacVim の日本語入力(IM)自動オン/オフ を無効
+" @see https://code.google.com/p/macvim-kaoriya/wiki/Readme#日本語入力(IM)自動オン/オフ
+set imdisable
