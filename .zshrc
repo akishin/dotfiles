@@ -6,17 +6,30 @@ autoload -Uz promptinit
 promptinit
 prompt adam1
 
-setopt histignorealldups sharehistory
+### History
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+setopt extended_history                # コマンドの開始時刻と経過時間を登録
+setopt share_history                   # ヒストリの共有 for GNU Screen
+setopt inc_append_history              # 履歴を直ぐに反映
+setopt hist_ignore_space               # コマンド行先頭が空白の時登録しない
+setopt hist_ignore_all_dups            # 重複ヒストリは古い方を削除
+setopt hist_reduce_blanks              # 余分なスペースを削除
+setopt hist_no_store                   # historyコマンドは登録しない
 
 # Use vim keybindings
 bindkey -v
 bindkey "^P" up-line-or-history
 bindkey "^N" down-line-or-history
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
+### Change Directory
+setopt auto_pushd           # cd 時に Tab 補完
+setopt pushd_to_home        # pushd を引数無しで実行した時に pushd ~ とする
+setopt pushd_ignore_dups    # ディレクトリスタックに重複する物は古い方を削除
+DIRSTACKSIZE=20
 
 # alias settings
 load-if-exists ~/dotfiles/.zshrc.alias
@@ -36,6 +49,7 @@ esac
 # local settings
 load-if-exists ~/.zshrc.local
 
+### Completion
 # Use modern completion system
 autoload -Uz compinit
 compinit
@@ -54,9 +68,13 @@ zstyle ':completion:*' menu select=long
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
-
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+setopt auto_list              # 補完候補を一覧で表示
+setopt auto_param_slash       # 補完候補がディレクトリの場合, 末尾に / を追加
+setopt list_packed            # 補完候補をできるだけ詰めて表示
+setopt list_types             # 補完候補のファイル種別を識別
 
 # for bundler (bundle open)
 export BUNDLER_EDITOR='/usr/bin/vim -g'
