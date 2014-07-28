@@ -560,6 +560,13 @@ if isdirectory($HOME . '/.vim/bundle/YankRing.vim')
     let g:yankring_window_height = 15
 endif
 
+" for rcmdnk/vim-markdown
+if isdirectory($HOME . '/.vim/bundle/vim-markdown')
+    " let g:vim_markdown_initial_foldlevel=1
+    let g:vim_markdown_folding_disabled=1
+    let g:vim_markdown_no_default_key_mappings=1
+endif
+
 " for QFixGrep
 if isdirectory($HOME . '/.vim/bundle/qfixgrep')
   " マルチエンコーディングgrepモード
@@ -576,5 +583,8 @@ if isdirectory($HOME . '/.vim/bundle/qfixgrep')
 
   " QFixGrepでロケーションリストを使用する/しない
   let MyGrep_UseLocationList = 0
+
+  " ,tq で Quickfix ウィンドウを ON/OF
+  nnoremap <silent> ,tq :ToggleQFixWin<CR>
 endif
 
