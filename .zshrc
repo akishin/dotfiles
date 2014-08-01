@@ -1,10 +1,12 @@
 function load-if-exists() { test -e "$1" && source "$1" }
 function exists { which $1 &> /dev/null }
 
-# Set up the prompt
+### Prompt
 autoload -Uz promptinit
 promptinit
 prompt adam1
+# adam1 prompt color
+# prompt adam1 red white cyan
 
 ### History
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
@@ -24,6 +26,8 @@ setopt hist_no_store                   # historyコマンドは登録しない
 bindkey -v
 bindkey "^P" up-line-or-history
 bindkey "^N" down-line-or-history
+# インサートモードで Ctrl-A で行頭に戻れるように
+bindkey "^A" beginning-of-line
 
 ### Change Directory
 setopt auto_pushd           # cd 時に Tab 補完
