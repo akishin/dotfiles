@@ -92,6 +92,7 @@ augroup MyVimrc
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
     autocmd BufNewFile,BufRead *.slim   set filetype=slim
     autocmd BufNewFile,BufRead *.go     set filetype=go
+    autocmd BufNewFile,BufRead *.psgi   set filetype=perl
 
     " テキストの自動改行を OFF が上書きされないようにする
     autocmd FileType * setlocal textwidth=0
