@@ -31,6 +31,9 @@ set ttymouse=xterm2            " ターミナルでのマウスの動作を指�
 set clipboard+=unnamed         " OS のクリップボードを使用
 " set autochdir                  " 開いたファイルのディレクトリに自動で移動
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
+set splitbelow                 " sp で分割時新しいウィンドウを下に開く
+set splitright                 " vsp で分割時新しいウィンドウを右に開く
+set regexpengine=1             " 旧正規表現エンジンを使う
 
 " KaoriYa 版 Vim(GVim,MacVim) でコマンドモードに戻る際に IME を OFF
 " set imdisable
@@ -67,10 +70,19 @@ endif
 
 " シンタックスハイライト有効
 syntax on
+" シンタックスハイライトを適用する一行内の文字数の最大値
+set synmaxcol=256
 " ファイルタイプ判定を有効
 filetype plugin on
 " ファイルタイプにあわせたインデントを利用する
 filetype indent on
+
+" vim-ruby のオムニ補完設定(ft-ruby-omni)
+let g:rubycomplete_rails = 1
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_include_object = 1
+let g:rubycomplete_include_object_space = 1
 
 " 取り敢えず自分用の augroup は一個にしてみた
 " 細かい粒度でグループ定義するのとどっちがいいのか？
@@ -119,6 +131,8 @@ augroup MyVimrc
     if exists('##InsertCharPre')
         autocmd InsertCharPre <buffer> if v:char == '　' | let v:char = " " | endif
     endif
+    " 補完
+    autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 augroup END
 
 " 文字コードを変えて開き直す
@@ -191,11 +205,6 @@ imap <C-Space> <C-x><C-o>
 nnoremap [Show] <Nop>
 nmap <Space>s [Show]
 nnoremap [Show]s  :<C-u>setl spell!<CR>
-
-" Rubyのオムニ補完を設定(ft-ruby-omni)
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
 
 " for neobundle
 if filereadable(expand("~/dotfiles/.vimrc.neobundle"))
