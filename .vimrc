@@ -33,7 +33,10 @@ set clipboard+=unnamed         " OS のクリップボードを使用
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set splitbelow                 " sp で分割時新しいウィンドウを下に開く
 set splitright                 " vsp で分割時新しいウィンドウを右に開く
-set regexpengine=1             " 旧正規表現エンジンを使う
+
+if version >= 704
+    set regexpengine=1         " 旧正規表現エンジンを使う
+endif
 
 " KaoriYa 版 Vim(GVim,MacVim) でコマンドモードに戻る際に IME を OFF
 " set imdisable
