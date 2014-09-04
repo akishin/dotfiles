@@ -4,9 +4,6 @@ set lines=60
 " 横幅
 set columns=160
 
-" クリップボード共有
-set clipboard=unnamed
-
 " ツールバーを削除
 set guioptions-=T
 
