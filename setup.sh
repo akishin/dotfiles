@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOT_FILES=( .zshrc .gitconfig .inputrc .gemrc .irbrc .pryrc .screenrc .vimrc .gvimrc .vimshrc .tmux.conf .vim/ftplugin/ruby.vim .percol.d)
+DOT_FILES=( .zshrc .gitconfig .inputrc .gemrc .irbrc .pryrc .screenrc .vimrc .gvimrc .vimshrc .tmux.conf .vim/ftplugin/ruby.vim .percol.d .bundle)
 
 # .vim ディレクトリが存在しなければ作成
 if [ ! -d $HOME/.vim/ftplugin ] ; then
