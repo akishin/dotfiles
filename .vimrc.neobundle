@@ -21,6 +21,7 @@ NeoBundle     'vim-scripts/SrcExpl'
 NeoBundle     'vim-scripts/matchit.zip'
 NeoBundle     'vim-scripts/Align'
 " NeoBundle     'vim-scripts/YankRing.vim'
+NeoBundle     'LeafCage/yankround.vim'
 NeoBundle     'vim-scripts/taglist.vim'
 NeoBundleLazy 'vim-scripts/nginx.vim', { 'autoload' : { 'filetypes' :[ "nginx"], }, }
 NeoBundleLazy 'tpope/vim-rails',   { 'autoload' : { 'filetypes' :[ "ruby"], }, }
