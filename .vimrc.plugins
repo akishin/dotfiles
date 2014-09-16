@@ -574,6 +574,14 @@ if isdirectory($HOME . '/.vim/bundle/yankround.vim')
     nmap <C-n> <Plug>(yankround-next)
 endif
 
+" for yanktmp.vim
+if isdirectory($HOME . '/.vim/bundle/yanktmp.vim')
+    let g:yanktmp_file = expand($HOME) . '/tmp/.yank_tmp_file'
+    map <silent> sy :call YanktmpYank()<CR>
+    map <silent> sp :call YanktmpPaste_p()<CR>
+    map <silent> sP :call YanktmpPaste_P()<CR>
+endif
+
 " for rcmdnk/vim-markdown
 if isdirectory($HOME . '/.vim/bundle/vim-markdown')
     " let g:vim_markdown_initial_foldlevel=1
