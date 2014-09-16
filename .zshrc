@@ -28,6 +28,8 @@ bindkey "^P" up-line-or-history
 bindkey "^N" down-line-or-history
 # インサートモードで Ctrl-A で行頭に戻れるように
 bindkey "^A" beginning-of-line
+# インサートモードで Ctrl-E で行末に移動出来るように
+bindkey "^E" end-of-line
 
 ### Change Directory
 setopt auto_pushd           # cd 時に Tab 補完
