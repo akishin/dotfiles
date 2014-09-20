@@ -157,13 +157,18 @@ fi
 # z.sh
 load-if-exists ~/z/z.sh
 
-# percol
-if exists percol; then
+# peco or percol
+if exists peco; then
+  PERCOL_COMMAND=peco
+elif exists percol; then
+  PERCOL_COMMAND=percol
+fi
+if [ -n $PERCOL_COMMAND ]; then
     function ppgrep() {
         if [[ $1 == "" ]]; then
-            PERCOL=percol
+            PERCOL=$PERCOL_COMMAND
         else
-            PERCOL="percol --query $1"
+            PERCOL="${PERCOL_COMMAND} --query $1"
         fi
         ps aux | eval $PERCOL | awk '{ print $2 }'
     }
@@ -181,11 +186,10 @@ if exists percol; then
     function percol_select_history() {
         local tac
         exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
-        BUFFER=$(history -n 1 | eval $tac | percol --query "$LBUFFER")
+        BUFFER=$(history -n 1 | eval $tac | $PERCOL_COMMAND --query "$LBUFFER")
         CURSOR=$#BUFFER         # move cursor
         zle -R -c               # refresh
     }
-
     zle -N percol_select_history
     bindkey '^R' percol_select_history
 
@@ -196,7 +200,7 @@ if exists percol; then
         else
             tac="tail -r"
         fi
-        local dest=$(_z -r 2>&1 | eval $tac | percol --query "$LBUFFER" | awk '{ print $2 }')
+        local dest=$(_z -r 2>&1 | eval $tac | $PERCOL_COMMAND --query "$LBUFFER" | awk '{ print $2 }')
         if [ -n "${dest}" ]; then
             cd ${dest}
         fi
