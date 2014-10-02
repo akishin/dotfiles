@@ -193,6 +193,8 @@ endif
 
 " for neocomplete
 if isdirectory($HOME . '/.vim/bundle/neocomplete') && g:Meet_neocomplete_requirements()
+    " 日本語入力時に無効化する
+    let g:neocomplete#lock_iminsert = 1
     " Disable AutoComplPop.
     let g:acp_enableAtStartup = 0
     " Use neocomplete.
