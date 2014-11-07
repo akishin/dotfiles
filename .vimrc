@@ -105,6 +105,8 @@ augroup MyVimrc
     autocmd BufNewFile,BufRead /etc/nginx/sites-available/* set filetype=nginx
     autocmd BufNewFile,BufRead *.less   set filetype=less
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
+    autocmd BufNewFile,BufRead *.coffee setlocal tabstop=2
+    autocmd BufNewFile,BufRead *.coffee setlocal shiftwidth=2
     autocmd BufNewFile,BufRead *.slim   set filetype=slim
     autocmd BufNewFile,BufRead *.go     set filetype=go
     autocmd BufNewFile,BufRead *.psgi   set filetype=perl
