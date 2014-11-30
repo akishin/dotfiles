@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 set number                     " 行番号表示
 set ruler                      " ルーラー表示
 set nowrap                     " 折り返さない

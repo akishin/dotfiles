@@ -1,4 +1,5 @@
 " for Plugin settings
+scriptencoding utf-8
 
 " for Vimproc
 if isdirectory($HOME . '/.vim/bundle/vimproc')

@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 " Vim が neocomplete 対応環境かどうかを返す
 function! g:Meet_neocomplete_requirements()
     return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
