@@ -12,4 +12,6 @@ if [ -d /Applications/MacVim.app/Contents/MacOS/ ]; then
     alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
     alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim "$@"'
     alias ctags='/Applications/MacVim.app/Contents/MacOS/ctags "$@"'
+    # for bundler (bundle open)
+    export BUNDLER_EDITOR='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim'
 fi;

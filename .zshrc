@@ -40,6 +40,9 @@ DIRSTACKSIZE=20
 # alias settings
 load-if-exists ~/dotfiles/.zshrc.alias
 
+# for bundler (bundle open)
+export BUNDLER_EDITOR='/usr/bin/vim -g'
+
 # OS specific settings
 case ${OSTYPE} in
     # Mac OS
@@ -81,9 +84,6 @@ setopt auto_list              # 補完候補を一覧で表示
 setopt auto_param_slash       # 補完候補がディレクトリの場合, 末尾に / を追加
 setopt list_packed            # 補完候補をできるだけ詰めて表示
 setopt list_types             # 補完候補のファイル種別を識別
-
-# for bundler (bundle open)
-export BUNDLER_EDITOR='/usr/bin/vim -g'
 
 # for VCS status
 # http://mollifier.hatenablog.com/entry/20100906/p1
