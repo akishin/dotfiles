@@ -8,4 +8,4 @@ function! MagicComment()
   return "# -*- coding: " . &fileencoding . " -*-\<CR>"
 endfunction
 
-inoreabbrev <buffer> ## <C-R>=MagicComment()<CR>
+inoreabbrev <buffer> #### <C-R>=MagicComment()<CR>
