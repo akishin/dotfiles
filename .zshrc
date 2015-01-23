@@ -152,6 +152,9 @@ if [ -z $TMUX ]; then
     # new tmux session
     tmux
   fi
+fi
+
+if exists tmux; then
   function ssh() {
       local window_name=$(tmux display -p '#{window_name}')
       command ssh $@
