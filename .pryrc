@@ -1,5 +1,17 @@
-require 'hirb'
+begin
+  require 'hirb'
+  require 'hirb-unicode'
+  require 'tapp'
+  require 'awesome_print'
+rescue LoadError
+  # nop
+end
 
-Pry.config.print = proc do |output, value|
-  Hirb::View.view_or_page_output(value) || Pry::DEFAULT_PRINT.call(output, value)
+Pry.config.color = true
+Pry.config.editor = "vim"
+
+if defined? Hirb
+  Pry.config.print = proc do |output, value|
+      Hirb::View.view_or_page_output(value) || Pry::DEFAULT_PRINT.call(output, value)
+  end
 end

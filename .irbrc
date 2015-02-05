@@ -1,22 +1,30 @@
-require 'rubygems' rescue nil
-require 'irb/completion'
-require 'wirble'
-require 'hirb'
-require 'hirb-unicode'
-require 'pp'
-require 'tapp'
-require 'awesome_print'
+begin
+  require 'rubygems'
+  require 'irb/completion'
+  require 'wirble'
+  require 'hirb'
+  require 'hirb-unicode'
+  require 'pp'
+  require 'tapp'
+  require 'awesome_print'
+rescue LoadError
+  # nop
+end
 
 IRB.conf[:PROMPT_MODE]  = :DEFAULT
 IRB.conf[:SAVE_HISTORY] = 100000
 IRB.conf[:AUTO_INDENT] = true
 
 # load wirble
-Wirble.init
-Wirble.colorize
+if defined? Wirble
+  Wirble.init
+  Wirble.colorize
+end
 
 # load hirb
-Hirb.enable
+if defined? Hirb
+  Hirb.enable
+end
 
 # Rails Logger Setting
 if ENV.include?('RAILS_ENV')
@@ -41,4 +49,3 @@ elsif defined?(Rails) && !Rails.env.nil?
 else
   # nothing to do
 end
-
