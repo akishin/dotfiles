@@ -129,8 +129,8 @@ if isdirectory($HOME . '/.vim/bundle/syntastic')
 
     " for perl
     " see: http://d.hatena.ne.jp/oppara/20140515/p1
-    let g:syntastic_enable_perl_checker = 1
-    let g:syntastic_perl_checkers = ['perl', 'podchecker']
+    " let g:syntastic_enable_perl_checker = 1
+    " let g:syntastic_perl_checkers = ['perl', 'podchecker']
 endif
 
 " for neocomplcache
