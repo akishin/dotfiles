@@ -11,7 +11,8 @@ rescue LoadError
   # nop
 end
 
-IRB.conf[:PROMPT_MODE]  = :DEFAULT
+# IRB.conf[:PROMPT_MODE]  = :DEFAULT
+IRB.conf[:PROMPT_MODE]  = :SIMPLE
 IRB.conf[:SAVE_HISTORY] = 100000
 IRB.conf[:AUTO_INDENT] = true
 
