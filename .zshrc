@@ -9,32 +9,44 @@ prompt adam1
 # prompt adam1 red white cyan
 
 ### History
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
+# Keep 100000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=100000
+SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
-setopt extended_history                # コマンドの開始時刻と経過時間を登録
-setopt share_history                   # ヒストリの共有 for GNU Screen
-setopt inc_append_history              # 履歴を直ぐに反映
-setopt hist_ignore_space               # コマンド行先頭が空白の時登録しない
-setopt hist_ignore_all_dups            # 重複ヒストリは古い方を削除
-setopt hist_reduce_blanks              # 余分なスペースを削除
-# setopt hist_no_store                   # historyコマンドは登録しない
+setopt EXTENDED_HISTORY                # コマンドの開始時刻と経過時間を登録
+setopt SHARE_HISTORY                   # ヒストリの共有 for GNU Screen
+setopt INC_APPEND_HISTORY              # 履歴を直ぐに反映
+setopt HIST_IGNORE_SPACE               # コマンド行先頭が空白の時登録しない
+setopt HIST_IGNORE_ALL_DUPS            # 重複ヒストリは古い方を削除
+setopt HIST_REDUCE_BLANKS              # 余分なスペースを削除
+# setopt HIST_NO_STORE                   # historyコマンドは登録しない
+function history-all { history -E 1 }  # 全履歴の一覧を出力する
+
+# 補完時に文字列末尾へカーソル移動
+setopt ALWAYS_TO_END
+# Ctrl+S/Ctrl+Q によるフロー制御を使わないようにする
+setopt NO_FLOW_CONTROL
 
 # Use vim keybindings
 bindkey -v
-bindkey "^P" up-line-or-history
-bindkey "^N" down-line-or-history
+# bindkey '^P' up-line-or-history
+# bindkey '^N' down-line-or-history
+# 入力文字列から開始される履歴を検索
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
+# 履歴のインクリメンタルサーチ
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
 # インサートモードで Ctrl-A で行頭に戻れるように
-bindkey "^A" beginning-of-line
+bindkey '^A' beginning-of-line
 # インサートモードで Ctrl-E で行末に移動出来るように
-bindkey "^E" end-of-line
+bindkey '^E' end-of-line
 
 ### Change Directory
-setopt auto_pushd           # cd 時に Tab 補完
-setopt pushd_to_home        # pushd を引数無しで実行した時に pushd ~ とする
-setopt pushd_ignore_dups    # ディレクトリスタックに重複する物は古い方を削除
+setopt AUTO_PUSHD           # cd 時に Tab 補完
+setopt PUSHD_TO_HOME        # pushd を引数無しで実行した時に pushd ~ とする
+setopt PUSHD_IGNORE_DUPS    # ディレクトリスタックに重複する物は古い方を削除
 DIRSTACKSIZE=20
 
 # alias settings
