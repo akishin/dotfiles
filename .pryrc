@@ -11,8 +11,9 @@ Pry.config.color  = true
 Pry.config.editor = "vim"
 # Pry.config.pager  = false
 
-#if defined? Hirb
-#  Pry.config.print = proc do |output, value|
-#      Hirb::View.view_or_page_output(value) || Pry::DEFAULT_PRINT.call(output, value)
-#  end
-#end
+# https://github.com/cldwalker/hirb/issues/81
+if defined? Hirb
+  Pry.config.print = proc do |*args|
+    Hirb::View.view_or_page_output(args[1]) || Pry::DEFAULT_PRINT.call(*args)
+  end
+end
