@@ -1,7 +1,8 @@
 # for ls(dircolors)
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 
-alias updatedb='/usr/libexec/locate.updatedb'
+# locate
+alias updatedb='sudo PATH=/usr/bin:$PATH /usr/libexec/locate.updatedb'
 
 # MacVim Kaoriya
 if [ -d /Applications/MacVim.app/Contents/MacOS/ ]; then
