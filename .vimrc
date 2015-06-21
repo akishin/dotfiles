@@ -112,6 +112,8 @@ augroup MyVimrc
     autocmd BufNewFile,BufRead *.slim   set filetype=slim
     autocmd BufNewFile,BufRead *.go     set filetype=go
     autocmd BufNewFile,BufRead *.psgi   set filetype=perl
+    autocmd BufNewFile,BufRead *.cr setlocal tabstop=2
+    autocmd BufNewFile,BufRead *.cr setlocal shiftwidth=2
 
     " テキストの自動改行を OFF が上書きされないようにする
     autocmd FileType * setlocal textwidth=0
