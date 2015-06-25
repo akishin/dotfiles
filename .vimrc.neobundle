@@ -92,7 +92,8 @@ NeoBundleLazy 'othree/html5.vim',            { 'autoload' : { 'filetypes' :[ "ht
 NeoBundleLazy 'mattn/emmet-vim',             { 'autoload' : { 'filetypes' :[ "html"], }, }
 NeoBundleLazy 'hail2u/vim-css3-syntax',      { 'autoload' : { 'filetypes' :[ "css", "less" ], }, }
 NeoBundleLazy 'groenewege/vim-less',         { 'autoload' : { 'filename_patterns' :[ "\.less$" ], }, }
-NeoBundleLazy 'skammer/vim-css-color',       { 'autoload' : { 'filetypes' :[ "css", "less" ], }, }
+" NeoBundleLazy 'skammer/vim-css-color',       { 'autoload' : { 'filetypes' :[ "css", "less" ], }, }
+NeoBundleLazy 'lilydjwg/colorizer',          { 'autoload' : { 'filetypes' :[ "css", "less" ], }, }
 NeoBundleLazy 'kchmck/vim-coffee-script',    { 'autoload' : { 'filename_patterns' :[ "\.coffee$" ], }, }
 NeoBundleLazy 'pangloss/vim-javascript',     { 'autoload' : { 'filetypes' :[ "javascript" ], }, }
 NeoBundleLazy 'rcmdnk/vim-markdown',         { 'autoload' : { 'filetypes' :[ "markdown"], }, }
