@@ -100,8 +100,11 @@ augroup MyVimrc
 
     " ファイルタイプ設定
     " NeoBundleLazy してる場合に読込時にシンタックスハイライトが効かないので設定
-    autocmd BufNewFile,BufRead *_spec.rb set filetype=ruby.rspec
-    autocmd BufNewFile,BufRead *.md      set filetype=markdown
+    autocmd BufNewFile,BufRead *_spec.rb  set filetype=ruby.rspec
+    autocmd BufNewFile,BufRead *.jbuilder set filetype=ruby
+    autocmd BufNewFile,BufRead Guardfile  set filetype=ruby
+    autocmd BufNewFile,BufRead .pryrc     set filetype=ruby
+    autocmd BufNewFile,BufRead *.md       set filetype=markdown
     autocmd BufNewFile,BufRead /etc/nginx/nginx.conf        set filetype=nginx
     autocmd BufNewFile,BufRead /etc/nginx/conf.d/*          set filetype=nginx
     autocmd BufNewFile,BufRead /etc/nginx/sites-available/* set filetype=nginx
@@ -114,6 +117,9 @@ augroup MyVimrc
     autocmd BufNewFile,BufRead *.psgi   set filetype=perl
     autocmd BufNewFile,BufRead *.cr setlocal tabstop=2
     autocmd BufNewFile,BufRead *.cr setlocal shiftwidth=2
+
+    " Ruby の場合はカーソル下の単語に「?」を含める
+    autocmd FileType ruby setl iskeyword+=?
 
     " テキストの自動改行を OFF が上書きされないようにする
     autocmd FileType * setlocal textwidth=0
