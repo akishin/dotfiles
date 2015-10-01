@@ -118,6 +118,9 @@ augroup MyVimrc
     autocmd BufNewFile,BufRead *.cr setlocal tabstop=2
     autocmd BufNewFile,BufRead *.cr setlocal shiftwidth=2
 
+    " Perl の場合はカーソル下の単語に「$,%,@」を含める
+    autocmd FileType perl setl iskeyword+=$,%,@-@
+
     " Ruby の場合はカーソル下の単語に「?」を含める
     autocmd FileType ruby setl iskeyword+=?
 
