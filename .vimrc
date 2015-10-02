@@ -26,7 +26,7 @@ set formatoptions=lmoq         " テキスト整形オプション
 set vb t_vb=                   " ビープ音を鳴らさないようにする
 set noerrorbells               " エラー時のビープ音をオフ
 set colorcolumn=80             " 80文字目を色を変えて表示
-set history=256                " コマンドの履歴保持数
+set history=1024               " コマンドの履歴保持数
 set mouse=a                    " ターミナルでマウスを有効
 set guioptions+=a              " GUI 時にマウスでのビジュアル選択有効
 set ttymouse=xterm2            " ターミナルでのマウスの動作を指定
