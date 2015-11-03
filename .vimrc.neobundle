@@ -149,6 +149,7 @@ endif
 " Go 用
 if $GOPATH != ''
     NeoBundle     'dgryski/vim-godef'
+    NeoBundleLazy 'google/vim-ft-go',    { 'autoload' : { 'filetypes' :[ "go"], }, }
     NeoBundleLazy 'vim-jp/vim-go-extra', { 'autoload' : { 'filetypes' :[ "go"], }, }
 endif
 

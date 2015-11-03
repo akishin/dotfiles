@@ -18,28 +18,17 @@ endif
 
 " for golang
 if $GOROOT != ''
-  if $GOPATH != ''
-    " gocode
-    if isdirectory($GOPATH . "/src/github.com/nsf/gocode/vim")
-      set rtp+=$GOPATH/src/github.com/nsf/gocode/vim
+    " for vim-godef
+    if isdirectory($HOME . '/.vim/bundle/vim-godef')
+        " gd を押した時のウインドウの動作
+        let g:godef_split=0
+        let g:godef_same_file_in_same_window=1
     endif
-    " golint
-    if isdirectory($GOPATH . "/src/github.com/golang/lint/misc/vim")
-      set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-    endif
-  endif
 
-  augroup golang
-    " *.go ファイル保存時に自動フォーマットを行う
-    auto BufWritePre *.go Fmt
-  augroup END
-endif
-
-" for vim-godef
-if isdirectory($HOME . '/.vim/bundle/vim-godef')
-    " gd を押した時のウインドウの動作
-    let g:godef_split=0
-    let g:godef_same_file_in_same_window=1
+    augroup golang
+        " *.go ファイル保存時に自動フォーマットを行う
+        auto BufWritePre *.go Fmt
+    augroup END
 endif
 
 " for rsense
