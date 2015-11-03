@@ -149,6 +149,7 @@ endif
 " Go 用
 if $GOPATH != ''
     NeoBundle     'dgryski/vim-godef'
+    NeoBundleLazy 'vim-jp/vim-go-extra', { 'autoload' : { 'filetypes' :[ "go"], }, }
 endif
 
 " RSense 用

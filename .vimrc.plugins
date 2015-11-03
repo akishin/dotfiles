@@ -18,9 +18,6 @@ endif
 
 " for golang
 if $GOROOT != ''
-  " :Import, :Fmt, :Godoc などが使用可能になる
-  set rtp+=$GOROOT/misc/vim
-
   if $GOPATH != ''
     " gocode
     if isdirectory($GOPATH . "/src/github.com/nsf/gocode/vim")
