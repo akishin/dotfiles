@@ -155,8 +155,10 @@ endif
 
 " RSense 用
 if $RSENSE_HOME != ''
-    NeoBundleLazy 'm2ym/rsense',          { 'autoload' : { 'filetypes' :[ "ruby"], }, }
-    NeoBundleLazy 'alpaca-tc/vim-rsense', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
+    " NeoBundleLazy 'm2ym/rsense',          { 'autoload' : { 'filetypes' :[ "ruby"], }, }
+    " NeoBundleLazy 'alpaca-tc/vim-rsense', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
+    NeoBundleLazy 'marcus/rsense',                       { 'autoload' : { 'filetypes' :[ "ruby"], }, }
+    NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 endif
 
 " OS 別

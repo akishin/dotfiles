@@ -84,11 +84,11 @@ filetype plugin on
 filetype indent on
 
 " vim-ruby のオムニ補完設定(ft-ruby-omni)
-let g:rubycomplete_rails = 1
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_include_object = 1
-let g:rubycomplete_include_object_space = 1
+" let g:rubycomplete_rails = 1
+" let g:rubycomplete_buffer_loading = 1
+" let g:rubycomplete_classes_in_global = 1
+" let g:rubycomplete_include_object = 1
+" let g:rubycomplete_include_object_space = 1
 
 " 取り敢えず自分用の augroup は一個にしてみた
 " 細かい粒度でグループ定義するのとどっちがいいのか？
@@ -151,7 +151,7 @@ augroup MyVimrc
         autocmd InsertCharPre <buffer> if v:char == '　' | let v:char = " " | endif
     endif
     " 補完
-    autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+    " autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 augroup END
 
 " 文字コードを変えて開き直す
