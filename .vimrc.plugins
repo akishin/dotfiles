@@ -31,12 +31,6 @@ if $GOROOT != ''
     augroup END
 endif
 
-" for rsense
-if $RSENSE_HOME != ''
-    let g:rsenseHome = $RSENSE_HOME
-    let g:rsenseUseOmniFunc = 1
-endif
-
 " for Wombat
 if isdirectory($HOME . '/.vim/bundle/Wombat')
     colorscheme wombat
@@ -195,10 +189,11 @@ if isdirectory($HOME . '/.vim/bundle/neocomplete') && g:Meet_neocomplete_require
     " Use smartcase.
     let g:neocomplete#enable_smart_case = 1
     " Set minimum syntax keyword length.
+    let g:neocomplete#min_syntax_length = 3
     let g:neocomplete#sources#syntax#min_keyword_length = 3
     let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
     let g:neocomplete#enable_quick_match = 1
-    let g:neocomplete#enable_auto_select = 0
+    let g:neocomplete#enable_auto_select = 1
     let g:neocomplete#max_list = 20
     " Define dictionary.
     if !exists('g:neocomplete#keyword_patterns')
@@ -222,13 +217,17 @@ if isdirectory($HOME . '/.vim/bundle/neocomplete') && g:Meet_neocomplete_require
     inoremap <expr><C-e>  neocomplete#cancel_popup()
     " Close popup by <Space>.
     "inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
     " Enable omni completion.
     autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
     autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
-    " autocmd FileType ruby          setlocal omnifunc=rubycomplete#Complete
+    autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType coffee        setlocal omnifunc=jscomplete#CompleteJS
+    autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType php           setlocal omnifunc=phpcomplete#CompletePHP
+    autocmd FileType c             setlocal omnifunc=ccomplete#Complete
+
     " Enable heavy omni completion.
     if !exists('g:neocomplete#sources#omni#input_patterns')
       let g:neocomplete#sources#omni#input_patterns = {}
@@ -242,12 +241,51 @@ if isdirectory($HOME . '/.vim/bundle/neocomplete') && g:Meet_neocomplete_require
     if !exists('g:neocomplete#force_omni_input_patterns')
       let g:neocomplete#force_omni_input_patterns = {}
     endif
-    let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
+    " for rsense
+    if $RSENSE_HOME != ''
+        let g:rsenseHome = $RSENSE_HOME
+        let g:rsenseUseOmniFunc = 1
+        let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+    else
+        autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+    endif
+
     let g:neocomplete#force_omni_input_patterns.go = '\h\w*\.\?'
     let g:neocomplete#text_mode_filetypes = {
         \  'gitcommit': 1,
         \  'markdown': 1,
         \}
+
+    " " Define dictionary.
+    " let g:neocomplete#dictionary_filetype_lists = {
+    "     \ 'default' : '',
+    "     \ 'vimshell' : $HOME.'/.vimshell_hist',
+    "     \ 'java' : $HOME.'/.vim/dict/java.dict',
+    "     \ 'javascript' : $HOME.'/.vim/dict/javascript.dict',
+    "     \ 'coffee' : $HOME.'/.vim/dict/javascript.dict',
+    "     \ 'vim' : $HOME.'/.vim/dict/vim.dict'
+    "     \ }
+    " " インクルードパスの指定
+    " let g:neocomplete#include_paths = {
+      " \ 'ruby' : '.,$HOME/.rvm/rubies/**/lib/ruby/1.8/',
+      " \ }
+    " " インクルード文のパターンを指定
+    " let g:neocomplete#include_patterns = {
+      " \ 'ruby'       : '^\s*require',
+      " \ 'javascript' : '^\s*require',
+      " \ 'coffee'     : '^\s*require',
+      " \ }
+    " " インクルード先のファイル名の解析パターン
+    " let g:neocomplete#include_exprs = {
+      " \ 'ruby' : substitute(v:fname,'::','/','g')
+      " \ }
+    " " ファイルを探す際にこの値を末尾に追加したファイルも探す
+    " let g:neocomplete#include_suffixes = {
+      " \ 'ruby'       : '.rb',
+      " \ 'javascript' : '.js',
+      " \ 'coffee'     : '.coffee',
+      " \ }
 endif
 
 " for neosnippet
