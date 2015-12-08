@@ -99,7 +99,9 @@ NeoBundleLazy 'pangloss/vim-javascript',     { 'autoload' : { 'filetypes' :[ "ja
 NeoBundleLazy 'rcmdnk/vim-markdown',         { 'autoload' : { 'filetypes' :[ "markdown"], }, }
 NeoBundleLazy 'elixir-lang/vim-elixir',      { 'autoload' : { 'filetypes' :[ "elixir"], }, }
 NeoBundleLazy 'rhysd/vim-crystal',           { 'autoload' : { 'filetypes' :[ "crystal"], }, }
-NeoBundleLazy 'syngan/vim-pukiwiki',         { 'autoload' : { 'commands' : 'PukiWiki' }, }
+" 最新だと「write(1) failed: Vital.Web.Http.request(syngan): curl: Too many redirects. When following redirects, curl hit the maximum amount.」が出て更新できなくなる環境がある
+" 既に最新が入ってしまっている環境の場合は :NeoBundleReinstall vim-pukiwiki を実行
+NeoBundleLazy 'syngan/vim-pukiwiki',         { 'rev': '24ac92f565', 'autoload' : { 'commands' : 'PukiWiki' }, }
 NeoBundleLazy 'fuenor/qfixgrep',             { 'autoload' : { 'commands' : ['Grep', 'Egrep', 'RGrep', 'FGrep', 'RFGrep', 'BGrep'], }, }
 NeoBundle     'rking/ag.vim'
 NeoBundle     'nathanaelkane/vim-indent-guides'
