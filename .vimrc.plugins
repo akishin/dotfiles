@@ -557,9 +557,11 @@ endif
 
 " for VimShell
 if isdirectory($HOME . '/.vim/bundle/vimshell')
-    let g:vimshell_prompt_expr = 'getcwd()." > "'
-    let g:vimshell_prompt_pattern = '^\f\+ > '
-
+    let g:vimshell_prompt_expr    = 'getcwd()." % "'
+    let g:vimshell_prompt_pattern = '^\f\+ % '
+    " new, vnew, nicely, tabnew
+    let g:vimshell_split_command = 'new'
+    let g:vimshell_popup_height  = 20
     " <Space>vs で VimShell 起動
     noremap <silent> <Space>vs :execute("VimShellPop -toggle ".expand("%:p:h"))<CR>
 endif
