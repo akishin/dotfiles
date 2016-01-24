@@ -24,7 +24,8 @@ if $GOROOT != ''
         let g:godef_split=0
         let g:godef_same_file_in_same_window=1
     endif
-
+    " gofmt の代わりに goimports コマンドを使う
+    let g:gofmt_command = 'goimports'
     augroup golang
         " *.go ファイル保存時に自動フォーマットを行う
         auto BufWritePre *.go Fmt
