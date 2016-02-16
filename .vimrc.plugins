@@ -229,6 +229,11 @@ if isdirectory($HOME . '/.vim/bundle/neocomplete') && g:Meet_neocomplete_require
     autocmd FileType php           setlocal omnifunc=phpcomplete#CompletePHP
     autocmd FileType c             setlocal omnifunc=ccomplete#Complete
 
+    if !exists('g:neocomplete#omni_patterns')
+        let g:neocomplete#omni_patterns = {}
+    endif
+    let g:neocomplete#omni_patterns.go = '\h\w*\.\?'
+
     " Enable heavy omni completion.
     if !exists('g:neocomplete#sources#omni#input_patterns')
       let g:neocomplete#sources#omni#input_patterns = {}
@@ -238,10 +243,12 @@ if isdirectory($HOME . '/.vim/bundle/neocomplete') && g:Meet_neocomplete_require
     let g:neocomplete#sources#omni#input_patterns.c    = '[^.[:digit:] *\t]\%(\.\|->\)'
     let g:neocomplete#sources#omni#input_patterns.cpp  = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
     let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+    let g:neocomplete#sources#omni#input_patterns.go   = '\h\w*\.\?'
 
     if !exists('g:neocomplete#force_omni_input_patterns')
       let g:neocomplete#force_omni_input_patterns = {}
     endif
+    let g:neocomplete#force_omni_input_patterns.go = '\h\w*\.\?'
 
     " for rsense
     if $RSENSE_HOME != ''
@@ -252,7 +259,6 @@ if isdirectory($HOME . '/.vim/bundle/neocomplete') && g:Meet_neocomplete_require
         autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
     endif
 
-    let g:neocomplete#force_omni_input_patterns.go = '\h\w*\.\?'
     let g:neocomplete#text_mode_filetypes = {
         \  'gitcommit': 1,
         \  'markdown': 1,
