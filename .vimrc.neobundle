@@ -1,5 +1,8 @@
 scriptencoding utf-8
 
+" for itchyny/vim-parenmatch
+let g:loaded_matchparen = 1
+
 " Vim が neocomplete 対応環境かどうかを返す
 function! g:Meet_neocomplete_requirements()
     return has('lua') && (v:version > 703 || (v:version == 703 && has('patch885')))
@@ -76,6 +79,8 @@ NeoBundle     'The-NERD-tree'
 NeoBundle     'The-NERD-Commenter'
 NeoBundle     'scrooloose/syntastic'
 NeoBundle     'itchyny/lightline.vim'
+NeoBundle     'itchyny/vim-cursorword'
+NeoBundle     'itchyny/vim-parenmatch'
 NeoBundle     'kana/vim-submode'
 NeoBundle     'kana/vim-textobj-user'
 NeoBundle     'kana/vim-textobj-syntax'
