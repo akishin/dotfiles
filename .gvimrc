@@ -11,6 +11,7 @@ set guioptions-=T
 set encoding=utf8
 
 " 無名レジスタに入るデータを、*レジスタにも入れる
+" http://nanasi.jp/articles/howto/editing/clipboard.html
 set clipboard+=unnamed
 
 " for NERDTree

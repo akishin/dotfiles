@@ -96,11 +96,6 @@ endif
 " 細かい粒度でグループ定義するのとどっちがいいのか？
 augroup MyVimrc
     autocmd!
-    " 以下のファイルは UTF-8
-    autocmd FileType go        setlocal fileencoding=utf-8
-    autocmd FileType ruby      setlocal fileencoding=utf-8
-    autocmd FileType gitcommit setlocal fileencoding=utf-8
-
     " ファイルタイプ設定
     " NeoBundleLazy してる場合に読込時にシンタックスハイライトが効かないので設定
     autocmd BufNewFile,BufRead *_spec.rb  set filetype=ruby.rspec
@@ -120,6 +115,12 @@ augroup MyVimrc
     autocmd BufNewFile,BufRead *.psgi   set filetype=perl
     autocmd BufNewFile,BufRead *.cr setlocal tabstop=2
     autocmd BufNewFile,BufRead *.cr setlocal shiftwidth=2
+
+    " 以下のファイルは UTF-8
+    autocmd FileType go        setlocal fileencoding=utf-8
+    autocmd FileType ruby      setlocal fileencoding=utf-8
+    autocmd FileType gitcommit setlocal fileencoding=utf-8
+    autocmd FileType markdown  setlocal fileencoding=utf-8
 
     " Perl の場合はカーソル下の単語に「$,%,@」を含める
     autocmd FileType perl setl iskeyword+=$,%,@-@
