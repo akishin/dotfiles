@@ -33,7 +33,7 @@ NeoBundleLazy 'vim-scripts/nginx.vim', { 'autoload' : { 'filetypes' :[ "nginx"],
 NeoBundleLazy 'tpope/vim-rails',   { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 " NeoBundleLazy 'tpope/vim-rake',    { 'autoload' : { 'filetypes' :[ "ruby"], }, }
 " NeoBundleLazy 'tpope/vim-bundler', { 'autoload' : { 'filetypes' :[ "ruby"], }, }
-" NeoBundle     'tpope/vim-fugitive'
+NeoBundle     'tpope/vim-fugitive'
 NeoBundle     'tpope/vim-surround'
 NeoBundle     'tpope/vim-endwise'
 NeoBundleLazy 'Shougo/unite.vim', {

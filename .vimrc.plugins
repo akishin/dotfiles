@@ -2,10 +2,10 @@
 scriptencoding utf-8
 
 " for Vimfiler
-if isdirectory($HOME . '/.vim/bundle/vimfiler')
-    " Vimfiler をデフォルトのファイラーに設定
-    let g:vimfiler_as_default_explorer = 1
-endif
+" if isdirectory($HOME . '/.vim/bundle/vimfiler')
+    " " Vimfiler をデフォルトのファイラーに設定
+    " let g:vimfiler_as_default_explorer = 1
+" endif
 
 " for golang
 if $GOPATH != ''
@@ -290,23 +290,23 @@ if isdirectory($HOME . '/.vim/bundle/neocomplete') && g:Meet_neocomplete_require
 endif
 
 " for neosnippet
-if isdirectory($HOME . '/.vim/bundle/neosnippet')
-    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" if isdirectory($HOME . '/.vim/bundle/neosnippet')
+    " imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    " smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 
-    "imap <expr><TAB> neosnippet#expandable() <Bar><bar> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-    imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-    smap <expr><TAB> neosnippet#expandable() <Bar><bar> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+    " "imap <expr><TAB> neosnippet#expandable() <Bar><bar> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+    " imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+    " smap <expr><TAB> neosnippet#expandable() <Bar><bar> neosnippet#jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-    if has('conceal')
-      set conceallevel=2 concealcursor=i
-    endif
+    " if has('conceal')
+      " set conceallevel=2 concealcursor=i
+    " endif
 
-    if isdirectory($HOME . '/.vim/bundle/snipmate-snippets')
-      let g:neosnippet#enable_snipmate_compatibility = 1
-      let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
-    endif
-endif
+    " if isdirectory($HOME . '/.vim/bundle/snipmate-snippets')
+      " let g:neosnippet#enable_snipmate_compatibility = 1
+      " let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
+    " endif
+" endif
 
 " for unite.vim
 if isdirectory($HOME . '/.vim/bundle/unite.vim')
@@ -557,24 +557,24 @@ if isdirectory($HOME . '/.vim/bundle/open-browser.vim')
 endif
 
 " for VimShell
-if isdirectory($HOME . '/.vim/bundle/vimshell')
-    let g:vimshell_prompt_expr    = 'getcwd()." % "'
-    let g:vimshell_prompt_pattern = '^\f\+ % '
-    " new, vnew, nicely, tabnew
-    let g:vimshell_split_command = 'new'
-    let g:vimshell_popup_height  = 20
-    " <Space>vs で VimShell 起動
-    noremap <silent> <Space>vs :execute("VimShellPop -toggle ".expand("%:p:h"))<CR>
-endif
+" if isdirectory($HOME . '/.vim/bundle/vimshell')
+    " let g:vimshell_prompt_expr    = 'getcwd()." % "'
+    " let g:vimshell_prompt_pattern = '^\f\+ % '
+    " " new, vnew, nicely, tabnew
+    " let g:vimshell_split_command = 'new'
+    " let g:vimshell_popup_height  = 20
+    " " <Space>vs で VimShell 起動
+    " noremap <silent> <Space>vs :execute("VimShellPop -toggle ".expand("%:p:h"))<CR>
+" endif
 
 " for simplenote.vim
-if isdirectory($HOME . '/.vim/bundle/simplenote.vim')
-    if filereadable(expand("~/.simplenoterc"))
-      source ~/.simplenoterc
-    endif
-    let g:SimplenoteListHeight=20
-    let g:SimplenoteVertical=1
-endif
+" if isdirectory($HOME . '/.vim/bundle/simplenote.vim')
+    " if filereadable(expand("~/.simplenoterc"))
+      " source ~/.simplenoterc
+    " endif
+    " let g:SimplenoteListHeight=20
+    " let g:SimplenoteVertical=1
+" endif
 
 " for vim-pukiwiki
 if isdirectory($HOME . '/.vim/bundle/vim-pukiwiki')
