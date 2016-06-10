@@ -1,15 +1,6 @@
 " for Plugin settings
 scriptencoding utf-8
 
-" for Vimproc
-if isdirectory($HOME . '/.vim/bundle/vimproc')
-    if has('win64')
-      " let g:vimproc_dll_path = $HOME . '.vim/bundle/vimproc/autoload/vimproc_win64.dll'
-      " Kaoriya
-      let g:vimproc_dll_path = $VIM . '/plugins/vimproc/autoload/vimproc_win64.dll'
-    endif
-endif
-
 " for Vimfiler
 if isdirectory($HOME . '/.vim/bundle/vimfiler')
     " Vimfiler をデフォルトのファイラーに設定
