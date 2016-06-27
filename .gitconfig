@@ -39,3 +39,5 @@
     generic = g move-first-line
     generic = G move-last-line
 
+[credential]
+	helper = cache --timeout=3600

@@ -122,6 +122,9 @@ augroup MyVimrc
     autocmd FileType gitcommit setlocal fileencoding=utf-8
     autocmd FileType markdown  setlocal fileencoding=utf-8
 
+    " PHP の場合はカーソル下の単語に「$」を含める
+    autocmd FileType php setl iskeyword+=$
+
     " Perl の場合はカーソル下の単語に「$,%,@」を含める
     autocmd FileType perl setl iskeyword+=$,%,@-@
 
