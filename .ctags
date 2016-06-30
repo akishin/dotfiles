@@ -36,7 +36,6 @@
 --regex-perl=/^\=head2\s+(.+)/-- \1/p,pod,Plain Old Documentation/
 --regex-perl=/^\=head[3-5]\s+(.+)/---- \1/p,pod,Plain Old Documentation/
 
---langdef=php
 --langmap=php:.php
 --regex-php=/^[ \t]*const[ \t]*([a-zA-Z]+[^=]*=.*);/\1/c,Class/i
 --regex-php=/^[ \t]*((var|protected|private|public|static).*);/\1/p,Properties/i
