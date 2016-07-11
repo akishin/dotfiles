@@ -3,7 +3,6 @@ scriptencoding utf-8
 set number                     " 行番号表示
 set ruler                      " ルーラー表示
 set nowrap                     " 折り返さない
-set autoread                   " 変更された場合に自動再読み込み
 set autoindent                 " 自動で一つ前の行と同じインデント
 set smartindent                " 高度な自動インデント
 set cindent                    " より高度なC 言語スタイルのインデント
