@@ -223,6 +223,9 @@ inoremap ） )
 " <C-Space>でomni補完
 imap <C-Space> <C-x><C-o>
 
+" 文字列選択してから「*」で選択した文字列で検索
+vnoremap * "zy:let @/ = @z<CR>n
+
 " Space-s,s で英語のスペルチェック切換え
 nnoremap [Show] <Nop>
 nmap <Space>s [Show]
