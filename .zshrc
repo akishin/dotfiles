@@ -27,6 +27,8 @@ function history-all { history -E 1 }  # 全履歴の一覧を出力する
 setopt ALWAYS_TO_END
 # Ctrl+S/Ctrl+Q によるフロー制御を使わないようにする
 setopt NO_FLOW_CONTROL
+# ファイル名の補間に失敗してもエラーとせずコマンドを起動する
+setopt NO_NOMATCH
 
 # Use vim keybindings
 bindkey -v
