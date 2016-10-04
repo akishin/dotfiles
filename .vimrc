@@ -114,6 +114,8 @@ augroup MyVimrc
     autocmd BufNewFile,BufRead *.psgi   set filetype=perl
     autocmd BufNewFile,BufRead *.cr setlocal tabstop=2
     autocmd BufNewFile,BufRead *.cr setlocal shiftwidth=2
+    autocmd BufNewFile,BufRead *.js setlocal tabstop=2
+    autocmd BufNewFile,BufRead *.js setlocal shiftwidth=2
 
     " 以下のファイルは UTF-8
     autocmd FileType go        setlocal fileencoding=utf-8

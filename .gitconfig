@@ -29,7 +29,7 @@
     ff   = false
 [push]
     # default の push 先は現在の branch のみ
-    default = tracking
+    default = upstream
 [pull]
     # pull --rebase
     rebase = true
