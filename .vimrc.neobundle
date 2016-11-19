@@ -95,6 +95,7 @@ NeoBundleLazy 'derekwyatt/vim-scala.git',    { 'autoload' : { 'filetypes' :[ "sc
 NeoBundleLazy 'wlangstroth/vim-haskell.git', { 'autoload' : { 'filetypes' :[ "haskell"], }, }
 NeoBundleLazy 'slim-template/vim-slim',      { 'autoload' : { 'filename_patterns' :[ "\.slim$"], }, }
 NeoBundleLazy 'digitaltoad/vim-pug',         { 'autoload' : { 'filename_patterns' :[ "\.pug$"], }, }
+NeoBundleLazy 'lumiliet/vim-twig',           { 'autoload' : { 'filename_patterns' :[ "\.twig$"], }, }
 NeoBundleLazy 'othree/html5.vim',            { 'autoload' : { 'filetypes' :[ "html"], }, }
 NeoBundleLazy 'mattn/emmet-vim',             { 'autoload' : { 'filetypes' :[ "html"], }, }
 NeoBundleLazy 'hail2u/vim-css3-syntax',      { 'autoload' : { 'filetypes' :[ "css", "less" ], }, }
