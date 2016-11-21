@@ -28,6 +28,11 @@ if isdirectory($HOME . '/.vim/bundle/Wombat')
     colorscheme wombat
 endif
 
+" for localvimrc
+if isdirectory($HOME . '/.vim/bundle/vim-localvimrc')
+    let g:localvimrc_ask = 0
+endif
+
 " for endwise
 if isdirectory($HOME . '/.vim/bundle/endwise.vim')
     let g:endwise_no_mappings=1
