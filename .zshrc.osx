@@ -7,12 +7,12 @@ alias updatedb='sudo PATH=/usr/bin:$PATH /usr/libexec/locate.updatedb'
 # MacVim Kaoriya
 if [ -d /Applications/MacVim.app/Contents/MacOS/ ]; then
     export MACVIM_HOME=/Applications/MacVim.app/Contents/MacOS/
-    export PATH="$MACVIM_HOME:$PATH"
-    export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+    export PATH="$MACVIM_HOME:$MACVIM_HOME/bin:$PATH"
+    export EDITOR=$MACVIM_HOME/Vim
     alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim -u $HOME/.vimrc "$@"'
     alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-    alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim "$@"'
+    alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/bin/mvim "$@"'
     alias ctags='/Applications/MacVim.app/Contents/MacOS/ctags "$@"'
     # for bundler (bundle open)
-    export BUNDLER_EDITOR='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/mvim'
+    export BUNDLER_EDITOR='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/bin/mvim'
 fi;
