@@ -107,15 +107,14 @@ augroup MyVimrc
     autocmd BufNewFile,BufRead /etc/nginx/sites-available/* set filetype=nginx
     autocmd BufNewFile,BufRead *.less   set filetype=less
     autocmd BufNewFile,BufRead *.coffee set filetype=coffee
-    autocmd BufNewFile,BufRead *.coffee setlocal tabstop=2
-    autocmd BufNewFile,BufRead *.coffee setlocal shiftwidth=2
+    autocmd BufNewFile,BufRead *.coffee setlocal tabstop=2 shiftwidth=2 fileencoding=utf-8
     autocmd BufNewFile,BufRead *.slim   set filetype=slim
     autocmd BufNewFile,BufRead *.go     set filetype=go
     autocmd BufNewFile,BufRead *.psgi   set filetype=perl
-    autocmd BufNewFile,BufRead *.cr setlocal tabstop=2
-    autocmd BufNewFile,BufRead *.cr setlocal shiftwidth=2
-    autocmd BufNewFile,BufRead *.js setlocal tabstop=2
-    autocmd BufNewFile,BufRead *.js setlocal shiftwidth=2
+    autocmd BufNewFile,BufRead *.cr setlocal tabstop=2 shiftwidth=2 fileencoding=utf-8
+
+    autocmd FileType html       setlocal tabstop=2 shiftwidth=2 fileencoding=utf-8
+    autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 fileencoding=utf-8
 
     " 以下のファイルは UTF-8
     autocmd FileType go        setlocal fileencoding=utf-8
@@ -134,6 +133,7 @@ augroup MyVimrc
 
     " テキストの自動改行を OFF が上書きされないようにする
     autocmd FileType * setlocal textwidth=0
+
     " 改行時に自動でコメント行が継続されないようにする
     autocmd FileType * setlocal formatoptions-=ro
 
