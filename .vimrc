@@ -114,6 +114,7 @@ augroup MyVimrc
     autocmd BufNewFile,BufRead *.cr setlocal tabstop=2 shiftwidth=2 fileencoding=utf-8
 
     autocmd FileType html       setlocal tabstop=2 shiftwidth=2 fileencoding=utf-8
+    autocmd FileType pug        setlocal tabstop=2 shiftwidth=2 fileencoding=utf-8
     autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 fileencoding=utf-8
 
     " 以下のファイルは UTF-8
