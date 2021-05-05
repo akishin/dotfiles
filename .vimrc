@@ -75,30 +75,9 @@ if isdirectory($HOME . '/tmp')
     set undodir=$HOME/tmp
 endif
 
-" シンタックスハイライト有効
-syntax on
-" シンタックスハイライトを適用する一行内の文字数の最大値
-set synmaxcol=256
-" ファイルタイプ判定を有効
-filetype plugin on
-" ファイルタイプにあわせたインデントを利用する
-filetype indent on
-
-if $RSENSE_HOME == ''
-    " vim-ruby のオムニ補完設定(ft-ruby-omni)
-    let g:rubycomplete_rails = 1
-    let g:rubycomplete_buffer_loading = 1
-    let g:rubycomplete_classes_in_global = 1
-    let g:rubycomplete_include_object = 1
-    let g:rubycomplete_include_object_space = 1
-endif
-
-" 取り敢えず自分用の augroup は一個にしてみた
-" 細かい粒度でグループ定義するのとどっちがいいのか？
 augroup MyVimrc
     autocmd!
     " ファイルタイプ設定
-    " NeoBundleLazy してる場合に読込時にシンタックスハイライトが効かないので設定
     autocmd BufNewFile,BufRead *_spec.rb  set filetype=ruby.rspec
     autocmd BufNewFile,BufRead *.jbuilder set filetype=ruby
     autocmd BufNewFile,BufRead Guardfile  set filetype=ruby
@@ -237,14 +216,9 @@ nnoremap [Show] <Nop>
 nmap <Space>s [Show]
 nnoremap [Show]s  :<C-u>setl spell!<CR>
 
-" for neobundle
-if filereadable(expand("~/dotfiles/.vimrc.neobundle"))
-    source ~/dotfiles/.vimrc.neobundle
-endif
-
-" for Plugin settings
-if filereadable(expand("~/dotfiles/.vimrc.plugins"))
-    source ~/dotfiles/.vimrc.plugins
+" for dein
+if filereadable(expand("~/dotfiles/.vimrc.dein"))
+    source ~/dotfiles/.vimrc.dein
 endif
 
 " OS 別 .vimrc
@@ -263,3 +237,12 @@ endif
 if filereadable(expand("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
+
+" シンタックスハイライト有効
+syntax on
+" シンタックスハイライトを適用する一行内の文字数の最大値
+set synmaxcol=256
+" ファイルタイプ判定を有効
+filetype plugin on
+" ファイルタイプにあわせたインデントを利用する
+filetype indent on

@@ -1,0 +1,374 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+  if has('win32')
+    let cmd = 'tools\\update-dll-mingw'
+  elseif has('win32unix') " for Cygwin
+    let cmd = 'make -f make_cygwin.mak'
+  elseif executable('gmake')
+    let cmd = 'gmake'
+  else
+    let cmd = 'make'
+  endif
+  let g:dein#plugin.build = cmd
+'''
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim', 'vim-textobj-user']
+
+[[plugins]]
+repo = 'sheerun/vim-wombat-scheme'
+hook_add = '''
+    augroup MyColorScheme
+        autocmd!
+        autocmd VimEnter * nested colorscheme wombat
+    augroup END
+'''
+
+[[plugins]]
+repo = 'chrisbra/matchit'
+
+[[plugins]]
+repo = 'LeafCage/yankround.vim'
+hook_add = '''
+    let g:yankround_max_history = 35
+    let g:yankround_dir         = expand($HOME) . '/tmp'
+    nmap p <Plug>(yankround-p)
+    xmap p <Plug>(yankround-p)
+    nmap P <Plug>(yankround-P)
+    nmap gp <Plug>(yankround-gp)
+    xmap gp <Plug>(yankround-gp)
+    nmap gP <Plug>(yankround-gP)
+    nmap <C-p> <Plug>(yankround-prev)
+    nmap <C-n> <Plug>(yankround-next)
+'''
+
+[[plugins]]
+repo = 'preservim/nerdtree'
+hook_add = '''
+    " 隠しファイルを表示
+    let NERDTreeShowHidden = 1
+    augroup MyNerdTree
+        autocmd!
+        autocmd VimEnter * wincmd p
+        autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+    augroup END
+    nmap <silent> <F7> :NERDTreeToggle<CR>
+'''
+
+[[plugins]]
+repo = 'preservim/nerdcommenter'
+hook_add = '''
+    " コメントの間にスペースを空ける
+    let NERDSpaceDelims = 1
+    " 未対応ファイルタイプのエラーメッセージを表示しない
+    let NERDShutUp=1
+'''
+
+[[plugins]]
+repo = 'scrooloose/syntastic'
+hook_add = '''
+    " Ctrl-e で Location List の表示・非表示を切換え
+    " see also :
+    "   http://stackoverflow.com/questions/17512794/toggle-error-location-panel-in-syntastic
+    function! ToggleErrors()
+        if empty(filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"'))
+             " No location/quickfix list shown, open syntastic error location panel
+             Errors
+        else
+            lclose
+        endif
+    endfunction
+    nnoremap <silent> <C-e> :<C-u>call ToggleErrors()<CR>
+
+    " for golang
+    if $GOPATH != ''
+      let g:syntastic_go_checkers = ['go', 'golint']
+    endif
+
+    " for perl
+    " see: http://d.hatena.ne.jp/oppara/20140515/p1
+    " let g:syntastic_enable_perl_checker = 1
+    " let g:syntastic_perl_checkers = ['perl', 'podchecker']
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+depends = ['vim-fugitive']
+hook_add = '''
+    if has("win32") || has("win64")
+        let g:lightline = {
+            \ 'colorscheme': 'wombat'
+            \ }
+    else
+        let g:lightline = {
+              \ 'colorscheme': 'wombat',
+              \ 'active': {
+              \   'left': [ [ 'mode', 'paste' ],
+              \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+              \ },
+              \ 'component_function': {
+              \   'fugitive': 'MyFugitive',
+              \   'readonly': 'MyReadonly',
+              \   'modified': 'MyModified'
+              \ },
+              \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
+              \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
+            \ }
+
+        function! MyModified()
+          if &filetype == "help"
+            return ""
+          elseif &modified
+            return "+"
+          elseif &modifiable
+            return ""
+          else
+            return ""
+          endif
+        endfunction
+
+        function! MyReadonly()
+          if &filetype == "help"
+            return ""
+          elseif &readonly
+            return "⭤"
+          else
+            return ""
+          endif
+        endfunction
+
+        function! MyFugitive()
+          if exists("*fugitive#head")
+            let _ = fugitive#head()
+            return strlen(_) ? '⭠ '._ : ''
+          endif
+          return ''
+        endfunction
+    endif
+'''
+
+[[plugins]]
+repo = 'itchyny/vim-cursorword'
+
+[[plugins]]
+repo = 'itchyny/vim-parenmatch'
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'kana/vim-submode'
+hook_add = '''
+    " Ctrl-w, > でウィンドウリサイズ用の submode に入る
+    call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+    call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+    call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>-')
+    call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>+')
+    call submode#map('winsize', 'n', '', '>', '<C-w>>')
+    call submode#map('winsize', 'n', '', '<', '<C-w><')
+    call submode#map('winsize', 'n', '', '+', '<C-w>-')
+    call submode#map('winsize', 'n', '', '-', '<C-w>+')
+'''
+
+[[plugins]]
+repo = 'kana/vim-smartinput'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+    let g:indent_guides_enable_on_vim_startup=1
+    let g:indent_guides_start_level = 1
+    let g:indent_guides_guide_size = 1
+    hi IndentGuidesOdd  ctermbg=green
+    hi IndentGuidesEven ctermbg=black
+'''
+
+[[plugins]]
+repo = 'tyru/vim-altercmd'
+hook_add = '''
+    call altercmd#load()
+
+    " for vim-ref
+    CAlterCommand rfc               Ref rfc
+    CAlterCommand man               Ref man
+    CAlterCommand refe              Ref refe
+    CAlterCommand ri                Ref ri
+    CAlterCommand ans[wers]         Ref answers
+    CAlterCommand cobuild           Ref cobuild
+    CAlterCommand hyper[dict]       Ref hyperdict
+    CAlterCommand longman           Ref longman
+    CAlterCommand oxford            Ref oxford
+    CAlterCommand synonym           Ref synonym
+    CAlterCommand ej                Ref webdict ej
+    CAlterCommand je                Ref webdict je
+    CAlterCommand yd[ict]           Ref webdict yahoo_dict
+    CAlterCommand wik[tionary]      Ref webdict wiktionary
+    CAlterCommand wiki[pedia]       Ref webdict wikipedia
+    CAlterCommand http[status]      HttpStatus
+'''
+
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+hook_add = '''
+    let g:netrw_nogx = 1 " disable netrw's gx mapping.
+    " URL 文字列上で gx でブラウザで開く
+    nmap gx <Plug>(openbrowser-smart-search)
+    " URL 文字列をビジュアル選択した上で gx でブラウザで開く
+    vmap gx <Plug>(openbrowser-smart-search)
+'''
+
+[[plugins]] # toml syntax
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'tpope/vim-endwise'
+hook_add = '''
+    let g:endwise_no_mappings=1
+    " kana/vim-smartinput との競合防止設定
+    " http://cohama.hateblo.jp/entry/20121017/1350482411
+
+    augroup MyAutoCmdGroup
+        autocmd!
+        autocmd FileType lua,ruby,sh,zsh,vb,vbnet,aspvbs,vim imap <buffer> <CR> <CR><Plug>DiscretionaryEnd
+    augroup END
+'''
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+hook_add = '''
+'''
+
+[[plugins]]
+repo = 'mattn/webapi-vim'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+    let g:quickrun_config = {}
+    let g:quickrun_config._ = {
+        \ 'outputter/buffer/split': ':botright 8sp',
+        \ 'runner': 'vimproc'
+        \ }
+    let g:quickrun_config['markdown'] = {
+        \ 'type': 'markdown/gfm',
+        \ 'outputter': 'browser'
+        \ }
+
+    " Gemfile の有無で bundle exec 有無を切り替える
+    let execs = findfile('Gemfile', '.;') != '' ? 'bundle exec' : ''
+    let g:quickrun_config['ruby.rspec'] = {
+        \ 'command': 'rspec',
+        \ 'exec': execs . ' %c %o %s %a'
+        \ }
+    let g:quickrun_config['ruby']  = {
+        \ 'exec': execs . ' %c %o %s %a'
+        \ }
+    " <C-c> で実行を強制終了させる
+    " quickrun.vim が実行していない場合には <C-c> を呼び出す
+    nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+'''
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+hook_add = '''
+    " FileType が text なら K で webdict を使う
+    autocmd FileType text call ref#register_detection('_', 'webdict') 
+    " vim-ref のバッファを q で閉じられるようにする
+    autocmd FileType ref-* nnoremap <buffer> <silent> q :<C-u>close<CR>
+
+    " 辞書定義
+    let g:ref_source_webdict_sites = {
+    \   'je': {
+    \     'url': 'http://dictionary.infoseek.ne.jp/jeword/%s',
+    \   },
+    \   'ej': {
+    \     'url': 'http://dictionary.infoseek.ne.jp/ejword/%s',
+    \   },
+    \   'yahoo_dict': {
+    \     'url': 'http://dic.search.yahoo.co.jp/search?p=%s',
+    \     'line': '57'
+    \   },
+    \   'wiktionary': {
+    \     'url': 'http://ja.wiktionary.org/wiki/%s',
+    \   },
+    \   'wikipedia': {
+    \     'url': 'http://ja.wikipedia.org/wiki/%s',
+    \     'line': '3'
+    \   },
+    \ }
+
+    " デフォルトサイト
+    let g:ref_source_webdict_sites.default = 'ej'
+
+    " 出力に対するフィルタ
+    " 最初の数行を削除
+    function! g:ref_source_webdict_sites.je.filter(output)
+      return join(split(a:output, "\n")[15 :], "\n")
+    endfunction
+
+    function! g:ref_source_webdict_sites.ej.filter(output)
+      return join(split(a:output, "\n")[15 :], "\n")
+    endfunction
+
+    function! g:ref_source_webdict_sites.wiktionary.filter(output)
+      return join(split(a:output, "\n")[18 :], "\n")
+    endfunction
+'''
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+hook_add = '''
+    " ウィンドウサイズ
+    let g:unite_winheight = 10
+    let g:unite_source_history_yank_enable =1
+    let g:unite_source_file_mru_limit = 200
+    " Ctrl-j でソースを開くとウィンドウを横分割で開く
+    autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+    autocmd FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+    " Ctrl-k でソースを開くとウィンドウを縦分割で開く
+    autocmd FileType unite nnoremap <silent> <buffer> <expr> <C-k> unite#do_action('vsplit')
+    autocmd FileType unite inoremap <silent> <buffer> <expr> <C-k> unite#do_action('vsplit')
+
+    nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
+    nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+    nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+    nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+    nnoremap <silent> ,ufr :<C-u>Unite buffer file_rec<CR>
+    nnoremap <silent> ,urefe :<C-u>Unite ref/refe<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+depends = ['unite.vim']
+hook_add = '''
+    nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+    nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
+    nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+depends = ['unite.vim']
+hook_add = '''
+    " nnoremap <silent> ,uo :<C-u>Unite -vertical -no-quit outline<CR>
+    nnoremap <silent> ,uo :<C-u>Unite -no-quit outline<CR>
+'''
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
