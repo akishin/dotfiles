@@ -14,16 +14,21 @@ set encoding=utf8
 " http://nanasi.jp/articles/howto/editing/clipboard.html
 set clipboard+=unnamed
 
+let s:plugin_dir = expand('~/.vim/dein/repos')
+
 " for NERDTree
 " GUI の時は初期状態でサイドバー表示
-if isdirectory($HOME . '/.vim/bundle/The-NERD-tree')
+if isdirectory(s:plugin_dir . '/github.com/preservim/nerdtree')
+    " 隠しファイルを表示
+    let NERDTreeShowHidden = 1
+    " 起動時に NERDTree を表示
     autocmd VimEnter * NERDTree
     autocmd VimEnter * wincmd p
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 endif
 
 " for Wombat
-if isdirectory($HOME . '/.vim/bundle/Wombat')
+if isdirectory(s:plugin_dir . '/github.com/sheerun/vim-wombat-scheme')
     colorscheme wombat
 endif
 

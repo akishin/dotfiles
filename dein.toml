@@ -4,9 +4,9 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
 hook_post_update = '''
-  if has('win32')
+  if dein#util#_is_windows()
     let cmd = 'tools\\update-dll-mingw'
-  elseif has('win32unix') " for Cygwin
+  elseif dein#util#_is_cygwin()
     let cmd = 'make -f make_cygwin.mak'
   elseif executable('gmake')
     let cmd = 'gmake'
@@ -57,6 +57,8 @@ hook_add = '''
     let NERDTreeShowHidden = 1
     augroup MyNerdTree
         autocmd!
+        " 起動時に NERDTree を表示
+        " autocmd VimEnter * NERDTree
         autocmd VimEnter * wincmd p
         autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
     augroup END
@@ -371,4 +373,37 @@ repo = 'junegunn/vim-easy-align'
 
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
+
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_text_edit_enabled = 1
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_auto_completeopt = 0
+let g:asyncomplete_popup_delay = 200
+
+nmap <silent> gd :LspDefinition<CR>
+nmap <silent> <C-]> :LspDefinition<CR>
+nmap <silent> <f2> :LspRename<CR>
+nmap <silent> <Leader>d :LspTypeDefinition<CR>
+nmap <silent> <Leader>r :LspReferences<CR>
+nmap <silent> <Leader>i :LspImplementation<CR>
+'''
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
+[[plugins]]
+repo = 'dense-analysis/ale'
 
