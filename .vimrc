@@ -216,6 +216,14 @@ nnoremap [Show] <Nop>
 nmap <Space>s [Show]
 nnoremap [Show]s  :<C-u>setl spell!<CR>
 
+" 補完の設定
+" see: https://note.com/yasukotelin/n/na87dc604e042
+set completeopt=menuone,noinsert
+" 補完表示時のEnterで改行をしない
+inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
+inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
+inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
+
 " for dein
 if filereadable(expand("~/dotfiles/.vimrc.dein"))
     source ~/dotfiles/.vimrc.dein
