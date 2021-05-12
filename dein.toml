@@ -387,10 +387,10 @@ repo = 'mattn/vim-lsp-settings'
 repo = 'dense-analysis/ale'
 hook_add = '''
   " ファイルを開いた時のチェックを実行しない
-  let g:ale_lint_on_enter=0
+  let g:ale_lint_on_enter = 0
   " 内容が変更された時にチェックを実行しない
-  let g:ale_lint_on_text_changed=0
+  let g:ale_lint_on_text_changed = 'never'
   " インサートモードを終了する時にチェックを実行
-  let g:ale_lint_on_insert_leave=1
+  let g:ale_lint_on_insert_leave = 1
 '''
 

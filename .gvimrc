@@ -7,6 +7,9 @@ set columns=160
 " ツールバーを削除
 set guioptions-=T
 
+" メニューバーを削除
+set guioptions-=m
+
 " gvim は UTF-8
 set encoding=utf8
 
@@ -14,11 +17,9 @@ set encoding=utf8
 " http://nanasi.jp/articles/howto/editing/clipboard.html
 set clipboard+=unnamed
 
-let s:plugin_dir = expand('~/.vim/dein/repos')
-
 " for NERDTree
 " GUI の時は初期状態でサイドバー表示
-if isdirectory(s:plugin_dir . '/github.com/preservim/nerdtree')
+if dein#tap('nerdtree')
     " 隠しファイルを表示
     let NERDTreeShowHidden = 1
     " 起動時に NERDTree を表示
@@ -28,7 +29,7 @@ if isdirectory(s:plugin_dir . '/github.com/preservim/nerdtree')
 endif
 
 " for Wombat
-if isdirectory(s:plugin_dir . '/github.com/sheerun/vim-wombat-scheme')
+if dein#tap('vim-wombat-scheme')
     colorscheme wombat
 endif
 
