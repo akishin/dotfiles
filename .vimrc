@@ -27,8 +27,6 @@ set noerrorbells               " エラー時のビープ音をオフ
 set colorcolumn=80             " 80文字目を色を変えて表示
 set history=1024               " コマンドの履歴保持数
 set mouse=a                    " ターミナルでマウスを有効
-set guioptions+=a              " GUI 時にマウスでのビジュアル選択有効
-set ttymouse=xterm2            " ターミナルでのマウスの動作を指定
 set clipboard+=unnamed         " OS のクリップボードを使用
 " set autochdir                  " 開いたファイルのディレクトリに自動で移動
 " set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
@@ -254,3 +252,7 @@ set synmaxcol=256
 filetype plugin on
 " ファイルタイプにあわせたインデントを利用する
 filetype indent on
+
+" ターミナルでのマウスの動作を指定
+set ttymouse=xterm2
+

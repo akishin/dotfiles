@@ -13,6 +13,9 @@ set guioptions-=m
 " gvim は UTF-8
 set encoding=utf8
 
+" GUI 時にマウスでのビジュアル選択有効
+set guioptions+=a
+
 " 無名レジスタに入るデータを、*レジスタにも入れる
 " http://nanasi.jp/articles/howto/editing/clipboard.html
 set clipboard+=unnamed

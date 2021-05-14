@@ -7,6 +7,16 @@ if [ ! -d $HOME/.vim/ftplugin ] ; then
     mkdir -p $HOME/.vim/ftplugin
 fi
 
+# .config/nvim ディレクトリが存在しなければ作成
+if [ ! -d $HOME/.config/nvim ] ; then
+    mkdir -p $HOME/.config/nvim
+fi
+
+# init.vim
+if [ ! -e $HOME/.config/nvim/init.vim ] ; then
+    ln -s $HOME/dotfiles/.config/nvim/init.vim $HOME/.config/nvim/init.vim
+fi
+
 for file in ${DOT_FILES[@]}
 do
     if [ ! -e $HOME/$file ] ; then
