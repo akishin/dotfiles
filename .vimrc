@@ -34,6 +34,11 @@ set splitbelow                 " sp で分割時新しいウィンドウを下�
 set splitright                 " vsp で分割時新しいウィンドウを右に開く
 set diffopt=vertical           " diff を常に縦分割
 
+" terminal 関連設定
+if has('terminal')
+    set termwinsize=10x0
+endif
+
 if version >= 704
     set regexpengine=1         " 旧正規表現エンジンを使う
 endif
