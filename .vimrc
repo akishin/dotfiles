@@ -211,6 +211,9 @@ inoremap ） )
 " <C-Space>でomni補完
 imap <C-Space> <C-x><C-o>
 
+" インサートモードで <C-f> でファイルパス補完
+inoremap <C-f> <C-x><C-f>
+
 " 文字列選択してから「*」で選択した文字列で検索
 vnoremap * "zy:let @/ = @z<CR>n
 

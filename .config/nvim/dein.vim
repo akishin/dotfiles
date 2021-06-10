@@ -4,7 +4,7 @@
 let g:loaded_matchparen = 1
 
 " install dir {{{
-let s:dein_dir = expand('~/.vim/dein')
+let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 " }}}
 
@@ -22,7 +22,7 @@ if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
   " .toml file
-  let s:toml = expand('~/dotfiles/dein.toml')
+  let s:toml = expand('~/dotfiles/.config/nvim/dein.toml')
 
   " read toml and cache
   call dein#load_toml(s:toml, {'lazy': 0})

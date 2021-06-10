@@ -9,3 +9,7 @@ if filereadable(expand("~/dotfiles/.config/nvim/mapping.vim"))
     source ~/dotfiles/.config/nvim/mapping.vim
 endif
 
+if filereadable(expand("~/dotfiles/.config/nvim/dein.vim"))
+    source ~/dotfiles/.config/nvim/dein.vim
+endif
+

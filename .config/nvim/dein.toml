@@ -1,0 +1,18 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'preservim/nerdtree'
+hook_add = '''
+  " 隠しファイルを表示
+  let NERDTreeShowHidden = 1
+  augroup MyNerdTree
+    autocmd!
+    " 起動時に NERDTree を表示
+    " autocmd VimEnter * NERDTree
+    autocmd VimEnter * wincmd p
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+  augroup END
+  nmap <silent> <F7> :NERDTreeToggle<CR>
+'''
+
