@@ -121,11 +121,8 @@ hook_add = '''
     endfunction
 
     function! MyFugitive()
-      if exists("*fugitive#head")
-        let _ = fugitive#head()
-        return strlen(_) ? '⭠ '._ : ''
-      endif
-      return ''
+      let _ = fugitive#head()
+      return strlen(_) ? '⭠ '._ : ''
     endfunction
   endif
 '''
