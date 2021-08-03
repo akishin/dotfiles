@@ -21,3 +21,6 @@ set horizontal-scroll-mode on
 "\C-n": history-search-forward
 "\e[A": history-search-backward
 "\e[B": history-search-forward
+
+# bracketed paste mode
+set enable-bracketed-paste on
