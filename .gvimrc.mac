@@ -1,13 +1,12 @@
 " vim: set ff=unix fenc=utf8 ft=vim :
 " gvim 
 if has('gui_macvim')
-
     " font は Ricty
-    set guifont=Ricty\ 10
-    
+    set guifont=Ricty\ Regular:h14
+
     " 半透明設定
     autocmd GUIEnter    * set transparency=20
     autocmd FocusGained * set transparency=20
     autocmd FocusLost   * set transparency=40
-    
 endif
+
