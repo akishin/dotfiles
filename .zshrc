@@ -70,7 +70,9 @@ case ${OSTYPE} in
 esac
 
 # local settings
-load-if-exists ~/.zshrc.local
+if [ -f ~/.zshrc.local ]; then
+    source ~/.zshrc.local
+fi
 
 ### Completion
 # Use modern completion system
