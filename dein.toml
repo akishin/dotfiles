@@ -119,7 +119,7 @@ hook_add = '''
     endfunction
 
     function! MyFugitive()
-      let _ = fugitive#head()
+      let _ = FugitiveHead()
       return strlen(_) ? '⭠ '._ : ''
     endfunction
   endif
