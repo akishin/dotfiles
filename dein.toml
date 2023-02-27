@@ -391,6 +391,7 @@ repo = 'mattn/vim-lsp-settings'
 [[plugins]]
 repo = 'dense-analysis/ale'
 hook_add = '''
+  let g:ale_use_neovim_diagnostics_api = 0
   " ファイルを開いた時のチェックを実行しない
   let g:ale_lint_on_enter = 0
   " 内容が変更された時にチェックを実行しない
