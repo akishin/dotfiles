@@ -6,11 +6,12 @@ for %%i in (.vimrc, .gvimrc) do (
 )
 
 @rem $HOME/vimfiles が存在しなければ作成
-if not exist %USERPROFILE%\vimfiles (
-  md %USERPROFILE%\vimfiles
+@set VIMFILES=\vimfiles
+if not exist %USERPROFILE%%VIMFILES% (
+  md %USERPROFILE%%VIMFILES%
 ) else if not exist %USERPROFILE%\.vim (
   @rem $HOME/vimfiles のシンボリックリンクとして $HOME/.vim を作成
-  mklink /D %USERPROFILE%\.vim %USERPROFILE%\vimfiles
+  mklink /D %USERPROFILE%\.vim %USERPROFILE%%VIMFILES%
 )
 
 @rem $HOME/vimfiles/ftplugin がなかったら作成し ftplugin のシンボリックリンクを貼る
