@@ -48,3 +48,8 @@ elseif has("win32") || has("win64")
     source ~/dotfiles/.gvimrc.win
 endif
 
+" for Local settings
+if filereadable(expand("~/.gvimrc.local"))
+    source ~/.gvimrc.local
+endif
+

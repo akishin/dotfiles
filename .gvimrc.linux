@@ -5,6 +5,6 @@ if has("gui_running")
     set lines=60
     " 横幅
     set columns=180
-    " font は Ricty
-    set guifont=Ricty\ 10
+    " font
+    set guifont=HackGen35\ 10
 endif
