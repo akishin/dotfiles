@@ -1,8 +1,8 @@
 " vim: set ff=unix fenc=utf8 ft=vim :
 " gvim 
 if has('gui_macvim')
-    " font は Ricty
-    set guifont=Ricty\ Regular:h12
+    " font
+    set guifont=HackGen35:h12
 
     " 半透明設定
     autocmd GUIEnter    * set transparency=20
