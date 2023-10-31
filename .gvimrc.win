@@ -1,10 +1,10 @@
 " gvim 
 if has("gui_running")
     " 縦幅
-    set lines=70
+    set lines=65
     
     " 横幅
-    set columns=200
+    set columns=250
 
     " フォントサイズ
     " set guifont=MS_Gothic:h10:cSHIFTJIS
