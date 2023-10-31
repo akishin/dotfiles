@@ -162,7 +162,9 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tyru/vim-altercmd'
+# repo = 'tyru/vim-altercmd'
+repo = "tsuyoshicho/vim-altercmd"
+rev = "fix/submoduleurl"
 hook_add = '''
   call altercmd#load()
 

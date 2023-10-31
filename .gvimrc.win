@@ -7,7 +7,11 @@ if has("gui_running")
     set columns=200
 
     " フォントサイズ
-    set guifont=MS_Gothic:h10:cSHIFTJIS
+    " set guifont=MS_Gothic:h10:cSHIFTJIS
+    set guifont=HackGen:h10:cSHIFTJIS:qDRAFT 
+
+    " メニューバーを表示
+    set guioptions+=m
     
     " メニューの文字化け回避
     source $VIMRUNTIME/delmenu.vim
