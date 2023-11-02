@@ -17,6 +17,16 @@ if [ ! -e $HOME/.config/nvim/init.vim ] ; then
     ln -s $HOME/dotfiles/.config/nvim/init.vim $HOME/.config/nvim/init.vim
 fi
 
+# .config/goneovim ディレクトリが存在しなければ作成
+if [ ! -d $HOME/.config/goneovim ] ; then
+    mkdir -p $HOME/.config/goneovim
+fi
+
+# .config/goneovim/settings.toml
+if [ ! -e $HOME/.config/goneovim/settings.toml ] ; then
+    ln -s $HOME/dotfiles/.config/goneovim/settings.toml $HOME/.config/goneovim/settings.toml
+fi
+
 for file in ${DOT_FILES[@]}
 do
     if [ ! -e $HOME/$file ] ; then
@@ -37,4 +47,9 @@ fi
 # Vim のバックアップファイル用ディレクトリが存在しなければ作成
 if [ ! -d $HOME/tmp ] ; then
     mkdir $HOME/tmp
+fi
+
+# ~/bin ディレクトリが存在しなければ作成
+if [ ! -d $HOME/bin ] ; then
+    mkdir $HOME/bin
 fi
